@@ -1,5 +1,5 @@
 # MasterWord
-MasterMind Test Project
+MasterWord Test Project
 
 ## Requisitos
 
