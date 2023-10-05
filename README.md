@@ -20,7 +20,5 @@ FASE 1
 - clase partida
 -----------
 
-## Ejecucion
-Ejecutar el archivo vista.py
 
 

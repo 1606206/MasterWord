@@ -15,11 +15,11 @@ def readBBDD(path):
     wordList = df['Palabras'].tolist()
     return wordList
 
-
 #lee la lista y devuelve una palabra al azar
 def randomChoice(wordList):
     return rd.choice(wordList)
 
+<<<<<<< HEAD
 def toUppercase(word):
     return word.upper()
 
@@ -33,3 +33,5 @@ def splitWord(word):
 
 
 
+=======
+>>>>>>> parent of b6df456 (Clases y funciones añadidas)
