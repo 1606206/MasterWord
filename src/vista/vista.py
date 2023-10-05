@@ -1,11 +1,8 @@
 import sys
-sys.path.insert(2,'src\controlador')
-from controlador import *
+sys.path.insert(2, 'src/controlador')  
+from funciones import wordList, wordToPlay, split_word  
+
+# Enseñamos la información
+print(wordList, wordToPlay, split_word)
 
 
-
-#Aqui realizamos todas las llamadas
-wordList = readBBDD(path)
-wordToPlay = randomChoice(wordList)
-wordToPlay = toUppercase(wordToPlay)
-splitWord(wordToPlay)

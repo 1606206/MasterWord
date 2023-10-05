@@ -1,6 +1,6 @@
 import sys
 sys.path.insert(1,'src\model')
-from model import *
+from ..model import model
 
 #Aqui crearemos toda la logica, clases, funciones...
 #HE CREADO LO MAS BASICO DE LAS CLASES, CAMBIAD LO QUE QUERAIS
