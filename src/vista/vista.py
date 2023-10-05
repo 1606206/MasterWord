@@ -7,4 +7,5 @@ from controlador import *
 #Aqui realizamos todas las llamadas
 wordList = readBBDD(path)
 wordToPlay = randomChoice(wordList)
-print(wordToPlay)
+wordToPlay = toUppercase(wordToPlay)
+splitWord(wordToPlay)

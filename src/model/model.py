@@ -15,7 +15,22 @@ def readBBDD(path):
     wordList = df['Palabras'].tolist()
     return wordList
 
+
 #lee la lista y devuelve una palabra al azar
 def randomChoice(wordList):
     return rd.choice(wordList)
+
+
+def toUppercase(word):
+    return word.upper()
+
+def splitWord(word):
+    list = []
+    for i in word:
+        list.append(i)
+    print(list)
+
+
+
+
 
