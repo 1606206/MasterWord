@@ -25,10 +25,10 @@ def toUppercase(word):
     return word.upper()
 
 def splitWord(word):
-    list = []
+    list_s = []
     for i in word:
-        list.append(i)
-    print(list)
+        list_s.append(i)
+    return list_s
 
 
 

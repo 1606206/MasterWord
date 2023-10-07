@@ -43,6 +43,17 @@ class State:
     def __init__(self, state):
         self.state = state
     
+
+
+
+
+wordList = readBBDD(path)
+wordToPlay = randomChoice(wordList)
+wordToPlay = toUppercase(wordToPlay)
+wordToPlay = splitWord(wordToPlay)
+
+
+
         
     
    
