@@ -4,14 +4,14 @@ import math
 import pandas as pd
 import random as rd
 
-path = "BBDD\dict.csv"
+PATH = "BBDD"
 
 
 #||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||
 
 #Lee el fichero csv y lo convierte a una lista
-def readBBDD(path):
-    df = pd.read_csv(path)
+def readBBDD(secondary_path):
+    df = pd.read_csv(PATH + secondary_path)
     wordList = df['Palabras'].tolist()
     return wordList
 

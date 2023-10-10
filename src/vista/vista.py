@@ -28,7 +28,9 @@ def mostrar_menu_mode_partida_jugador_unic():
 def mostrar_menu_mode_partida_multijugador():
     print("1. Jugar amb el diccionari del Jugador 1")
     print("2. Jugar amb el diccionari del Jugador 2")
-    print("3. Sortir")
+    print("3. Jugar amb el diccionari per defecte")
+    print("4. Joc lliure")
+    print("5. Sortir")
 
 def mostrar_menu_nivell():
     print("1. Nivell 1 (tres lletres)")
@@ -161,21 +163,25 @@ if __name__ == "__main__":
                 opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
                 if opcio == '1':
                     WORD_LENGHT = 3
-                    print("en proceso de desarollo...")
-                    break
+                    dictionary = readBBDD("\dictionary_3.csv")
+                    word = randomChoice(dictionary)
                 elif opcio == '2':
                     WORD_LENGHT = 5
+                    dictionary = readBBDD("\dictionary_5.csv")
+                    word = randomChoice(dictionary)
                 elif opcio == '3':
                     WORD_LENGHT = 7
-                    print("en proceso de desarollo...")
-                    break
+                    dictionary = readBBDD("\dictionary_7.csv")
+                    word = randomChoice(dictionary)
                 else: 
                     print("Sortint del joc...")
                     break
+                word = toUppercase(word)
+                wordList = splitWord(word)
             elif opcio =='2':
                 multijugador()
-                print("en proceso de desarollo...")
-                break
+                print("introdueix la paraula que s'ha d'endevinar")
+                wordList = list(input().upper())
             elif opcio=='3':
                 print("Sortint del joc...")
                 break
@@ -187,8 +193,6 @@ if __name__ == "__main__":
         else:
             print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
 
-        print("introdueix la paraula que s'ha d'endevinar")
-        wordList = list(input().upper())
         numRound = 0
         win = False
 

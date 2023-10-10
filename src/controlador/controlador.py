@@ -64,9 +64,10 @@ class State:
                 userWord[i] = State("amarillo")
                 wordListCopy.remove(letter)
         
-        
-        print(userWord.state)
+        for i in userWord:
+            print(i.state)
         print(result)
+        
         if numCorrect == len(wordList):
             return True
         else:
