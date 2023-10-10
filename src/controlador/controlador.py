@@ -25,13 +25,50 @@ class Player:
 
 class Letter:
     #guardamos la letra
-    def __init__(self, letter):
-        self.letter = letter
+    #disponible   --> si la letra está en la palabra (verde)
+    #no_disponible  --> si la letra no está en la palabra (gris)
+    #verde --> color de la casilla
+    #gris --> color de la casilla
+    #default --> color por defecto
+    def __init__(self, avaliable, color):
+        self.abecedario = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'] #abecedario completo
+        self.avaliable = avaliable #letra lista para usarse o no
+        self.color = color
+    
+    def initialize_color(usedLetters):
+        for i in Letter.abecedario:
+            i = ("no_disponible", "default")
+
+    def availeableLetters(wordList:list, used_letters):
+        for i in Letter.abecedario:
+            if (i in wordList):
+                i = Letter("disponible", i.color)
+            else:
+                i = Letter("no_disponible", i.color)
+
+        for j in used_letters:
+            if (j.avaliable == "no_disponible"):
+                j = Letter(j, "no_disponible", "gris")
+            else:
+                j = Letter(j, "disponible", "verde")
+
+    #FUNCION AUN EN PROCESO, NO USAR
+    
+
+        
+    
+    
+        
+
 
 class word:
     #guardamos la letra
     def __init__(self, word):
         self.word = word
+        self.n_letters = len(word)
+
+    
+
 
 
 class State:
