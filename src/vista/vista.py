@@ -2,93 +2,139 @@ import sys
 sys.path.insert(2,'src\controlador')
 from controlador import *
 
-#Aqui realizamos todas las llamadas
-print(wordToPlay)
+WORD_LENGHT = 3
 
-ROUNDS = 5
+def mostrar_menu_usuari():
+    print("1. Entra amb el nom (podràs accedir al teu diccionari i el teu rànquing)")
+    print("2. Entra anonimàment")
+    print("3. Sortir")
 
-def checkLong(wordList, userWord): # si les paraules son igual de llargues
-    if len(wordList) < len(userWord):
-        print("La palabra es demasiado larga")
-        return False
-    elif len(wordList) > len(userWord):
-        print("La palabra es demasiado corta")
-        return False
-    else:
-        return True
+def mostrar_menu_principal():
+    print("1. Diccionari (modifica o crea el teu propi diccionari)")
+    print("2. Jugar")
+    print("3. Sortir")
+
+def mostrar_menu_partida():
+    print("1. Jugador únic")
+    print("2. Multijugador")
+    print("3. Sortir")
+
+def mostrar_menu_mode_partida_jugador_unic():
+    print("1. Jugar amb el meu diccionari")
+    print("2. Jugar amb el diccionari per defecte")
+    print("3. Sortir")
+
+def mostrar_menu_mode_partida_multijugador():
+    print("1. Jugar amb el diccionari del Jugador 1")
+    print("2. Jugar amb el diccionari del Jugador 2")
+    print("3. Sortir")
+
+def mostrar_menu_nivell():
+    print("1. Nivell 1 (tres lletres)")
+    print("2. Nivell 2 (cinc lletres)")
+    print("3. Nivell 3 (set lletres)")
+    print("4. Sortir")
+
+def jugador_unic():
+    print("Has entrat en mode jugador únic")
+
+def multijugador():
+    print("Has entrat en mode multijugador")
+
+def menu_tornar_jugar():
+    print("1. Torna a jugar")
+    print("2. Sortir")
 
 
-def checkWord(wordList, userWord):
-    result = []
-    numCorrect = 0
-    wordListCopy = list(wordList)  # Copia de wordList
-    userWordCopy = list(userWord)  # Copia de userWord
-
-    for i, letter in enumerate(userWordCopy):
-        if letter == wordListCopy[i]: # Primero miramos las que están bien colocadas
-            result.append('+')
-            wordListCopy[i] = None  # Para evitar contar la misma letra dos veces (y que ponga + y *)
-            numCorrect += 1
-        else:
-            result.append('-') # Si no están bien, están mal colocadas
-
-    for i, letter in enumerate(userWordCopy): # Miramos de las que están mal, las que si existen en la palabra
-        if result[i] == '-' and letter in wordListCopy:
-            result[i] = '*'
-            wordListCopy.remove(letter)
-
-    print(result)
-    if numCorrect == len(wordList):
-        return True
-    else:
-        return False
 
 if __name__ == "__main__":
+    while True:
+        mostrar_menu_usuari()
+        opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+        if opcio == '1':
+            mostrar_menu_principal()
+            opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+            if opcio == '1':
+                print("Introdueix les noves paraules del diccionari separades per espais")
+                userDict = input()
+                saveUserDict(userDict)
+                break
+            else:
+                print("en proceso de desarollo...")
+                break
+        elif opcio == '2':
+            mostrar_menu_partida()
+            opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+            if opcio == '1':
+                jugador_unic()
+                mostrar_menu_nivell()
+                opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+                if opcio == '1':
+                    WORD_LENGHT = 3
+                    print("en proceso de desarollo...")
+                    break
+                elif opcio == '2':
+                    WORD_LENGHT = 5
+                elif opcio == '3':
+                    WORD_LENGHT = 7
+                    print("en proceso de desarollo...")
+                    break
+                else: 
+                    print("Sortint del joc...")
+                    break
+            elif opcio =='2':
+                multijugador()
+                print("en proceso de desarollo...")
+                break
+            elif opcio=='3':
+                print("Sortint del joc...")
+                break
+            else:
+                print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
+        elif opcio == '3':
+            print("Sortint del joc...")
+            break
+        else:
+            print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
 
-    print("vols crear un diccionari nou? Introdueix S per crear un de nou, sinó, qualsevol altre tecla")
-    newDict = input()
-    if newDict == 'S':
-        print("Introdueix les noves paraules del diccionari separades per espais")
-        userDict = input()
-        saveUserDict(userDict)
+        print("introdueix la paraula que s'ha d'endevinar")
+        wordList = list(input().upper())
+        numRound = 0
+        win = False
 
-    print("Ara vols començar el joc? Si vols jugar introdueix S, sinó, qualsevola altra tecla")
-    startGame = input()
-    if startGame != 'S':
-        print("Has sortit del JOC")
-        exit 
+        print("la paraula te", len(wordList), "lletres")
 
+        while numRound < ROUNDS and win == False: 
 
-    print("introdueix la paraula que s'ha d'endevinar")
-    wordList = list(input().upper())
-    numRound = 0
-    win = False
-
-    print("la paraula te", len(wordList), "lletres")
-
-    while numRound < ROUNDS and win == False: 
-
-        print("introdueix la paraula que creus que es")
-        userWord = list(input().upper())
-
-        print("palabra introducida por el usuario", userWord)
-
-        long = checkLong(wordList, userWord)
-
-        while long == False:
-            print("introdueix una paraula")
+            print("introdueix la paraula que creus que es")
             userWord = list(input().upper())
+
             print("palabra introducida por el usuario", userWord)
+
             long = checkLong(wordList, userWord)
 
-        win = checkWord(wordList, userWord)
+            while long == False:
+                print("introdueix una paraula")
+                userWord = list(input().upper())
+                print("palabra introducida por el usuario", userWord)
+                long = checkLong(wordList, userWord)
 
-        if (win == True):
-            print('has guanyat')
-        else:
-            print('segueix jugant')
+            win = checkWord(wordList, userWord)
 
-        numRound+= 1
-    
-    
+            if (win == True):
+                print('has guanyat')
+            else:
+                print('tornar a jugar')
+                menu_tornar_jugar()
+                opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+                if opcio =='1':
+                    print("en proceso de desarollo...")
+                    break
+                elif opcio =='2':
+                    print("en proceso de desarollo...")
+                    break
+
+            numRound+= 1
+        
+        
 

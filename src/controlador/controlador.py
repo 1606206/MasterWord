@@ -16,7 +16,6 @@ class Game:
     def add_play(self, play):
         self.plays.append(play)
 
-    
 
 class Player:
     #guardamos el numero de jugadores
