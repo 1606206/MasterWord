@@ -2,8 +2,6 @@ import sys
 sys.path.insert(2,'src\controlador')
 from controlador import *
 
-
-
 #Aqui realizamos todas las llamadas
 print(wordToPlay)
 
@@ -46,6 +44,20 @@ def checkWord(wordList, userWord):
         return False
 
 if __name__ == "__main__":
+
+    print("vols crear un diccionari nou? Introdueix S per crear un de nou, sinó, qualsevol altre tecla")
+    newDict = input()
+    if newDict == 'S':
+        print("Introdueix les noves paraules del diccionari separades per espais")
+        userDict = input()
+        saveUserDict(userDict)
+
+    print("Ara vols començar el joc? Si vols jugar introdueix S, sinó, qualsevola altra tecla")
+    startGame = input()
+    if startGame != 'S':
+        print("Has sortit del JOC")
+        exit 
+
 
     print("introdueix la paraula que s'ha d'endevinar")
     wordList = list(input().upper())

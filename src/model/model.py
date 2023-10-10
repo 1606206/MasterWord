@@ -30,6 +30,15 @@ def splitWord(word):
         list_s.append(i)
     return list_s
 
+def saveUserDict(wordsList):
+    words = wordsList.split()
+    with open('dict.txt', 'w') as saveFile:
+    # Escribir las palabras en el archivo, uniendo la lista con espacios
+        saveFile.write('\n'.join(words))
+
+    print("Las palabras se han guardado bien.")
+
+
 
 
 
