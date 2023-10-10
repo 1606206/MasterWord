@@ -42,7 +42,54 @@ class State:
     def __init__(self, state):
         self.state = state
     
+    def checkWord(wordList: list, userWord: list):
+        result = []
+        numCorrect = 0
+        wordListCopy = list(wordList)  # Copia de wordList
+        userWordCopy = list(userWord)  # Copia de userWord
+                
+        for i, letter in enumerate(userWordCopy):
+            if letter == wordListCopy[i]: # Primero miramos las que están bien colocadas
+                result.append('+')
+                userWord[i] = State("verde")
+                wordListCopy[i] = None  # Para evitar contar la misma letra dos veces (y que ponga + y *)
+                numCorrect += 1
+            else:
+                result.append('-') # Si no están bien, están mal colocadas
+                userWord[i] = State("rojo")
 
+        for i, letter in enumerate(userWordCopy): # Miramos de las que están mal, las que si existen en la palabra
+            if result[i] == '-' and letter in wordListCopy:
+                result[i] = '*'
+                userWord[i] = State("amarillo")
+                wordListCopy.remove(letter)
+        
+        
+        print(userWord.state)
+        print(result)
+        if numCorrect == len(wordList):
+            return True
+        else:
+            return False
+    '''
+    def checkWord(word: list, player_word: list):
+        #asumimos que tienen ya la misma longitud
+        for i in range(len(word)):
+            if word[i] == player_word[i]:
+                player_word[i] = State('verde')
+            elif player_word[i] in word and word[i] != player_word[i]:
+                player_word[i] = State('amarillo')
+            else:
+                player_word[i] = State('rojo')
+
+        for i in player_word:
+            print(i.state)
+
+        correct = True
+        for i in player_word:
+            if (i.state != "verde"):
+                correct = False
+        return correct
 
 
 
@@ -51,7 +98,7 @@ wordToPlay = randomChoice(wordList)
 wordToPlay = toUppercase(wordToPlay)
 wordToPlay = splitWord(wordToPlay)
 
-
+    '''
 
         
     

@@ -5,7 +5,6 @@ import pandas as pd
 import random as rd
 
 path = "BBDD\dict.csv"
-ROUNDS = 5
 
 
 #||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||
@@ -22,14 +21,19 @@ def randomChoice(wordList):
     return rd.choice(wordList)
 
 
+#convierte las letras de la palabra a mayusculas
 def toUppercase(word):
     return word.upper()
 
+
+#dada la palabra seleccionada la divide y devuelve un array separado listo para jugar
 def splitWord(word):
     list_s = []
     for i in word:
         list_s.append(i)
     return list_s
+
+
 
 def saveUserDict(wordsList):
     words = wordsList.split()
@@ -75,6 +79,7 @@ def checkWord(wordList, userWord):
         return True
     else:
         return False
+
 
 
 

@@ -3,6 +3,7 @@ sys.path.insert(2,'src\controlador')
 from controlador import *
 
 WORD_LENGHT = 3
+ROUNDS = 5
 
 def mostrar_menu_usuari():
     print("1. Entra amb el nom (podràs accedir al teu diccionari i el teu rànquing)")
@@ -46,7 +47,7 @@ def menu_tornar_jugar():
     print("2. Sortir")
 
 
-
+'''
 if __name__ == "__main__":
     while True:
         mostrar_menu_usuari()
@@ -135,6 +136,94 @@ if __name__ == "__main__":
                     break
 
             numRound+= 1
+'''
+if __name__ == "__main__":
+    while True:
+        mostrar_menu_usuari()
+        opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+        if opcio == '1':
+            mostrar_menu_principal()
+            opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+            if opcio == '1':
+                print("Introdueix les noves paraules del diccionari separades per espais")
+                userDict = input()
+                saveUserDict(userDict)
+                break
+            else:
+                print("en proceso de desarollo...")
+                break
+        elif opcio == '2':
+            mostrar_menu_partida()
+            opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+            if opcio == '1':
+                jugador_unic()
+                mostrar_menu_nivell()
+                opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+                if opcio == '1':
+                    WORD_LENGHT = 3
+                    print("en proceso de desarollo...")
+                    break
+                elif opcio == '2':
+                    WORD_LENGHT = 5
+                elif opcio == '3':
+                    WORD_LENGHT = 7
+                    print("en proceso de desarollo...")
+                    break
+                else: 
+                    print("Sortint del joc...")
+                    break
+            elif opcio =='2':
+                multijugador()
+                print("en proceso de desarollo...")
+                break
+            elif opcio=='3':
+                print("Sortint del joc...")
+                break
+            else:
+                print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
+        elif opcio == '3':
+            print("Sortint del joc...")
+            break
+        else:
+            print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
+
+        print("introdueix la paraula que s'ha d'endevinar")
+        wordList = list(input().upper())
+        numRound = 0
+        win = False
+
+        print("la paraula te", len(wordList), "lletres")
+
+        while numRound < ROUNDS and win == False: 
+
+            print("introdueix la paraula que creus que es")
+            userWord = list(input().upper())
+
+            print("palabra introducida por el usuario", userWord)
+
+            long = checkLong(wordList, userWord)
+
+            while long == False:
+                print("introdueix una paraula")
+                userWord = list(input().upper())
+                print("palabra introducida por el usuario", userWord)
+                long = checkLong(wordList, userWord)
+
+            win = State.checkWord(wordList, userWord)   #cambiada la llamada a la funcion en la clase!!
+            numRound += 1   
         
+        if (win == True):
+            print('has guanyat')
+        else:
+            print('tornar a jugar')
+            menu_tornar_jugar()
+            opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+            if opcio =='1':
+                print("en proceso de desarollo...")
+                break
+            elif opcio =='2':
+                print("en proceso de desarollo...")
+                break
+         
         
 
