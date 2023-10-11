@@ -24,3 +24,6 @@ FASE 1
 Ejecutar el archivo vista.py
 
 
+## Testeo
+En el directorio /MasterWord escribir en la consola pytest
+

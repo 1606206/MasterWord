@@ -31,7 +31,10 @@ class Letter:
     #gris --> color de la casilla
     #default --> color por defecto
     def __init__(self, avaliable, color):
-        self.abecedario = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'] #abecedario completo
+        self.abecedario = ['A', 'B', 'C', 'D', 'E', 'F', 'G',
+                           'H', 'I', 'J', 'K', 'L', 'M', 'N',
+                           'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T',
+                           'U', 'V', 'W', 'X', 'Y', 'Z']       #abecedario completo
         self.avaliable = avaliable #letra lista para usarse o no
         self.color = color
     
