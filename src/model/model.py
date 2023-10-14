@@ -4,6 +4,7 @@ import math
 import pandas as pd
 import random as rd
 
+
 PATH = "BBDD"
 
 
