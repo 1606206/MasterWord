@@ -33,17 +33,37 @@ def splitWord(word):
         list_s.append(i)
     return list_s
 
+#comprovar si l'usuari existeix a la BBDD
+def check_user(username, option):
+    df = pd.read_csv(PATH + '\\user_names.csv')
+    userList = df['USERNAMES'].tolist()
+
+    if username in userList:
+        if option == '1': #s'ha triat lopcio de crear nou usuari
+            username = input("Aquest nom d'usuari ja existeix. Introdueix un altre nom de usuari: ")
+            check_user(username, option)
+        return True  # si ja existeix el nom d'usuari
+    else:
+        if option == '2':
+             username = input("Aquest usuari no existeix. Introdueix un usuari vàlid: ")
+             check_user(username, option)
+        else:
+            with open('BBDD\\user_names.csv', 'a') as saveFile:  # si no existeix el usuari
+                saveFile.write('\n'+ username )  
+            print("Benvingut a WordleApp: ", username)
+        return False 
 
 
-def saveUserDict(wordsList):
+# guardar els diccionaris dels usuaris
+def saveUserDict(wordsList, username):
     words = wordsList.split()
-    with open('dict.txt', 'w') as saveFile:
+    with open('BBDD\\user_dict\\dict_'+ username + '.txt', 'w') as saveFile:
     # Escribir las palabras en el archivo, uniendo la lista con espacios
         saveFile.write('\n'.join(words))
 
-    print("Las palabras se han guardado bien.")
+    print("Les paraules s'han guardat correctament.")
 
-
+# comprovar que les paraules siguin iguals
 def checkLong(wordList, userWord): # si les paraules son igual de llargues
     if len(wordList) < len(userWord):
         print("La palabra es demasiado larga")
@@ -54,7 +74,7 @@ def checkLong(wordList, userWord): # si les paraules son igual de llargues
     else:
         return True
 
-
+# comprovar si la paraula intrduida coincideix amb la que s'ha d'encertar
 def checkWord(wordList, userWord):
     result = []
     numCorrect = 0

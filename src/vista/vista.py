@@ -48,6 +48,10 @@ def menu_tornar_jugar():
     print("1. Torna a jugar")
     print("2. Sortir")
 
+def menu_usuari():
+    print("1. Crear un nou usuari")
+    print("2. Entrar amb el meu usuari")
+
 
 '''
 if __name__ == "__main__":
@@ -144,6 +148,14 @@ if __name__ == "__main__":
         mostrar_menu_usuari()
         opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
         if opcio == '1':
+            menu_usuari()
+            opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+            if opcio == '1':
+                username = input('Introdueix el teu nom de usuari: ')
+                check_user(username, opcio)
+            if opcio == '2':
+                username = input('Introdueix el teu nom de usuari: ')
+                check_user(username, opcio)
             mostrar_menu_principal()
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
             if opcio == '1':
