@@ -9,30 +9,22 @@ PATH = "BBDD"
 
 
 #||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||
+class Dictionary:
+    def __init__(self, default, level, secPath):
+        self.default = default #bool
+        self.level = level #num
+        self.path = secPath #string
+        self.wordList = []
 
-#Lee el fichero csv y lo convierte a una lista
-def readBBDD(secondary_path):
-    df = pd.read_csv(PATH + secondary_path)
-    wordList = df['Palabras'].tolist()
-    return wordList
+    #Lee el fichero csv y lo convierte a una lista
+    def randomChoice(wordList):
+        return rd.choice(wordList)
+    
+    #lee la lista y devuelve una palabra al azar
+    def readBBDD(secondary_path):
+        df = pd.read_csv(PATH + Dictionary.secPath)
+        Dictionary.wordList = df['Palabras'].tolist()
 
-
-#lee la lista y devuelve una palabra al azar
-def randomChoice(wordList):
-    return rd.choice(wordList)
-
-
-#convierte las letras de la palabra a mayusculas
-def toUppercase(word):
-    return word.upper()
-
-
-#dada la palabra seleccionada la divide y devuelve un array separado listo para jugar
-def splitWord(word):
-    list_s = []
-    for i in word:
-        list_s.append(i)
-    return list_s
 
 #comprovar si l'usuari existeix a la BBDD
 def check_user(username, option):

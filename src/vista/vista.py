@@ -1,6 +1,9 @@
 import sys
 sys.path.insert(2,'src\controlador')
 from controlador import *
+sys.path.insert(2,'src\model')
+from model import Dictionary as dc
+
 
 WORD_LENGHT = 3
 ROUNDS = 5
@@ -100,16 +103,16 @@ if __name__ == "__main__":
                 opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
                 if opcio == '1':
                     WORD_LENGHT = 3
-                    dictionary = readBBDD("\dictionary_3.csv")
-                    word = randomChoice(dictionary)
+                    dictionary = dc.readBBDD("\dictionary_3.csv")
+                    word = Word(dc.randomChoice(dictionary))
                 elif opcio == '2':
                     WORD_LENGHT = 5
-                    dictionary = readBBDD("\dictionary_5.csv")
-                    word = randomChoice(dictionary)
+                    dictionary = dc.readBBDD("\dictionary_5.csv")
+                    word = Word(dc.randomChoice(dictionary))
                 elif opcio == '3':
                     WORD_LENGHT = 7
-                    dictionary = readBBDD("\dictionary_7.csv")
-                    word = randomChoice(dictionary)
+                    dictionary = dc.readBBDD("\dictionary_7.csv")
+                    word = Word(dc.randomChoice(dictionary))
                 else: 
                     print("Sortint del joc...")
                     break
@@ -157,6 +160,7 @@ if __name__ == "__main__":
             print('has guanyat')
         else:
             print('tornar a jugar')
+            '''
             menu_tornar_jugar()
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
             if opcio =='1':
@@ -165,6 +169,7 @@ if __name__ == "__main__":
             elif opcio =='2':
                 print("en proceso de desarollo...")
                 break
+            '''
          
         
 
