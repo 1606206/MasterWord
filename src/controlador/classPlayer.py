@@ -1,5 +1,5 @@
 ## clase Jugador
-class Player:
+class Player: 
     def __init__(self, name="anonymous", points=0, ranking=0):
         self._name = name
         self._points = points
@@ -28,3 +28,4 @@ class Player:
     # Setter para el atributo 'ranking'
     def set_ranking(self, ranking):
         self._ranking = ranking
+

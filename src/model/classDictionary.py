@@ -1,16 +1,21 @@
 import pandas as pd
+import random as rd
+
+PATH = "BBDD"
+
+#lee la lista y devuelve una palabra al azar
+def readBBDD(secondary_path):
+    df = pd.read_csv(PATH + secondary_path)
+    return df['Palabras'].tolist()
+
 class Dictionary:
     def __init__(self, default, level, secPath):
         self.default = default #bool
         self.level = level #num
         self.path = secPath #string
-        self.wordList = []
+        self.wordList = readBBDD(secPath)
 
     #Lee el fichero csv y lo convierte a una lista
-    def randomChoice(wordList):
-        return rd.choice(wordList)
+    def randomChoice(self):
+        return rd.choice(self.wordList)
     
-    #lee la lista y devuelve una palabra al azar
-    def readBBDD(secondary_path):
-        df = pd.read_csv(PATH + Dictionary.secPath)
-        Dictionary.wordList = df['Palabras'].tolist()

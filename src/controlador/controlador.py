@@ -1,20 +1,20 @@
 import sys
-import os
-from PIL import ImageTk, Image
-
 sys.path.insert(1,'src\model')
-sys.path.insert(3,'src\\vista')
-
 from model import *
+sys.path.insert(3,'src\\vista')
 from vista import *
 from tkinter import *
 from classGame import *
-from classPlayer import Player
+from classPlayer import *
+from classWord import *
+from classDictionary import * 
+from PIL import ImageTk, Image
+import os
 
 if __name__ == "__main__":
     '''
     LO COMENTADO ES PARA HACER EL DISPLAY DE LA VENTANA
-2
+
     win = Tk()
     win.geometry("1280x720")
     frame = Frame(win, width=600, height=400)
@@ -29,69 +29,51 @@ if __name__ == "__main__":
     while True:
         mostrar_menu_usuari()
         opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
-        os.system("cls")
-        if opcio == '1':  # Entra amb el nom
+        if opcio == '1':
+            print('entro a 1, en proces')
+            '''
+            print('opcio == ', opcio)
             partida = Game()
             menu_usuari()
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
-            os.system("cls")
             username = input('Introdueix el teu nom de usuari: ')
             check_user(username, opcio)
-            if opcio == '1':  # Crear un nou usuari
+            if opcio == '1':
                 player = Player(username)
-            if opcio == '2':  # Entrar amb el meu usuari
+            if opcio == '2':
                 points = player.get_points()
                 ranquing = player.get_ranking()
                 player = Player(username, points,ranquing)
             mostrar_menu_principal()
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
-            os.system("cls")
-            if opcio == '1':  # Diccionari (modifica o crea el teu propi diccionari)"
+            if opcio == '1':
                 print("Introdueix les noves paraules del diccionari separades per espais")
                 userDict = input()
                 saveUserDict(userDict)
                 break
-                '''user_dictionary = dc.readBBDD("\dictionary_3.csv")
-                word = Word(dc.randomChoice(user_dictionary))
-                partida_1_jugador(word)'''
-            
-            
-            if opcio == '2':  # Jugar
-                dictionary = dc.readBBDD("\dictionary_3.csv")
-                word = Word(dc.randomChoice(dictionary))
-                partida_1_jugador(word)      
-                           
-                
-            if opcio == '3':  # Sortir
-                continue
             else:
                 print("en proceso de desarollo...")
                 break
-'''
-        elif opcio == '2':  # Entra anonimament
+            '''
+        elif opcio == '2':
             mostrar_menu_partida()
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
-            if opcio == '1':
+            if opcio == '1': ## jugador unic
                 jugador_unic()
-                mostrar_menu_nivell()
+                mostrar_menu_nivell() ## escollir nivell
                 opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
                 if opcio == '1':
                     WORD_LENGHT = 3
-                    dictionary = dc.readBBDD("\dictionary_3.csv")
-                    word = Word(dc.randomChoice(dictionary))
                 elif opcio == '2':
                     WORD_LENGHT = 5
-                    dictionary = dc.readBBDD("\dictionary_5.csv")
-                    word = Word(dc.randomChoice(dictionary))
                 elif opcio == '3':
                     WORD_LENGHT = 7
-                    dictionary = dc.readBBDD("\dictionary_7.csv")
-                    word = Word(dc.randomChoice(dictionary))
                 else: 
                     print("Sortint del joc...")
                     break
-                word = toUppercase(word)
-                wordList = splitWord(word)
+                dictionary = Dictionary(0, opcio, "\dictionary_" + str(WORD_LENGHT) + ".csv")
+                word = Word(dictionary.randomChoice())
+                print('word en el controlador', word)
             elif opcio =='2':
                 multijugador()
                 print("introdueix la paraula que s'ha d'endevinar")
@@ -106,35 +88,35 @@ if __name__ == "__main__":
             break
         else:
             print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
-    '''
 
-        def partida_1_jugador(word):
-            numRound = 0
-            win = False
-            print("la paraula te", len(word.n_letters), "lletres")
+        numRound = 0
+        win = False
+        #print(word.palabra, word.splitWord, word.n_letters)
+        print("la paraula te", word.n_letters, "lletres")
 
-            while numRound < ROUNDS and win == False: 
+        while numRound < 10 and win == False: 
 
-                print("Introdueix la paraula que creus que es")
+            print("introdueix la paraula que creus que es")
+            userWord = list(input().upper())
+
+            print("palabra introducida por el usuario", userWord)
+
+            long = checkLong(word.palabra, userWord)
+
+            while long == False:
+                print("introdueix una paraula")
                 userWord = list(input().upper())
-
                 print("palabra introducida por el usuario", userWord)
+                long = checkLong(word.splitWord, userWord)
 
-                long = checkLong(word.word, userWord)
+            win = checkWord(word.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
+            numRound += 1   
+        
+        if (win == True):
+            print('has guanyat')
+        else:
+            print('has perdut')
 
-                while long == False:
-                    print("introdueix una paraula")
-                    userWord = list(input().upper())
-                    print("palabra introducida por el usuario", userWord)
-                    long = checkLong(word.word, userWord)
-
-                win = checkWord(word.word, userWord)   #cambiada la llamada a la funcion en la clase!!
-                numRound += 1   
-            
-            if (win == True):
-                print('has guanyat')
-            else:
-                print('has perdut')
         
 
 

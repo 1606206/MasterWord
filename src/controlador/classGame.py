@@ -1,8 +1,11 @@
+from classWord import *
 class Game:
     def __init__(self, uniquePlayer=0, maxRounds=0):
         self.plays = []  # array de arrays
         self._uniquePlayer = uniquePlayer  # bool, true si hay solo 1 jugador
         self._maxRounds = maxRounds  # rondas maximas
+        self.word_to_guess = Word()
+        self.list_user_words = [Word()]
 
     # Getter para el atributo 'uniquePlayer'
     def get_uniquePlayer(self):
