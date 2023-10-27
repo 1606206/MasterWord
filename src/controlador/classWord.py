@@ -3,14 +3,14 @@ class Word:
     def __init__(self, word):
         self.word = word
         self.n_letters = len(word)
-        self.splitWord = []
+        self.splitted_word = []
 
     #convierte las letras de la palabra a mayusculas
-    def toUppercase(word):
-        Word.word = word.upper()
+    def toUpperCase(self):
+        self.word = self.word.upper()
 
     #dada la palabra seleccionada la divide y devuelve un array separado listo para jugar
-    def splitWord():
-        for i in Word.word:
-            Word.splitWord.append(i)
-
+    def toSplitWord(self):
+        self.splitted_word.clear()
+        for letter in self.word:
+            self.splitted_word.append(letter)

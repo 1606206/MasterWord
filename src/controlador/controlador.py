@@ -1,17 +1,20 @@
 import sys
+import os
+from PIL import ImageTk, Image
+
 sys.path.insert(1,'src\model')
-from model import *
 sys.path.insert(3,'src\\vista')
+
+from model import *
 from vista import *
 from tkinter import *
 from classGame import *
-from PIL import ImageTk, Image
-import os
+from classPlayer import Player
 
 if __name__ == "__main__":
     '''
     LO COMENTADO ES PARA HACER EL DISPLAY DE LA VENTANA
-
+2
     win = Tk()
     win.geometry("1280x720")
     frame = Frame(win, width=600, height=400)

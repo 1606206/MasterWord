@@ -1,37 +1,29 @@
 import sys
 sys.path.insert(1,'src\model')
 
-from model import toUppercase, splitWord
-
-
 # UNIT TESTING
-def test_toUppercase_1():
-    word = "serena"
-    upper_word = toUppercase(word)
-    assert upper_word == "SERENA"
-
-def test_toUppercase_2():
-    word = "MaStErWoRd"
-    upper_word = toUppercase(word)
-    assert upper_word == "MASTERWORD"
-
-def test_toUppercase_3():
-    word = "PYTEST"
-    upper_word = toUppercase(word)
-    assert upper_word == "PYTEST"
 
 
-def test_splitWord_1():
-    word = "serena"
-    splitted_word = splitWord(word)
-    assert splitted_word == ['s','e','r','e','n','a']
-    
-def test_splitWord_2():
-    word = "UAB"
-    splitted_word = splitWord(word)
-    assert splitted_word == ['U','A','B']
 
-def test_splitWord_3():
-    word = "qwerty12345"
-    splitted_word = splitWord(word)
-    assert splitted_word == ['q','w','e','r','t','y','1','2','3','4','5']
+'''def test_dictionary_checkLong_1():
+    pass
+    short_word = "short_word"
+    long_word = "longlonglong_word"
+    #assert not checkLong(short_word, long_word)
+
+def test_dictionary_checkLong_2():
+    pass
+
+def test_dictionary_checkLong_3():
+    pass
+
+
+def test_dictionary_checkWord_1():
+    pass
+
+def test_dictionary_checkWord_2():
+    pass
+
+def test_dictionary_checkWord_3():
+    pass
+'''
