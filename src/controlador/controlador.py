@@ -29,30 +29,46 @@ if __name__ == "__main__":
     while True:
         mostrar_menu_usuari()
         opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
-        if opcio == '1':
+        os.system("cls")
+        if opcio == '1':  # Entra amb el nom
             partida = Game()
             menu_usuari()
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+            os.system("cls")
             username = input('Introdueix el teu nom de usuari: ')
             check_user(username, opcio)
-            if opcio == '1':
+            if opcio == '1':  # Crear un nou usuari
                 player = Player(username)
-            if opcio == '2':
+            if opcio == '2':  # Entrar amb el meu usuari
                 points = player.get_points()
                 ranquing = player.get_ranking()
                 player = Player(username, points,ranquing)
             mostrar_menu_principal()
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
-            if opcio == '1':
+            os.system("cls")
+            if opcio == '1':  # Diccionari (modifica o crea el teu propi diccionari)"
                 print("Introdueix les noves paraules del diccionari separades per espais")
                 userDict = input()
                 saveUserDict(userDict)
                 break
+                '''user_dictionary = dc.readBBDD("\dictionary_3.csv")
+                word = Word(dc.randomChoice(user_dictionary))
+                partida_1_jugador(word)'''
+            
+            
+            if opcio == '2':  # Jugar
+                dictionary = dc.readBBDD("\dictionary_3.csv")
+                word = Word(dc.randomChoice(dictionary))
+                partida_1_jugador(word)      
+                           
+                
+            if opcio == '3':  # Sortir
+                continue
             else:
                 print("en proceso de desarollo...")
                 break
 '''
-        elif opcio == '2':
+        elif opcio == '2':  # Entra anonimament
             mostrar_menu_partida()
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
             if opcio == '1':
@@ -90,35 +106,35 @@ if __name__ == "__main__":
             break
         else:
             print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
+    '''
 
-        numRound = 0
-        win = False
+        def partida_1_jugador(word):
+            numRound = 0
+            win = False
+            print("la paraula te", len(word.n_letters), "lletres")
 
-        print("la paraula te", len(wordList), "lletres")
+            while numRound < ROUNDS and win == False: 
 
-        while numRound < ROUNDS and win == False: 
-
-            print("introdueix la paraula que creus que es")
-            userWord = list(input().upper())
-
-            print("palabra introducida por el usuario", userWord)
-
-            long = checkLong(wordList, userWord)
-
-            while long == False:
-                print("introdueix una paraula")
+                print("Introdueix la paraula que creus que es")
                 userWord = list(input().upper())
-                print("palabra introducida por el usuario", userWord)
-                long = checkLong(wordList, userWord)
 
-            win = State.checkWord(wordList, userWord)   #cambiada la llamada a la funcion en la clase!!
-            numRound += 1   
-        
-        if (win == True):
-            print('has guanyat')
-        else:
-            print('has perdut')
-'''
+                print("palabra introducida por el usuario", userWord)
+
+                long = checkLong(word.word, userWord)
+
+                while long == False:
+                    print("introdueix una paraula")
+                    userWord = list(input().upper())
+                    print("palabra introducida por el usuario", userWord)
+                    long = checkLong(word.word, userWord)
+
+                win = checkWord(word.word, userWord)   #cambiada la llamada a la funcion en la clase!!
+                numRound += 1   
+            
+            if (win == True):
+                print('has guanyat')
+            else:
+                print('has perdut')
         
 
 

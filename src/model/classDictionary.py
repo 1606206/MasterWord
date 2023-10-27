@@ -1,3 +1,4 @@
+import pandas as pd
 class Dictionary:
     def __init__(self, default, level, secPath):
         self.default = default #bool
