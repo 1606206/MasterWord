@@ -25,9 +25,16 @@ def check_user(username, option):
              username = input("Aquest usuari no existeix. Introdueix un usuari vàlid: ")
              check_user(username, option)
         else:
-            with open('BBDD\\user_names.csv', 'a') as saveFile:  # si no existeix el usuari
+            # Si el usuario no existe, añadirlo a la base de datos
+            new_row = {'USERNAMES': username, 'POINTS': 0}
+            df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+            df.to_csv(PATH + '\\user_names.csv', index=False)
+            print("Bienvenido a WordleApp:", username)
+            ''' with open('BBDD\\user_names.csv', 'a') as saveFile:  # si no existeix el usuari
                 saveFile.write('\n'+ username )  
-            print("Benvingut a WordleApp: ", username)
+            print("Benvingut a WordleApp: ", username)'''
+
+
         return False 
 
 

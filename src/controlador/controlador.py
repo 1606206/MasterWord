@@ -31,7 +31,6 @@ if __name__ == "__main__":
         opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
         if opcio == '1':
             print('entro a 1, en proces')
-            '''
             print('opcio == ', opcio)
             partida = Game()
             menu_usuari()
@@ -54,7 +53,6 @@ if __name__ == "__main__":
             else:
                 print("en proceso de desarollo...")
                 break
-            '''
         elif opcio == '2':
             partida = Game()
             mostrar_menu_partida()
