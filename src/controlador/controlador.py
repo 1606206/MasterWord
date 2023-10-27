@@ -56,9 +56,11 @@ if __name__ == "__main__":
                 break
             '''
         elif opcio == '2':
+            partida = Game()
             mostrar_menu_partida()
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
             if opcio == '1': ## jugador unic
+                partida.set_uniquePlayer = True
                 jugador_unic()
                 mostrar_menu_nivell() ## escollir nivell
                 opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
@@ -75,9 +77,11 @@ if __name__ == "__main__":
                 word = Word(dictionary.randomChoice())
                 print('word en el controlador', word)
             elif opcio =='2':
+                partida.set_uniquePlayer = False
                 multijugador()
                 print("introdueix la paraula que s'ha d'endevinar")
-                wordList = list(input().upper())
+                word = Word(input().upper())
+                print('word en el controlador', word)
             elif opcio=='3':
                 print("Sortint del joc...")
                 break

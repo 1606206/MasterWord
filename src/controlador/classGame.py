@@ -4,8 +4,8 @@ class Game:
         self.plays = []  # array de arrays
         self._uniquePlayer = uniquePlayer  # bool, true si hay solo 1 jugador
         self._maxRounds = maxRounds  # rondas maximas
-        self.word_to_guess = Word()
-        self.list_user_words = [Word()]
+        self.word_to_guess = Word("undefined")
+        self.list_user_words = [Word("undefined")]
 
     # Getter para el atributo 'uniquePlayer'
     def get_uniquePlayer(self):
