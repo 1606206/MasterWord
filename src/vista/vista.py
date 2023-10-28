@@ -18,6 +18,11 @@ def mostrar_menu_principal():
     print("2. Jugar")
     print("3. Sortir")
 
+def mostrar_menu_diccionari():
+    print("1. Crea el teu propi diccionari")
+    print("2. Modifica el diccionari")
+    print("3. Sortir")
+
 def mostrar_menu_partida():
     print("1. Jugador únic")
     print("2. Multijugador")
