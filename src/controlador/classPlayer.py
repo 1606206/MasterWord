@@ -6,7 +6,10 @@ from model import *
 class Player: 
     def __init__(self, name="anonymous"):
         self.name = name
-        self.points, self.ranking = read_user(name)
+        if name != "anonymous":
+            self.points, self.ranking = read_user(name)
+        else:
+            self.points, self.ranking = 0,0
 
     # Getter para el atributo 'name'
     def get_name(self):

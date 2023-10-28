@@ -2,16 +2,19 @@ from classWord import *
 import sys
 sys.path.insert(2,'src/model')
 from model import *
+from classPlayer import Player
 from classDictionary import Dictionary
 
 class Game:
-    def __init__(self, uniquePlayer=0, maxRounds=0, anonymous=0):
+    def __init__(self, uniquePlayer=0, maxRounds=0, anonymous=0, default_dict=0, player=Player()):
         self.plays = []  # array de arrays
         self.uniquePlayer = uniquePlayer  # bool, true si hay solo 1 jugador
         self.maxRounds = maxRounds  # rondas maximas
         self.anonymous = anonymous #si la partida es anonima
+        self.default_dictionary = default_dict
         self.word_to_guess = Word("undefined")
         self.list_user_words = [Word("undefined")]
+        self.player = player
 
     # Getter para el atributo 'uniquePlayer'
     def get_uniquePlayer(self):
@@ -36,21 +39,34 @@ class Game:
     # Setter para el atributo 'anonymous'
     def set_anonymous(self, anonymous):
         self.anonymous = anonymous
+    
+    # Getter para el atributo 'default_dictionary'
+    def get_default_dictionary(self):
+        return self.default_dictionary
+
+    # Setter para el atributo 'default_dictionary'
+    def set_default_dictionary(self, default_dictionary):
+        self.default_dictionary = default_dictionary
 
     def add_play(self, play):
         self.plays.append(play)
 
     def inicialitzar_partida(self, opcio, WORD_LENGHT):
         if self.uniquePlayer == 1:
-            dictionary = Dictionary(0, opcio, "\dictionary_" + str(WORD_LENGHT) + ".csv")
-            self.word_to_guess = Word(dictionary.randomChoice())
+            if self.default_dictionary == 1:
+                dictionary = Dictionary(0, opcio, "\dictionary_" + str(WORD_LENGHT) + ".csv")
+                self.word_to_guess = Word(dictionary.randomChoice())
+            else: #comprovar que existeixii el diccionari abans
+                dictionary = Dictionary(0, 0, "\\user_dict\\dict_" + self.player.name + ".csv")
+                self.word_to_guess = Word(dictionary.randomChoice()) 
+
         else: 
             print("introdueix la paraula que s'ha d'endevinar")
             self.word_to_guess = Word(input().upper())
 
         print('word_to_guess', self.word_to_guess)
     
-    def anonymous_game(self,word):
+    def anonymous_game(self):
         numRound = 0
         win = False
         #print(word.palabra, word.splitWord, word.n_letters)
@@ -63,7 +79,7 @@ class Game:
 
             print("palabra introducida por el usuario", userWord)
 
-            long = checkLong(self.word_to_guess, userWord)
+            long = checkLong(self.word_to_guess.splitWord, userWord)
 
             while long == False:
                 print("introdueix una paraula")
@@ -76,7 +92,7 @@ class Game:
 
         return win
     
-    def user_game(self, word):
+    def user_game(self):
         numRound = 0
         win = False
         #print(word.palabra, word.splitWord, word.n_letters)

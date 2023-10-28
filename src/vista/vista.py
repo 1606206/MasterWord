@@ -27,13 +27,15 @@ def mostrar_menu_mode_partida_jugador_unic():
     print("1. Jugar amb el meu diccionari")
     print("2. Jugar amb el diccionari per defecte")
     print("3. Sortir")
-
+    
+'''
 def mostrar_menu_mode_partida_multijugador():
     print("1. Jugar amb el diccionari del Jugador 1")
     print("2. Jugar amb el diccionari del Jugador 2")
     print("3. Jugar amb el diccionari per defecte")
     print("4. Joc lliure")
     print("5. Sortir")
+'''
 
 def mostrar_menu_nivell():
     print("1. Nivell 1 (tres lletres)")

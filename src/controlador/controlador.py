@@ -14,7 +14,7 @@ import os
 from rich.console import Console
 from rich.theme import Theme
 
-
+ROUNDS = 10
 
 
 if __name__ == "__main__":
@@ -80,8 +80,32 @@ if __name__ == "__main__":
                 print("Sortint del joc...")
                 break
             elif opcio=='2':
-                partida = Game(1,10,0)
                 player = Player(username)
+                mostrar_menu_mode_partida_jugador_unic() #dicionari propi/per defecte
+                opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+                if opcio == '1':
+                    partida = Game(1,ROUNDS,0, 0, player)
+                    partida.inicialitzar_partida(0,0)
+                elif opcio =='2':
+                    mostrar_menu_nivell() ## escollir nivell
+                    opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
+                    if opcio == '1':
+                        WORD_LENGHT = 3
+                    elif opcio == '2':
+                        WORD_LENGHT = 5
+                    elif opcio == '3':
+                        WORD_LENGHT = 7
+                    else: 
+                        print("Sortint del joc...")
+                        break
+                    partida = Game(1,ROUNDS,0, 1, player)
+                    partida.inicialitzar_partida(opcio,WORD_LENGHT)
+                elif opcio == '3':
+                    print('sortint del joc...')
+                    break
+                else:
+                    print('opcio invalida')
+                    break
             elif opcio=='3':
                 print("sortint del joc...")
                 break
@@ -95,6 +119,7 @@ if __name__ == "__main__":
             opcio_default = input("Introdueix el número corresponent per a seleccionar una opció: ")
             if opcio_default == '1': ## jugador unic
                 partida.set_uniquePlayer(1)
+                partida.set_default_dictionary(1)
                 jugador_unic()
                 mostrar_menu_nivell() ## escollir nivell
                 opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
@@ -125,9 +150,9 @@ if __name__ == "__main__":
             break
         
         if partida.set_anonymous:
-            win = partida.anonymous_game(word)
+            win = partida.anonymous_game()
         else:
-            win = partida.user_game(word)
+            win = partida.user_game()
 
         if (win == True):
             print('has guanyat')
