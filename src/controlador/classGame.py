@@ -43,19 +43,18 @@ class Game:
     def inicialitzar_partida(self, opcio, WORD_LENGHT):
         if self.uniquePlayer == 1:
             dictionary = Dictionary(0, opcio, "\dictionary_" + str(WORD_LENGHT) + ".csv")
-            word = Word(dictionary.randomChoice())
+            self.word_to_guess = Word(dictionary.randomChoice())
         else: 
             print("introdueix la paraula que s'ha d'endevinar")
-            word = Word(input().upper())
+            self.word_to_guess = Word(input().upper())
 
-        print('word en el controlador', word)
-        return word
+        print('word_to_guess', self.word_to_guess)
     
     def anonymous_game(self,word):
         numRound = 0
         win = False
         #print(word.palabra, word.splitWord, word.n_letters)
-        print("la paraula te", word.n_letters, "lletres")
+        print("la paraula te", self.word_to_guess.n_letters, "lletres")
 
         while numRound < 10 and win == False: 
 
@@ -64,16 +63,43 @@ class Game:
 
             print("palabra introducida por el usuario", userWord)
 
-            long = checkLong(word.palabra, userWord)
+            long = checkLong(self.word_to_guess, userWord)
 
             while long == False:
                 print("introdueix una paraula")
                 userWord = list(input().upper())
                 print("palabra introducida por el usuario", userWord)
-                long = checkLong(word.splitWord, userWord)
+                long = checkLong(self.word_to_guess.splitWord, userWord)
 
-            win = checkWord(word.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
+            win = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
             numRound += 1  
 
         return win
+    
+    def user_game(self, word):
+        numRound = 0
+        win = False
+        #print(word.palabra, word.splitWord, word.n_letters)
+        print("la paraula te", self.word_to_guess.n_letters, "lletres")
+
+        while numRound < 10 and win == False: 
+
+            print("introdueix la paraula que creus que es")
+            userWord = list(input().upper())
+
+            print("palabra introducida por el usuario", userWord)
+
+            long = checkLong(self.word_to_guess, userWord)
+
+            while long == False:
+                print("introdueix una paraula")
+                userWord = list(input().upper())
+                print("palabra introducida por el usuario", userWord)
+                long = checkLong(self.word_to_guess.splitWord, userWord)
+
+            win = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
+            numRound += 1  
+
+        return win
+
         

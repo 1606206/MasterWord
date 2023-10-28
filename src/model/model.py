@@ -13,8 +13,17 @@ PATH = "BBDD"
 def read_user(username): # DUDAAAA: modelo o clase player????
     df = pd.read_csv(PATH + '\\user_names.csv')
     userList = df['USERNAMES'].tolist()
-    print(df)
+    pointsList = df['POINTS'].tolist()
+    index = userList.index(username) # index del username
+    print(pointsList)
+    points = pointsList[index] # puntos del username
+    print(points)
+    pointsList.sort(reverse=True) # ordenamos la clasificacion
+    print(pointsList)
+    ranquing = pointsList.index(points)+1 #cogemos el indice de los puntos para saber el ranking
 
+    print('entro a read user, el usuario es:', username, 'puntos', points, 'ranking', ranquing)
+    return points, ranquing
 
 #comprovar si l'usuari existeix a la BBDD
 def check_user(username, option):
@@ -45,7 +54,9 @@ def check_user(username, option):
 
 
 # guardar els diccionaris dels usuaris
-def saveUserDict(wordsList, username):
+def saveUserDict(username):
+    print("Introdueix les noves paraules del diccionari separades per espais")
+    wordsList = input()
     words = wordsList.split()
     with open('BBDD\\user_dict\\dict_'+ username + '.txt', 'w') as saveFile:
     # Escribir las palabras en el archivo, uniendo la lista con espacios

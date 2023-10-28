@@ -66,36 +66,27 @@ if __name__ == "__main__":
     
     while True:
         opcio = 0
-        mostrar_menu_usuari()
+        mostrar_menu_usuari() #nom/anonim
         opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
         if opcio == '1':
-            print('entro a 1, en proces')
-            print('opcio == ', opcio)
-            partida = Game()
-            menu_usuari()
+            menu_usuari() #crear nou usuari/entrar amb el usuari
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
             username = input('Introdueix el teu nom de usuari: ')
             check_user(username, opcio)
-            player = Player(username)
-            mostrar_menu_principal()
+            mostrar_menu_principal() #crea el teu propi diccionari/jugar
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
             if opcio == '1':
-                mostrar_menu_diccionari()
-                opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
-                if opcio =='1':
-                    print("Introdueix les noves paraules del diccionari separades per espais")
-                    userDict = input()
-                    saveUserDict(userDict, username)
-                    break
-                elif opcio == '2':
-                    print("modifica el diccionario (desarrollaremos esto solo si necesitamos meter más test)")
-                elif opcio == '3':
-                    print("Sortint...")
-                else:
-                    print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
-                    break
+                saveUserDict(username)
+                print("Sortint del joc...")
+                break
+            elif opcio=='2':
+                partida = Game(1,10,0)
+                player = Player(username)
+            elif opcio=='3':
+                print("sortint del joc...")
+                break
             else:
-                print("en proceso de desarollo...")
+                print("opcio no valida")
                 break
         elif opcio == '2':
             partida = Game()
@@ -125,7 +116,7 @@ if __name__ == "__main__":
             else:
                 print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
                 break
-            word = partida.inicialitzar_partida(opcio_default, WORD_LENGHT)
+            partida.inicialitzar_partida(opcio_default, WORD_LENGHT)
         elif opcio == '3':
             print("Sortint del joc...")
             break
@@ -135,6 +126,8 @@ if __name__ == "__main__":
         
         if partida.set_anonymous:
             win = partida.anonymous_game(word)
+        else:
+            win = partida.user_game(word)
 
         if (win == True):
             print('has guanyat')
