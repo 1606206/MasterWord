@@ -10,6 +10,12 @@ PATH = "BBDD"
 
 #||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||
 
+def read_user(username): # DUDAAAA: modelo o clase player????
+    df = pd.read_csv(PATH + '\\user_names.csv')
+    userList = df['USERNAMES'].tolist()
+    print(df)
+
+
 #comprovar si l'usuari existeix a la BBDD
 def check_user(username, option):
     df = pd.read_csv(PATH + '\\user_names.csv')
