@@ -1,4 +1,4 @@
-def transformWord(palabra):
+def transformWord(palabra): ## donde ponemos esta funciónn???
     splitWord = []
     palabra = palabra.upper()
    # print("palabra en mayusculas", palabra)

@@ -10,6 +10,7 @@ PATH = "BBDD"
 
 #||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||
 
+
 def read_user(username): # DUDAAAA: modelo o clase player????
     df = pd.read_csv(PATH + '\\user_names.csv')
     userList = df['USERNAMES'].tolist()

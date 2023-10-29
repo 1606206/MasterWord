@@ -80,7 +80,8 @@ if __name__ == "__main__":
                 print("Sortint del joc...")
                 break
             elif opcio=='2':
-                player = Player(username)
+                points, ranking = read_user(username)
+                player = Player(username, points, ranking)
                 mostrar_menu_mode_partida_jugador_unic() #dicionari propi/per defecte
                 opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
                 if opcio == '1':
