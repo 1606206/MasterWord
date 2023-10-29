@@ -14,7 +14,7 @@ import os
 from rich.console import Console
 from rich.theme import Theme
 
-ROUNDS = 10
+ROUNDS = 3
 
 
 if __name__ == "__main__":
@@ -149,13 +149,16 @@ if __name__ == "__main__":
             print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
             break
         
-        if partida.set_anonymous:
+        if partida.get_anonymous() == 1:
             win = partida.anonymous_game()
         else:
-            win = partida.user_game()
+            win, numRound = partida.user_game()
 
         if (win == True):
             print('has guanyat')
+            if (partida.get_anonymous() == 0):
+                points = partida.calculate_user_points(numRound)
+                save_user_points(player.name, points)
         else:
             print('has perdut')
     

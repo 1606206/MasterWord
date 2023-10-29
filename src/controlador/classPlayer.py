@@ -35,3 +35,4 @@ class Player:
     def set_ranking(self, ranking):
         self._ranking = ranking
 
+

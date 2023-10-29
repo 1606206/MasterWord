@@ -64,7 +64,7 @@ class Game:
             print("introdueix la paraula que s'ha d'endevinar")
             self.word_to_guess = Word(input().upper())
 
-        print('word_to_guess', self.word_to_guess)
+        print('word_to_guess', self.word_to_guess.splitWord)
     
     def anonymous_game(self):
         numRound = 0
@@ -105,17 +105,20 @@ class Game:
 
             print("palabra introducida por el usuario", userWord)
 
-            long = checkLong(self.word_to_guess, userWord)
+            long = checkLong(self.word_to_guess.splitWord, userWord)
 
             while long == False:
                 print("introdueix una paraula")
                 userWord = list(input().upper())
                 print("palabra introducida por el usuario", userWord)
                 long = checkLong(self.word_to_guess.splitWord, userWord)
+            
+            numRound += 1 
+            win = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!! 
 
-            win = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
-            numRound += 1  
+        return win, numRound
+    
+    def calculate_user_points(self, numRound):
+        return (self.maxRounds-numRound) + 1
 
-        return win
-
-        
+    

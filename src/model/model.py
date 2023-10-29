@@ -65,6 +65,28 @@ def saveUserDict(username):
 
     print("Les paraules s'han guardat correctament.")
 
+# guardar els punts del usuari
+def save_user_points(username, points):
+    print("sumant ", points, 'punts a lusuari ', username)
+
+    df = pd.read_csv(PATH + '\\user_names.csv')
+    userList = df['USERNAMES'].tolist()
+    pointsList = df['POINTS'].tolist()
+    index = userList.index(username) # index del username
+    old_points = pointsList[index] # puntos del username
+    new_points = old_points + points # sumamos los nuevos puntos
+    pointsList[index] = new_points
+    pointsList.sort(reverse=True) # ordenamos la clasificacion
+    print(pointsList)
+    ranquing = pointsList.index(new_points)+1 #cogemos el indice de los puntos para saber el ranking
+
+    #actualitzar la base de dades
+    df['POINTS'] = pointsList
+    df.to_csv(PATH + '\\user_names.csv', index=False)
+
+    print('entro a read user, el usuario es:', username, 'puntos', new_points, 'ranking', ranquing)
+    print("Els punts s'han guardat correctament.")
+
 # comprovar que les paraules siguin iguals
 def checkLong(wordList, userWord): # si les paraules son igual de llargues
     if len(wordList) < len(userWord):
