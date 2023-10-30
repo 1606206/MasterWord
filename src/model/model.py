@@ -121,13 +121,6 @@ def checkWord(wordList, userWord):
 
     print(result)
     if numCorrect == len(wordList):
-        return True
+        return True, result
     else:
-        return False
-
-
-
-
-
-
-
+        return False, result

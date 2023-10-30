@@ -114,7 +114,7 @@ class Game:
                 long = checkLong(self.word_to_guess.splitWord, userWord)
             
             numRound += 1 
-            win = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!! 
+            win, _ = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!! 
 
         return win, numRound
     

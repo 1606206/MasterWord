@@ -13,6 +13,9 @@ class Word:
         self.palabra = palabra
         self.n_letters = len(palabra)
         self.splitWord = transformWord(palabra)
+        #comprobar espacios
+        #comprobar numeros en el string
+        #comporbar entrada de enteros o flotantes
     '''
     #dada la palabra seleccionada la divide y devuelve un array separado listo para jugar
     def split_word(self):
