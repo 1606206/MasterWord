@@ -87,7 +87,7 @@ class Game:
                 print("palabra introducida por el usuario", userWord)
                 long = checkLong(self.word_to_guess.splitWord, userWord)
 
-            win = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
+            win, _ = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
             numRound += 1  
 
         return win

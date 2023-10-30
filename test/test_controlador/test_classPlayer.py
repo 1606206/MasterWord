@@ -15,4 +15,29 @@ def test_init_2():
     assert player.points == 0
     assert player.ranking == 0
 
-# tests get/set name, points, ranking?
+def test_validInputs_1():
+    player = Player("", 50.5, 2/3)
+    assert isinstance(player.name, str)
+    assert len(player.name) > 0
+    assert isinstance(player.points, int)
+    assert player.points >= 0
+    assert isinstance(player.ranking, int)
+    assert player.ranking >= 1
+    
+def test_validInputs_2():
+    player = Player(1234, -5, -3)
+    assert isinstance(player.name, str)
+    assert len(player.name) > 0
+    assert isinstance(player.points, int)
+    assert player.points >= 0
+    assert isinstance(player.ranking, int)
+    assert player.ranking >= 1
+    
+def test_validInputs_3():
+    player = Player("*-+", "points", "ranking")
+    assert isinstance(player.name, str)
+    assert len(player.name) > 0
+    assert isinstance(player.points, int)
+    assert player.points >= 0
+    assert isinstance(player.ranking, int)
+    assert player.ranking >= 1
