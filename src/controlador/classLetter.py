@@ -9,7 +9,7 @@ class Letter:
                            'U', 'V', 'W', 'X', 'Y', 'Z']       #abecedario completo
         self.color = color
 
-    def checkWord(wordList: list, userWord: list):
+    def checkWord(wordList: list, userWord: list): # SI NO LO VAMOS A USAR MEJOR BORRARLO
         result = []
         numCorrect = 0
         wordListCopy = list(wordList)  # Copia de wordList

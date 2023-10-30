@@ -35,8 +35,44 @@ def test_splitWord_3():
     assert word.splitted_word == ['q','w','e','r','t','y','1','2','3','4','5']
     '''
 
+# INICIALIZACION DE UNA PALABRA
 def test_init_1():
     word = Word("palabra")
     assert word.palabra == "palabra"
     assert word.n_letters == 7
     assert word.splitWord == ['P', 'A', 'L', 'A', 'B', 'R', 'A']
+    
+# PALABRA CON NUMEROS
+def test_validInput_1():
+    word = Word("hola1234")
+    assert isinstance(word.palabra, str)  #  COMPROBANDO QUE EL INPUT ES UN STRING
+    assert word.palabra.isalpha()  #  COMPROBANDO QUE SÓLO HAY LETRAS
+    assert word.n_letters > 0  # COMPROBANDO QUE LA PALABRA NO ESTÁ VACÍA
+    
+# PALABRA CON ESPACIOS
+def test_validInput_2():
+    word = Word("H O L A")
+    assert isinstance(word.palabra, str)  #  COMPROBANDO QUE EL INPUT ES UN STRING
+    assert word.palabra.isalpha()  #  COMPROBANDO QUE SÓLO HAY LETRAS
+    assert word.n_letters > 0  # COMPROBANDO QUE LA PALABRA NO ESTÁ VACÍA
+
+# PALABRA CON CARACTERES ESPECIALES
+def test_validInput_3():
+    word = Word("SERENA+-*/")
+    assert isinstance(word.palabra, str)  #  COMPROBANDO QUE EL INPUT ES UN STRING
+    assert word.palabra.isalpha()  #  COMPROBANDO QUE SÓLO HAY LETRAS
+    assert word.n_letters > 0  # COMPROBANDO QUE LA PALABRA NO ESTÁ VACÍA
+    
+# PALABRA VACÍA
+def test_validInput_4():
+    word = Word("")
+    assert isinstance(word.palabra, str)  #  COMPROBANDO QUE EL INPUT ES UN STRING
+    assert word.palabra.isalpha()  #  COMPROBANDO QUE SÓLO HAY LETRAS
+    assert word.n_letters > 0  # COMPROBANDO QUE LA PALABRA NO ESTÁ VACÍA
+
+# PALABRA QUE NO ES STRING
+def test_validInput_5():
+    word = Word(999)
+    assert isinstance(word.palabra, str)  #  COMPROBANDO QUE EL INPUT ES UN STRING
+    assert word.palabra.isalpha()  #  COMPROBANDO QUE SÓLO HAY LETRAS
+    assert word.n_letters > 0  # COMPROBANDO QUE LA PALABRA NO ESTÁ VACÍA
