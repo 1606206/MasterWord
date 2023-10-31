@@ -81,27 +81,6 @@ def mostrar_guanyar(win): ## preguntar
     else:
         print('Has perdut')
 
-<<<<<<< HEAD
-def nom_usuari_ja_existent():
-    return input("Aquest nom d'usuari ja existeix. Introdueix un altre nom de usuari: ")
-
-def missatge_benvinguda(username):
-    print("Bienvenido a WordleApp:", username)
-
-def canvis_guardats_correctament():
-    print("Els canvis s'han guardat correctament.")
-
-def directrius_nou_diccionari():
-    print("Introdueix les noves paraules del diccionari separades per espais")
-    wordsList = input()
-    return wordsList
-=======
-
-
-    
-
->>>>>>> cd05a51a8355a42ce373221f0fd16c3711b4cf58
-
 def nom_usuari_ja_existent():
     return input("Aquest nom d'usuari ja existeix. Introdueix un altre nom de usuari: ")
 
