@@ -62,3 +62,7 @@ def mostrar_puntuacio(player):
     print("Nom d'usuari: ", player.name)
     print("Punts: ", player.points)
     print("Rànquing: ", player.ranking)
+
+
+
+    

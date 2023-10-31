@@ -11,59 +11,14 @@ from classWord import *
 from PIL import ImageTk, Image
 import os
 
-from rich.console import Console
-from rich.theme import Theme
+
+
 
 ROUNDS = 5
 
 
 if __name__ == "__main__":
-    #-----------------------------PRUEBAS----------------------------------------
-    '''
-    
-    clear = lambda: os.system('cls')  #para limpiar la vista
-    clear()
-
-    custom_theme= Theme({"acierto": "green", "fallo": "bold red", "mal_posicionada": "yellow"})
-    console = Console(theme=custom_theme)
-
-    console.print("Letra correcta",style="acierto")
-    console.print("Letra correcta",style="fallo")
-    console.print("Letra Mal Colocada",style="mal_posicionada")
-    
-    Acertar = "Amigo"
-    prueba = ["Camas","Casas","Terco","Tonto","Amigo"]
-    rellenar = [["-","-","-","-","-"],
-                ["-","-","-","-","-"],
-                ["-","-","-","-","-"],
-                ["-","-","-","-","-"],
-                ["-","-","-","-","-"],]
-    lista = []
-    for i in prueba:
-        splitted = transformWord(i) #dividimos la palabra
-        lista.append(splitted)
-
-    
-    #victoria = checkWord(lista[0], transformWord(Acertar))
-    resultado=[['-', '*', '*', '-', '-'],['-', '*', '-', '-', '-'],['-', '-', '-', '-', '+'],['-', '-', '-', '-', '+'],['+', '+', '+', '+', '+']]
-
-    
-    for x, j in enumerate(resultado):
-        print("/////////////////////////////////////////////////////////////////", end=" ")
-        for y, state in enumerate(j):
-            if state == "+":
-                console.print(lista[x][y], style="acierto",end =" ")
-            elif state =="-":
-                console.print(lista[x][y], style="fallo",end =" ")
-            else:
-                console.print(lista[x][y], style="mal_posicionada",end =" ")
-        print("/////////////////////////////////////////////////////////////////", end="\n")
-    #print(lista)
-    #print(rellenar)
-    #print(victoria)
-    #-----------------------------PRUEBAS----------------------------------------
-    '''
-    
+    clear = lambda: os.system('cls')  #para limpiar la vista    
     while True:
         opcio = 0
         mostrar_menu_usuari() #nom/anonim
