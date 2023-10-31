@@ -1,21 +1,20 @@
-def transformWord(palabra): ## donde ponemos esta funciónn???
-    splitWord = []
-    palabra = palabra.upper()
-   # print("palabra en mayusculas", palabra)
-    for i in palabra:
-        splitWord.append(i)
-    #print("palabra split", splitWord)
-    return splitWord
-
 class Word:
-    #guardamos la letra
     def __init__(self, palabra):
-        self.palabra = palabra
-        self.n_letters = len(palabra)
-        self.splitWord = transformWord(palabra)
-        #comprobar espacios
-        #comprobar numeros en el string
-        #comporbar entrada de enteros o flotantes
+        self.palabra = str(palabra)
+        self.n_letters = len(self.palabra)
+        self.splitWord = self.transformWord()
+
+    def transformWord(self):
+        if any(char.isdigit() for char in self.palabra) or ' ' in self.palabra:
+            return None
+        else:
+            palabra = self.palabra.upper()
+            return list(palabra)
+        
+    #comprobar espacios
+    #comprobar numeros en el string
+    #comporbar entrada de enteros o flotantes
+
     '''
     #dada la palabra seleccionada la divide y devuelve un array separado listo para jugar
     def split_word(self):

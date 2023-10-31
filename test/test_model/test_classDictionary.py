@@ -10,10 +10,10 @@ def test_init_1(): #clase vacía, para comprobar los valores por defecto
     assert dictionary.path == None  
 
 def test_init_2(): #posem valors diferents als de per defecte
-    dictionary = Dictionary(default=0,level=2,secPath='ruta.csv')
+    dictionary = Dictionary(default=0,level=2,secPath='\dictionary_3.csv')
     assert dictionary.default == 0
     assert dictionary.level == 2
-    assert dictionary.path == 'ruta.csv' #no entiendo pq me peta
+    assert dictionary.path == '\dictionary_3.csv' #no entiendo pq me peta
     #como hago lo del wordlist??
 
 #read BBDD se tiene que hacer con un mock object??

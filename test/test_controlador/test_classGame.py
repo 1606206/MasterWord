@@ -49,7 +49,7 @@ def test_calculate_user_points_2(numRound = 12): #que no sumi punts perquè no l
 
 ##------------------Valors límit i frontera--------------------##
 def test_add_play(play):
-     pass
+    pass
 
 def test_inicialitzar_partida(opcio, WORD_LENGHT):
     pass
