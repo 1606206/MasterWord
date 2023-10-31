@@ -62,3 +62,21 @@ def mostrar_puntuacio(player):
     print("Nom d'usuari: ", player.name)
     print("Punts: ", player.points)
     print("Rànquing: ", player.ranking)
+
+def introduir_opcions_menus():
+    return input("Introdueix el número corresponent per a seleccionar una opció: ")
+
+def sortir_joc():
+    print("Sortint del joc...")
+
+def introduir_nom_usuari():
+    return input('Introdueix el teu nom de usuari: ')
+
+def opcio_no_valida():
+    print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
+
+def mostrar_guanyar(win): ## preguntar
+    if win:
+        print('Has guanyat')
+    else:
+        print('Has perdut')
