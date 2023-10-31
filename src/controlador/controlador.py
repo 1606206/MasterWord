@@ -14,7 +14,7 @@ import os
 from rich.console import Console
 from rich.theme import Theme
 
-ROUNDS = 3
+ROUNDS = 5
 
 
 if __name__ == "__main__":

@@ -61,7 +61,7 @@ def saveUserDict(username):
     words = wordsList.split()
     with open('BBDD\\user_dict\\dict_'+ username + '.csv', 'w') as saveFile:
     # Escribir las palabras en el archivo, uniendo la lista con espacios
-        saveFile.write('Palabras')
+        saveFile.write('Palabras\n')
         saveFile.write('\n'.join(words))
 
     print("Les paraules s'han guardat correctament.")

@@ -77,7 +77,7 @@ class Game:
             print("introdueix la paraula que creus que es")
             userWord = list(input().upper())
 
-            print("palabra introducida por el usuario", userWord)
+            #print("palabra introducida por el usuario", userWord)
 
             long = checkLong(self.word_to_guess.splitWord, userWord)
 
@@ -103,7 +103,7 @@ class Game:
             print("introdueix la paraula que creus que es")
             userWord = list(input().upper())
 
-            print("palabra introducida por el usuario", userWord)
+            #print("palabra introducida por el usuario", userWord)
 
             long = checkLong(self.word_to_guess.splitWord, userWord)
 
