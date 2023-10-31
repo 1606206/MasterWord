@@ -100,6 +100,7 @@ def checkLong(wordList, userWord): # si les paraules son igual de llargues
         return True
 
 # comprovar si la paraula intrduida coincideix amb la que s'ha d'encertar
+
 def checkWord(wordList, userWord):
     result = []
     numCorrect = 0
@@ -119,8 +120,8 @@ def checkWord(wordList, userWord):
             result[i] = '*'
             wordListCopy.remove(letter)
 
-    print(result)
     if numCorrect == len(wordList):
         return True, result
     else:
         return False, result
+
