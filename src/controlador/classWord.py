@@ -1,32 +1,12 @@
 class Word:
     def __init__(self, palabra):
-        self.palabra = str(palabra)
+        if not isinstance(palabra, str):
+            raise TypeError("Has d'introduir un string")
+        if not palabra.isalpha():
+            raise ValueError("La paraula només pot contenir lletres")
+        if len(palabra) <= 0:
+            raise ValueError("La paraula no pot estar buida")
+
+        self.palabra = str(palabra.upper())
         self.n_letters = len(self.palabra)
-        self.splitWord = self.transformWord()
-
-    def transformWord(self):
-        if any(char.isdigit() for char in self.palabra) or ' ' in self.palabra:
-            return None
-        else:
-            palabra = self.palabra.upper()
-            return list(palabra)
-        
-    #comprobar espacios
-    #comprobar numeros en el string
-    #comporbar entrada de enteros o flotantes
-
-    '''
-    #dada la palabra seleccionada la divide y devuelve un array separado listo para jugar
-    def split_word(self):
-        for i in self.word:
-            self.splitWord.append(i)
-        print("palabra split", self.splitWord)
-
-    #convierte las letras de la palabra a mayusculas
-    def toUppercase(self):
-        self.word = self.word.upper()
-        print("palabra en mayusculas", self.word)
-        '''
-
-
-
+        self.splitWord = self.palabra.split()
