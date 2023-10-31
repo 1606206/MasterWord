@@ -1,7 +1,7 @@
 import copy
 
 class Word:
-    def __init__(self, palabra):
+    def __init__(self, palabra: str):
         if not isinstance(palabra, str):
             raise TypeError("Has d'introduir un string.")
         if len(palabra) <= 0:
@@ -13,20 +13,37 @@ class Word:
         self.n_letters = len(self.palabra)
         self.splitWord = self.palabra.split()
         
-    # comprovar que les paraules siguin iguals
-    def checkLong(self, userWord): # si les paraules son igual de llargues
-        if self.n_letters < len(userWord):
+
+    def checkLong(self, userWord: Word) -> bool:
+        """Comprueba si la longitud de la palabra introducida
+        es igual a al de la palabra self.
+        
+        Args:
+            Word (userWord): Palabra a comparar
+            
+        Returns:
+            bool: True si son igual de largas,
+            False en caso contrario
+        """
+        if self.n_letters < userWord.n_letters:
             print("La palabra es demasiado larga")
             return False
-        elif self.n_letters > len(userWord):
+        elif self.n_letters > userWord.n_letters:
             print("La palabra es demasiado corta")
             return False
         else:
             return True
 
     # comprovar si la paraula intrduida coincideix amb la que s'ha d'encertar
+    def checkWord(self, userWord: Word) -> bool:
+        """Comprueba si la palabra introducida es igual 
 
-    def checkWord(self, userWord):
+        Args:
+            Word (userWord): _description_
+
+        Returns:
+            bool: _description_
+        """        
         result = []
         numCorrect = 0
         wordListCopy = copy.copy(self.splitWord)
