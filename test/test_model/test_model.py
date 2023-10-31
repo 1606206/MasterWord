@@ -72,6 +72,19 @@ def test_checkLong_3():
     assert result is True
 
 
+#------------------------TEST CAIXA NEGRA-----------------------#
+
+##------------------Particions equivalents---------------------##
+
+##------------------Valors límit i frontera--------------------##
+
+#------------------------TEST CAIXA BLANCA-----------------------#
+
+##--------------------Statement Coverage-----------------------##
+##---------------------Decision Coverage-----------------------##
+##-----------------------Path Coverage-------------------------##
+##-------------------Loop Testing Simple-----------------------##
+##--------------------Loop Testing Aniuat----------------------##
 
 
 '''def test_dictionary_checkLong_1():

@@ -41,3 +41,10 @@ def test_validInputs_3():
     assert player.points >= 0
     assert isinstance(player.ranking, int)
     assert player.ranking >= 1
+
+#------------------------TEST CAIXA NEGRA-----------------------#
+
+##------------------Particions equivalents---------------------##
+
+##------------------Valors límit i frontera--------------------##
+

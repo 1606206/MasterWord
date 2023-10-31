@@ -76,3 +76,9 @@ def test_validInput_5():
     assert isinstance(word.palabra, str)  #  COMPROBANDO QUE EL INPUT ES UN STRING
     assert word.palabra.isalpha()  #  COMPROBANDO QUE SÓLO HAY LETRAS
     assert word.n_letters > 0  # COMPROBANDO QUE LA PALABRA NO ESTÁ VACÍA
+
+#------------------------TEST CAIXA NEGRA-----------------------#
+
+##------------------Particions equivalents---------------------##
+
+##------------------Valors límit i frontera--------------------##

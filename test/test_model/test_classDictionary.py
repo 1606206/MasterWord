@@ -23,3 +23,9 @@ def test_randomChoice():
     dictionary = Dictionary(0, 1, '\dictionary_3.csv')
     assert dictionary.randomChoice() in dictionary.wordList
 
+#------------------------TEST CAIXA NEGRA-----------------------#
+
+##------------------Particions equivalents---------------------##
+
+##------------------Valors límit i frontera--------------------##
+

@@ -119,6 +119,6 @@ class Game:
         return win, numRound
     
     def calculate_user_points(self, numRound):
-        return (self.maxRounds-numRound) + 1
+        return max((self.maxRounds-numRound) + 1, 0)
 
     
