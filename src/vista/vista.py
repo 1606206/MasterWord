@@ -80,3 +80,8 @@ def mostrar_guanyar(win): ## preguntar
         print('Has guanyat')
     else:
         print('Has perdut')
+
+
+
+    
+

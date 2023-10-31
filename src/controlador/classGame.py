@@ -4,6 +4,21 @@ sys.path.insert(2,'src/model')
 from model import *
 from classPlayer import Player
 from classDictionary import Dictionary
+from classLetter import Letter
+
+
+
+
+from rich.console import Console
+from rich.theme import Theme
+def mostrar_paraula(userWord):
+    custom_theme= Theme({"acierto": "green", "fallo": "bold red", "mal_posicionada": "yellow"})
+    console = Console(theme=custom_theme)
+    print("/////////////////////////////////////////////////////////////////", end=" ")
+    for i in userWord:
+        console.print(i.letter, style=i.color,end =" ")
+    print("/////////////////////////////////////////////////////////////////", end=" ")
+
 
 class Game:
     def __init__(self, uniquePlayer=0, maxRounds=0, anonymous=0, default_dict=0, player=Player()):
@@ -87,7 +102,9 @@ class Game:
                 print("palabra introducida por el usuario", userWord)
                 long = checkLong(self.word_to_guess.splitWord, userWord)
 
-            win, _ = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
+            win, result = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
+            Letter.selectColors(userWord, result)
+            mostrar_paraula(userWord)
             numRound += 1  
 
         return win
@@ -114,7 +131,9 @@ class Game:
                 long = checkLong(self.word_to_guess.splitWord, userWord)
             
             numRound += 1 
-            win, _ = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!! 
+            win, result = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!! 
+            Letter.selectColors(userWord, result)
+            mostrar_paraula(userWord)
 
         return win, numRound
     
