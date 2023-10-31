@@ -90,19 +90,22 @@ class Game:
         while numRound < 10 and win == False: 
 
             print("introdueix la paraula que creus que es")
-            userWord = list(input().upper())
+            userInput = input()
+            userWord = Word(userInput)
+            
 
             #print("palabra introducida por el usuario", userWord)
 
-            long = checkLong(self.word_to_guess.splitWord, userWord)
+            long = checkLong(self.word_to_guess, userWord)
 
             while long == False:
                 print("introdueix una paraula")
-                userWord = list(input().upper())
+                userInput = input()
+                userWord = Word(userInput)
                 print("palabra introducida por el usuario", userWord)
-                long = checkLong(self.word_to_guess.splitWord, userWord)
+                long = checkLong(self.word_to_guess, userWord)
 
-            win, result = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!!
+            win, result = checkWord(self.word_to_guess, userWord)   #cambiada la llamada a la funcion en la clase!!
             Letter.selectColors(userWord, result)
             mostrar_paraula(userWord)
             numRound += 1  
