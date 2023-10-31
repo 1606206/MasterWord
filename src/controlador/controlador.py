@@ -73,6 +73,8 @@ if __name__ == "__main__":
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
             username = input('Introdueix el teu nom de usuari: ')
             check_user(username, opcio)
+            points, ranking = read_user(username)
+            player = Player(username, points, ranking)
             mostrar_menu_principal() #crea el teu propi diccionari/jugar
             opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
             if opcio == '1':
@@ -80,8 +82,6 @@ if __name__ == "__main__":
                 print("Sortint del joc...")
                 break
             elif opcio=='2':
-                points, ranking = read_user(username)
-                player = Player(username, points, ranking)
                 mostrar_menu_mode_partida_jugador_unic() #dicionari propi/per defecte
                 opcio = input("Introdueix el número corresponent per a seleccionar una opció: ")
                 if opcio == '1':
@@ -108,6 +108,9 @@ if __name__ == "__main__":
                     print('opcio invalida')
                     break
             elif opcio=='3':
+                mostrar_puntuacio(player)
+                break
+            elif opcio=='4':
                 print("sortint del joc...")
                 break
             else:

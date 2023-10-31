@@ -27,7 +27,7 @@ def read_user(username): # DUDAAAA: modelo o clase player????
     return points, ranquing
 
 #comprovar si l'usuari existeix a la BBDD
-def check_user(username, option):
+def check_user(username, option):  ####revisar función pq no devuelve el nombre que toca 
     df = pd.read_csv(PATH + '\\user_names.csv')
     userList = df['USERNAMES'].tolist()
 
@@ -38,18 +38,14 @@ def check_user(username, option):
         return True  # si ja existeix el nom d'usuari
     else:
         if option == '2':
-             username = input("Aquest usuari no existeix. Introdueix un usuari vàlid: ")
-             check_user(username, option)
+            username = input("Aquest usuari no existeix. Introdueix un usuari vàlid: ")
+            check_user(username, option)
         else:
             # Si el usuario no existe, añadirlo a la base de datos
             new_row = {'USERNAMES': username, 'POINTS': 0}
             df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
             df.to_csv(PATH + '\\user_names.csv', index=False)
             print("Bienvenido a WordleApp:", username)
-            ''' with open('BBDD\\user_names.csv', 'a') as saveFile:  # si no existeix el usuari
-                saveFile.write('\n'+ username )  
-            print("Benvingut a WordleApp: ", username)'''
-
 
         return False 
 

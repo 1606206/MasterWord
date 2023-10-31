@@ -14,8 +14,9 @@ def mostrar_menu_usuari():
     print("3. Sortir")
 
 def mostrar_menu_principal():
-    print("1. Crea el teu propi diccionari)")
+    print("1. Crea el teu propi diccionari")
     print("2. Jugar")
+    print("3. Veure la meva puntuació i rànquing")
     print("3. Sortir")
 
 def mostrar_menu_partida():
@@ -57,3 +58,7 @@ def menu_usuari():
     print("1. Crear un nou usuari")
     print("2. Entrar amb el meu usuari")
 
+def mostrar_puntuacio(player):
+    print("Nom d'usuari: ", player.name)
+    print("Punts: ", player.points)
+    print("Rànquing: ", player.ranking)
