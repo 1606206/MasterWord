@@ -28,21 +28,9 @@ def mostrar_menu_mode_partida_jugador_unic():
     print("1. Jugar amb el meu diccionari")
     print("2. Jugar amb el diccionari per defecte")
     print("3. Sortir")
-    
-'''
-def mostrar_menu_mode_partida_multijugador():
-    print("1. Jugar amb el diccionari del Jugador 1")
-    print("2. Jugar amb el diccionari del Jugador 2")
-    print("3. Jugar amb el diccionari per defecte")
-    print("4. Joc lliure")
-    print("5. Sortir")
-'''
 
-def mostrar_menu_nivell():
-    print("1. Nivell 1 (tres lletres)")
-    print("2. Nivell 2 (cinc lletres)")
-    print("3. Nivell 3 (set lletres)")
-    print("4. Sortir")
+def introduir_nivell():
+    return input("Introdueix un número del 3 al 7 per escollir quin número de lletres tindrà la paraula.\n")
 
 def jugador_unic():
     print("Has entrat en mode jugador únic")
@@ -75,7 +63,7 @@ def introduir_nom_usuari():
 def opcio_no_valida():
     print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
 
-def mostrar_guanyar(win): ## preguntar
+def mostrar_guanyar(win): 
     if win:
         print('Has guanyat')
     else:

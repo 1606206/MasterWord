@@ -44,16 +44,8 @@ if __name__ == "__main__":
                     partida.inicialitzar_partida(0,0)
                 elif opcio =='2':
                     mostrar_menu_nivell() ## escollir nivell
-                    opcio = introduir_opcions_menus()
-                    if opcio == '1':
-                        WORD_LENGHT = 3
-                    elif opcio == '2':
-                        WORD_LENGHT = 5
-                    elif opcio == '3':
-                        WORD_LENGHT = 7
-                    else: 
-                        sortir_joc()
-                        break
+                    nivell = introduir_nivell()
+                    WORD_LENGHT = nivell
                     partida = Game(1,ROUNDS,0, 1, player)
                     partida.inicialitzar_partida(opcio,WORD_LENGHT)
                 elif opcio == '3':
@@ -80,17 +72,8 @@ if __name__ == "__main__":
                 partida.set_uniquePlayer(1)
                 partida.set_default_dictionary(1)
                 jugador_unic()
-                mostrar_menu_nivell() ## escollir nivell
-                opcio = introduir_opcions_menus()
-                if opcio == '1':
-                    WORD_LENGHT = 3
-                elif opcio == '2':
-                    WORD_LENGHT = 5
-                elif opcio == '3':
-                    WORD_LENGHT = 7
-                else: 
-                    sortir_joc()
-                    break
+                nivell = introduir_nivell()
+                WORD_LENGHT = nivell
             elif opcio_default =='2':
                 partida.set_uniquePlayer(0)
                 multijugador()
