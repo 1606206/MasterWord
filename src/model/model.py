@@ -3,6 +3,9 @@ import numpy as np
 import math
 import pandas as pd
 import random as rd
+import sys
+sys.path.insert(3,'src\\vista')
+from vista import *
 
 
 PATH = "BBDD"
@@ -33,34 +36,35 @@ def check_user(username, option):  ####revisar función pq no devuelve el nombre
 
     if username in userList:
         if option == '1': #s'ha triat lopcio de crear nou usuari
-            username = input("Aquest nom d'usuari ja existeix. Introdueix un altre nom de usuari: ")
+            username = nom_usuari_ja_existent()
             check_user(username, option)
-        return True  # si ja existeix el nom d'usuari
+        ja_existeix = True
+        return ja_existeix  # si ja existeix el nom d'usuari
     else:
         if option == '2':
-            username = input("Aquest usuari no existeix. Introdueix un usuari vàlid: ")
+            username = nom_usuari_ja_existent()
             check_user(username, option)
         else:
             # Si el usuario no existe, añadirlo a la base de datos
             new_row = {'USERNAMES': username, 'POINTS': 0}
             df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
             df.to_csv(PATH + '\\user_names.csv', index=False)
-            print("Bienvenido a WordleApp:", username)
+            missatge_benvinguda(username)
 
-        return False 
+        ja_existeix = False
+        return ja_existeix 
 
 
 # guardar els diccionaris dels usuaris
 def saveUserDict(username):
-    print("Introdueix les noves paraules del diccionari separades per espais")
-    wordsList = input()
+    wordsList = directrius_nou_diccionari()
     words = wordsList.split()
     with open('BBDD\\user_dict\\dict_'+ username + '.csv', 'w') as saveFile:
     # Escribir las palabras en el archivo, uniendo la lista con espacios
         saveFile.write('Palabras\n')
         saveFile.write('\n'.join(words))
 
-    print("Les paraules s'han guardat correctament.")
+    canvis_guardats_correctament()
 
 # guardar els punts del usuari
 def save_user_points(username, points):
@@ -82,7 +86,7 @@ def save_user_points(username, points):
     df.to_csv(PATH + '\\user_names.csv', index=False)
 
     print('entro a read user, el usuario es:', username, 'puntos', new_points, 'ranking', ranquing)
-    print("Els punts s'han guardat correctament.")
+    canvis_guardats_correctament()
 
 # comprovar que les paraules siguin iguals
 def checkLong(wordList, userWord): # si les paraules son igual de llargues
