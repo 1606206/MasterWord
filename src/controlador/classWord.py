@@ -12,7 +12,6 @@ class Word:
         self.palabra = str(palabra.upper())
         self.n_letters = len(self.palabra)
         self.splitWord = list(self.palabra)
-        
 
     def checkLong(self, userWord) -> bool:
         """Comprueba si la longitud de la palabra introducida

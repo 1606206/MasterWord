@@ -35,6 +35,13 @@ def test_validInput_5():
         word = Word(999)
     assert "Has d'introduir un string." in str(e.value)
 
+# PALABRA VÁLIDA
+def test_validInput_6():
+    try:
+        word = Word("palabra")
+    except Exception as e:
+        assert False, f"Word ha lanzado la excepción {e}"
+
 
 #  PALABRA DESORDENADA
 def test_checkWord_1():
