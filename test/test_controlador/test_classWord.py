@@ -38,45 +38,45 @@ def test_validInput_5():
 
 #  PALABRA DESORDENADA
 def test_checkWord_1():
-    correct_word = "ROMA"
-    user_word = "AMOR"
-    bool_result, result = checkWord(correct_word, user_word)
+    correct_word = Word("ROMA")
+    user_word = Word("AMOR")
+    bool_result, result = correct_word.checkWord(user_word)
     expected_result = ['*', '*', '*', '*']
     assert bool_result is False
     assert result == expected_result
 
 #  PALABRA PARCIALMENTE DESORDENADA
 def test_checkWord_2():
-    correct_word = "AAAABBBCCD"
-    user_word = "ABCDABCABA"
-    bool_result, result = checkWord(correct_word, user_word)
+    correct_word = Word("AAAABBBCCD")
+    user_word = Word("ABCDABCABA")
+    bool_result, result = correct_word.checkWord(user_word)
     expected_result = ['+', '*', '*', '*', '*', '+', '*', '*', '*', '*']
     assert bool_result is False
     assert result == expected_result
 
 # PALABRA CON ACIERTOS, FALLOS Y DESORDENADA
 def test_checkWord_3():
-    correct_word = "HHHHHHJJ"
-    user_word = "HHHJJJQQ"
-    bool_result, result = checkWord(correct_word, user_word)
+    correct_word = Word("HHHHHHJJ")
+    user_word = Word("HHHJJJQQ")
+    bool_result, result = correct_word.checkWord(user_word)
     expected_result = ['+', '+', '+', '*', '*', '-', '-', '-']
     assert bool_result is False
     assert result == expected_result
     
 #  PALABRA INCORRECTA
 def test_checkWord_4():
-    correct_word = "ASDF"
-    user_word = "GHJK"
-    bool_result, result = checkWord(correct_word, user_word)
+    correct_word = Word("ASDF")
+    user_word = Word("GHJK")
+    bool_result, result = correct_word.checkWord(user_word)
     expected_result = ['-', '-', '-', '-']
     assert bool_result is False
     assert result == expected_result
 
 #  PALABRA CORRECTA
 def test_checkWord_5():
-    correct_word = "MASTERWORD"
-    user_word = "MASTERWORD"
-    bool_result, result = checkWord(correct_word, user_word)
+    correct_word = Word("MASTERWORD")
+    user_word = Word("MASTERWORD")
+    bool_result, result = correct_word.checkWord(user_word)
     expected_result = ['+', '+', '+', '+', '+', '+', '+', '+', '+', '+']
     assert bool_result is True
     assert result == expected_result
@@ -84,23 +84,23 @@ def test_checkWord_5():
 
 #  PALABRA CORTA
 def test_checkLong_1():
-    correct_word = "PALABRA"
-    user_word = "PALA"
-    result = checkLong(correct_word, user_word)
+    correct_word = Word("PALABRA")
+    user_word = Word("PALA")
+    result = correct_word.checkLong(user_word)
     assert result is False
 
 #  PALABRA LARGA
 def test_checkLong_2():
-    correct_word = "PALABRA"
-    user_word = "PALABRABRA"
-    result = checkLong(correct_word, user_word)
+    correct_word = Word("PALABRA")
+    user_word = Word("PALABRABRA")
+    result = correct_word.checkLong(user_word)
     assert result is False
 
 #  PALABRA CORRECTA
 def test_checkLong_3():
-    correct_word = "PALABRA"
-    user_word = "AAAAAAA"
-    result = checkLong(correct_word, user_word)
+    correct_word = Word("PALABRA")
+    user_word = Word("AAAAAAA")
+    result = correct_word.checkLong(user_word)
     assert result is True
 
 #------------------------TEST CAIXA NEGRA-----------------------#

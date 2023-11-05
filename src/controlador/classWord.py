@@ -11,15 +11,15 @@ class Word:
 
         self.palabra = str(palabra.upper())
         self.n_letters = len(self.palabra)
-        self.splitWord = self.palabra.split()
+        self.splitWord = list(self.palabra)
         
 
-    def checkLong(self, userWord: Word) -> bool:
+    def checkLong(self, userWord) -> bool:
         """Comprueba si la longitud de la palabra introducida
         es igual a al de la palabra self.
         
         Args:
-            Word (userWord): Palabra a comparar
+            Word (userWord): palabra a comparar
             
         Returns:
             bool: True si son igual de largas,
@@ -35,20 +35,20 @@ class Word:
             return True
 
     # comprovar si la paraula intrduida coincideix amb la que s'ha d'encertar
-    def checkWord(self, userWord: Word) -> bool:
+    def checkWord(self, userWord) -> (bool, str):
         """Comprueba si la palabra introducida es igual 
 
         Args:
-            Word (userWord): _description_
+            Word (userWord): palabra a comparar
 
         Returns:
-            bool: _description_
+            bool: True si son iguales, False en caso contrario
+            str: string que contiene las posiciones de los fallos
         """        
         result = []
         numCorrect = 0
         wordListCopy = copy.copy(self.splitWord)
-        userWordCopy = copy.copy(list(userWord))  # Copia de userWord
-
+        userWordCopy = copy.copy(userWord.splitWord)  # Copia de userWord
         for i, letter in enumerate(userWordCopy):
             if letter == wordListCopy[i]: # Primero miramos las que están bien colocadas
                 result.append('+')
@@ -56,13 +56,12 @@ class Word:
                 numCorrect += 1
             else:
                 result.append('-') # Si no están bien, están mal colocadas
-
         for i, letter in enumerate(userWordCopy): # Miramos de las que están mal, las que si existen en la palabra
             if result[i] == '-' and letter in wordListCopy:
                 result[i] = '*'
                 wordListCopy.remove(letter)
 
-        if numCorrect == len(wordList):
+        if numCorrect == len(userWordCopy):
             return True, result
         else:
             return False, result

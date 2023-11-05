@@ -1,7 +1,8 @@
-from classWord import *
 import sys
 sys.path.insert(2,'src/model')
+sys.path.insert(1,'src/controlador')
 from model import *
+from classWord import *
 from classPlayer import Player
 from classDictionary import Dictionary
 from classLetter import Letter

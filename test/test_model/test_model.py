@@ -1,7 +1,6 @@
 import sys
-sys.path.insert(1,'src\model')
+#sys.path.insert(1,'src\model')
 
-from model import checkWord, checkLong
 # UNIT TESTING
 
 
