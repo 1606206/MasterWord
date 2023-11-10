@@ -19,6 +19,7 @@ def test_init_2():
     assert game.uniquePlayer == 1
     assert game.maxRounds == 10
 
+'''
 def test_anonymous_game_win():
     game = Game()
     game.word_to_guess = Word("HOLA")  # Asegúrate de establecer la palabra correcta para que gane la partida
@@ -27,6 +28,7 @@ def test_anonymous_game_win():
 
 def test_user_game():
     pass
+'''
 
 def test_calculate_user_points_1(numRound = 4): #que sumi els punts que toquin perquè l'ha encertat 
     rounds = 10

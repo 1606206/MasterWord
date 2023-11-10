@@ -1,4 +1,12 @@
-
+def selectColors(wordList: list, wordStatus: list):
+    for i, status in enumerate(wordStatus):
+        if (status == "*"):
+            wordList[i] = Letter(wordList[i],"mal_posicionada")
+        elif (status == "-"):
+            wordList[i] = Letter(wordList[i],"fallo")
+        else:
+            wordList[i] = Letter(wordList[i],"acierto")
+    
 class Letter:
     #guardamos la letra
     #verde --> color de la casilla
@@ -12,14 +20,7 @@ class Letter:
         self.letter = letter
     
 
-    def selectColors(wordList: list, wordStatus: list):
-        for i, status in enumerate(wordStatus):
-            if (status == "*"):
-                wordList[i] = Letter(wordList[i],"mal_posicionada")
-            elif (status == "-"):
-                wordList[i] = Letter(wordList[i],"fallo")
-            else:
-                wordList[i] = Letter(wordList[i],"acierto")
+
 
 
     #FUNCION AUN EN PROCESO, NO USAR
