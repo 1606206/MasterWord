@@ -4,6 +4,20 @@ sys.path.insert(1,'src/controlador')
 
 from classWord import Word
 
+#------------------------TDD-----------------------------------#
+def test_checkLong():
+    word = Word("paraula")
+    assert word.checkLong(Word("paraula")) == True
+    assert word.checkLong(Word("paraulalarga")) == False
+    assert word.checkLong(Word("curta")) == False
+
+def test_checkWord():
+    word = Word("paraula")
+    assert word.checkWord(Word("paraula")) == (True, ["+", "+", "+", "+", "+", "+", "+"])
+    assert word.checkWord(Word("xxxxxxx")) == (False, ["-", "-", "-", "-", "-", "-", "-"])
+    assert word.checkWord(Word("aluarap")) == (False, ["*", "*", "*", "+", "*", "*", "*"])
+    assert word.checkWord(Word("peruele")) == (False, ["+", "-", "+", "*", "-", "+", "-"])
+
 #------------------------TEST CAIXA NEGRA-----------------------#
 # PALABRA CON NUMEROS
 def test_validInput_1():
