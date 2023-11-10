@@ -1,13 +1,17 @@
 import sys
 sys.path.insert(2,'src/model')
 sys.path.insert(1,'src/controlador')
+sys.path.insert(3,'src\\vista')
+from vista import *
 from model import *
 from classWord import *
 from classPlayer import Player
 from classDictionary import Dictionary
 from classLetter import Letter
+from myIntroduirParaula import *
 
-
+def introduir_paraula(): ###cambiar
+    return input('Quina paraula creus que es?  \n')
 
 
 from rich.console import Console
@@ -29,7 +33,6 @@ class Game:
         self.anonymous = anonymous #si la partida es anonima
         self.default_dictionary = default_dict
         self.word_to_guess = Word("undefined")
-        self.list_user_words = [Word("undefined")]
         self.player = player
 
     # Getter para el atributo 'uniquePlayer'
@@ -64,9 +67,6 @@ class Game:
     def set_default_dictionary(self, default_dictionary):
         self.default_dictionary = default_dictionary
 
-    def add_play(self, play):
-        self.plays.append(play)
-
     def inicialitzar_partida(self, opcio, WORD_LENGHT):
         if self.uniquePlayer == 1:
             if self.default_dictionary == 1:
@@ -85,30 +85,24 @@ class Game:
     def anonymous_game(self):
         numRound = 0
         win = False
-        #print(word.palabra, word.splitWord, word.n_letters)
+
         print("la paraula te", self.word_to_guess.n_letters, "lletres")
 
-        while numRound < 10 and win == False: 
-
-            print("introdueix la paraula que creus que es")
-            userInput = input()
+        while numRound < 10 and win == False:
+            userInput = introduir_paraula() #my_introduir_paraula()
             userWord = Word(userInput)
-            
-
-            #print("palabra introducida por el usuario", userWord)
-
-            long = checkLong(self.word_to_guess, userWord)
+            long = self.word_to_guess.checkLong(userWord)
 
             while long == False:
-                print("introdueix una paraula")
-                userInput = input()
+                userInput = introduir_paraula() #my_introduir_paraula()
                 userWord = Word(userInput)
-                print("palabra introducida por el usuario", userWord)
-                long = checkLong(self.word_to_guess, userWord)
+                long = self.word_to_guess.checkLong(userWord)
+                print("palabra introducida por el usuario", userWord.palabra)
 
-            win, result = checkWord(self.word_to_guess, userWord)   #cambiada la llamada a la funcion en la clase!!
-            Letter.selectColors(userWord, result)
-            mostrar_paraula(userWord)
+            win, result = self.word_to_guess.checkWord(userWord)  
+            Letter.selectColors(userWord.splitWord, result)
+            mostrar_paraula(userWord.splitWord)
+            print('\n')
             numRound += 1  
 
         return win
@@ -116,29 +110,26 @@ class Game:
     def user_game(self):
         numRound = 0
         win = False
-        #print(word.palabra, word.splitWord, word.n_letters)
+
         print("la paraula te", self.word_to_guess.n_letters, "lletres")
 
         while numRound < 10 and win == False: 
 
-            print("introdueix la paraula que creus que es")
-            userWord = list(input().upper())
-
-            #print("palabra introducida por el usuario", userWord)
-
-            long = checkLong(self.word_to_guess.splitWord, userWord)
+            userInput = introduir_paraula() #my_introduir_paraula()
+            userWord = Word(userInput)
+            long = self.word_to_guess.checkLong(userWord)
 
             while long == False:
-                print("introdueix una paraula")
-                userWord = list(input().upper())
-                print("palabra introducida por el usuario", userWord)
-                long = checkLong(self.word_to_guess.splitWord, userWord)
+                userInput = introduir_paraula() #my_introduir_paraula()
+                userWord = Word(userInput)
+                long = self.word_to_guess.checkLong(userWord)
+                print("palabra introducida por el usuario", userWord.palabra)
             
             numRound += 1 
-            win, result = checkWord(self.word_to_guess.splitWord, userWord)   #cambiada la llamada a la funcion en la clase!! 
-            Letter.selectColors(userWord, result)
-            mostrar_paraula(userWord)
-
+            win, result = self.word_to_guess.checkWord(userWord)   #cambiada la llamada a la funcion en la clase!! 
+            Letter.selectColors(userWord.splitWord, result)
+            mostrar_paraula(userWord.splitWord)
+            print('\n')
         return win, numRound
     
     def calculate_user_points(self, numRound):

@@ -10,35 +10,8 @@ class Letter:
                            'U', 'V', 'W', 'X', 'Y', 'Z']       #abecedario completo
         self.color = color
         self.letter = letter
-    '''
-    def checkWord(wordList: list, userWord: list): # SI NO LO VAMOS A USAR MEJOR BORRARLO
-        result = []
-        numCorrect = 0
-        wordListCopy = list(wordList)  # Copia de wordList
-        userWordCopy = list(userWord)  # Copia de userWord
-                
-        for i, letter in enumerate(userWordCopy):
-            if letter == wordListCopy[i]: # Primero miramos las que están bien colocadas
-                result.append('+')
-                wordListCopy[i] = None  # Para evitar contar la misma letra dos veces (y que ponga + y *)
-                numCorrect += 1
-            else:
-                result.append('-') # Si no están bien, están mal colocadas
+    
 
-        for i, letter in enumerate(userWordCopy): # Miramos de las que están mal, las que si existen en la palabra
-            if result[i] == '-' and letter in wordListCopy:
-                result[i] = '*'
-                wordListCopy.remove(letter)
-        
-        for i in userWord:
-            print(i.state)
-        print(result)
-        
-        if numCorrect == len(wordList):
-            return True
-        else:
-            return False
-    '''
     def selectColors(wordList: list, wordStatus: list):
         for i, status in enumerate(wordStatus):
             if (status == "*"):

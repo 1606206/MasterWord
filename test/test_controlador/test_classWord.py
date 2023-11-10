@@ -4,7 +4,7 @@ sys.path.insert(1,'src/controlador')
 
 from classWord import Word
 
-    
+#------------------------TEST CAIXA NEGRA-----------------------#
 # PALABRA CON NUMEROS
 def test_validInput_1():
     with pytest.raises(ValueError) as e:
@@ -88,7 +88,6 @@ def test_checkWord_5():
     assert bool_result is True
     assert result == expected_result
 
-
 #  PALABRA CORTA
 def test_checkLong_1():
     correct_word = Word("PALABRA")
@@ -110,8 +109,4 @@ def test_checkLong_3():
     result = correct_word.checkLong(user_word)
     assert result is True
 
-#------------------------TEST CAIXA NEGRA-----------------------#
 
-##------------------Particions equivalents---------------------##
-
-##------------------Valors límit i frontera--------------------##

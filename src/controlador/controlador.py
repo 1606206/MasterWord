@@ -8,11 +8,9 @@ from classGame import *
 from classPlayer import *
 from classLetter import *
 from classWord import *
+from myIntroduirParaula import *
 from PIL import ImageTk, Image
 import os
-
-
-
 
 ROUNDS = 5
 
@@ -43,7 +41,6 @@ if __name__ == "__main__":
                     partida = Game(1,ROUNDS,0, 0, player)
                     partida.inicialitzar_partida(0,0)
                 elif opcio =='2':
-                    mostrar_menu_nivell() ## escollir nivell
                     nivell = introduir_nivell()
                     WORD_LENGHT = nivell
                     partida = Game(1,ROUNDS,0, 1, player)
@@ -64,8 +61,7 @@ if __name__ == "__main__":
                 opcio_no_valida()
                 break
         elif opcio == '2':
-            partida = Game()
-            partida.set_anonymous = 1
+            partida = Game(anonymous=1)
             mostrar_menu_partida()
             opcio_default = introduir_opcions_menus()
             if opcio_default == '1': ## jugador unic
@@ -97,7 +93,7 @@ if __name__ == "__main__":
             win, numRound = partida.user_game()
 
         if (win == True):
-            mostrar_guanyar()
+            mostrar_guanyar(win)
             if (partida.get_anonymous() == 0):
                 points = partida.calculate_user_points(numRound)
                 save_user_points(player.name, points)

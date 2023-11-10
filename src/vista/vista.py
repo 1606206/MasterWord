@@ -1,9 +1,8 @@
 import sys
-sys.path.insert(2,'src\controlador')
-from controlador import *
-sys.path.insert(2,'src\model')
+sys.path.insert(2, 'src\controlador')  # Evita la importación circular
+from controlador import *  # No se recomienda importar todo, mejor importa solo lo necesario
+sys.path.insert(2, 'src\model')
 from model import *
-
 
 WORD_LENGHT = 3
 ROUNDS = 5
@@ -59,6 +58,9 @@ def sortir_joc():
 
 def introduir_nom_usuari():
     return input('Introdueix el teu nom de usuari: ')
+
+def introduir_paraula():
+    return input('Quina paraula creus que es?')
 
 def opcio_no_valida():
     print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
