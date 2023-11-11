@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(2,'src/model')
 sys.path.insert(1,'src/controlador')
-sys.path.insert(3,'src\\vista')
+sys.path.insert(3,'src/vista')
 from vista import *
 from model import *
 from classWord import *
@@ -9,20 +9,24 @@ from classPlayer import Player
 from classDictionary import Dictionary
 from classLetter import Letter
 from myIntroduirParaula import *
+from classLetter import *
+import os
 
 def introduir_paraula(): ###cambiar
     return input('Quina paraula creus que es?  \n')
 
-
 from rich.console import Console
 from rich.theme import Theme
 def mostrar_paraula(userWord):
+    clear = lambda: os.system('cls')
+    clear()
     custom_theme= Theme({"acierto": "green", "fallo": "bold red", "mal_posicionada": "yellow"})
     console = Console(theme=custom_theme)
     print("/////////////////////////////////////////////////////////////////", end=" ")
     for i in userWord:
         console.print(i.letter, style=i.color,end =" ")
     print("/////////////////////////////////////////////////////////////////", end=" ")
+
 
 
 class Game:
@@ -100,8 +104,8 @@ class Game:
                 print("palabra introducida por el usuario", userWord.palabra)
 
             win, result = self.word_to_guess.checkWord(userWord)  
-            Letter.selectColors(userWord.splitWord, result)
-            mostrar_paraula(userWord.splitWord)
+            selectColors(userWord.splitWord, result) #para seleccionar el color de cada letra de la palabra introducida por el usuario
+            mostrar_paraula(userWord.splitWord) #muestra la palabra introducida por el usuario
             print('\n')
             numRound += 1  
 
@@ -127,7 +131,7 @@ class Game:
             
             numRound += 1 
             win, result = self.word_to_guess.checkWord(userWord)   #cambiada la llamada a la funcion en la clase!! 
-            Letter.selectColors(userWord.splitWord, result)
+            selectColors(userWord.splitWord, result)
             mostrar_paraula(userWord.splitWord)
             print('\n')
         return win, numRound
