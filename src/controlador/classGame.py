@@ -17,15 +17,19 @@ def introduir_paraula(): ###cambiar
 
 from rich.console import Console
 from rich.theme import Theme
-def mostrar_paraula(userWord):
+def mostrar_paraula(historial):
     clear = lambda: os.system('cls')
     clear()
     custom_theme= Theme({"acierto": "green", "fallo": "bold red", "mal_posicionada": "yellow"})
     console = Console(theme=custom_theme)
-    print("/////////////////////////////////////////////////////////////////", end=" ")
-    for i in userWord:
-        console.print(i.letter, style=i.color,end =" ")
-    print("/////////////////////////////////////////////////////////////////", end=" ")
+    for lista in historial:
+        print("/////////////////////////////////////////////////////////////////", end=" ")
+        for letra in lista:
+            console.print(letra.letter, style=letra.color,end =" ")
+        print("/////////////////////////////////////////////////////////////////", end="\n")
+
+        
+    
 
 
 
@@ -89,6 +93,7 @@ class Game:
     def anonymous_game(self):
         numRound = 0
         win = False
+        historial = []
 
         print("la paraula te", self.word_to_guess.n_letters, "lletres")
 
@@ -105,7 +110,9 @@ class Game:
 
             win, result = self.word_to_guess.checkWord(userWord)  
             selectColors(userWord.splitWord, result) #para seleccionar el color de cada letra de la palabra introducida por el usuario
-            mostrar_paraula(userWord.splitWord) #muestra la palabra introducida por el usuario
+            historial.append(userWord.splitWord) #metemos en el historial de palabras la palabra 
+            mostrar_paraula(historial) #muestra la palabra introducida por el usuario
+
             print('\n')
             numRound += 1  
 
