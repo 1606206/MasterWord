@@ -121,6 +121,7 @@ class Game:
     def user_game(self):
         numRound = 0
         win = False
+        historial = []
 
         print("la paraula te", self.word_to_guess.n_letters, "lletres")
 
@@ -139,7 +140,8 @@ class Game:
             numRound += 1 
             win, result = self.word_to_guess.checkWord(userWord)   #cambiada la llamada a la funcion en la clase!! 
             selectColors(userWord.splitWord, result)
-            mostrar_paraula(userWord.splitWord)
+            historial.append(userWord.splitWord) #metemos en el historial de palabras la palabra 
+            mostrar_paraula(historial) #muestra la palabra introducida por el usuario
             print('\n')
         return win, numRound
     

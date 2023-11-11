@@ -34,7 +34,7 @@ if __name__ == "__main__":
                 sortir_joc()
                 break
             elif opcio=='2':
-                missatges.mostrar_menu_mode_partida_jugador_unic() #dicionari propi/per defecte
+                mostrar_menu_mode_partida_jugador_unic() #dicionari propi/per defecte
                 opcio = introduir_opcions_menus()
                 if opcio == '1':
                     partida = Game(1,ROUNDS,0, 0, player)
@@ -97,7 +97,7 @@ if __name__ == "__main__":
                 points = partida.calculate_user_points(numRound)
                 save_user_points(player.name, points)
         else:
-            mostrar_guanyar()
+            mostrar_guanyar(win)
         break 
     
         
