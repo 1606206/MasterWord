@@ -1,8 +1,5 @@
-import sys
-sys.path.insert(1, 'src/controlador')
-
 import pytest
-from classPlayer import Player
+from src.controlador.classPlayer import Player
 
 # JUGADOR VÁLIDO
 def test_validInputs_1():

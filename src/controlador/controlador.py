@@ -1,16 +1,16 @@
 import sys
-sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord\\src') 
+sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord') 
 ## cambiadlo para ejecutarlo en vuestro ordenador
 
-from model import model
-from model.classDictionary import *
-from vista.vista import *
+from src.model.model import *
+from src.model.classDictionary import *
+from src.vista.vista import *
 from tkinter import *
-from classGame import *
-from classPlayer import *
-from classLetter import *
-from classWord import *
-from myIntroduirParaula import *
+from src.controlador.classGame import *
+from src.controlador.classPlayer import *
+from src.controlador.classLetter import *
+from src.controlador.classWord import *
+from src.controlador.myIntroduirParaula import *
 
 
 ROUNDS = 5

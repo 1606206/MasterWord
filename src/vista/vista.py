@@ -1,5 +1,4 @@
-from controlador import *
-from vista import *
+from src.controlador import *
 import os
 
 WORD_LENGHT = 3

@@ -1,5 +1,5 @@
-from model.model import *
-from model.classDictionary import *
+from src.model.model import *
+from src.model.classDictionary import *
 
 ## clase Jugador
 class Player: 

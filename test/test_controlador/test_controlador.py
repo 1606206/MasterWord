@@ -1,7 +1,4 @@
-import sys
-sys.path.insert(1,'src/controlador')
-
-from controlador import *
+from src.controlador.controlador import *
 
 
 #------------------------TEST CAIXA NEGRA-----------------------#

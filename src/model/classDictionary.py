@@ -1,7 +1,7 @@
 import pandas as pd
 import random as rd
-from model.model import *
-from model.classDictionary import *
+from src.model.model import *
+from src.model.classDictionary import *
 
 PATH = "BBDD"
 

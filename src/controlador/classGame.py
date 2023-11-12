@@ -1,10 +1,10 @@
-from vista.vista import *
-from model.model import *
-from classWord import *
-from classPlayer import Player
-from model.classDictionary import *
-from myIntroduirParaula import *
-from classLetter import *
+from src.vista.vista import *
+from src.model.model import *
+from src.controlador.classWord import *
+from src.controlador.classPlayer import Player
+from src.model.classDictionary import *
+from src.controlador.myIntroduirParaula import *
+from src.controlador.classLetter import *
 import os
 
 def introduir_paraula(): ###cambiar

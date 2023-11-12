@@ -1,7 +1,4 @@
-import sys
-sys.path.insert(1,'src/controlador')
-
-from classDictionary import Dictionary
+from src.model.classDictionary import *
 
 def test_init_1(): #clase vacía, para comprobar los valores por defecto
     dictionary = Dictionary()  
@@ -13,6 +10,7 @@ def test_init_2(): #posem valors diferents als de per defecte
     dictionary = Dictionary(default=0,level=2,secPath='\dictionary_3.csv')
     assert dictionary.default == 0
     assert dictionary.level == 2
+    print(dictionary.path)
     assert dictionary.path == '\dictionary_3.csv' #no entiendo pq me peta
     #como hago lo del wordlist??
 

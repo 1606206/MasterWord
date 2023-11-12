@@ -1,11 +1,7 @@
 import pytest #https://docs.pytest.org/en/7.1.x/getting-started.html
 import numpy as np 
-import math
 import pandas as pd
-import random as rd
-from controlador import controlador_nom_usuari_ja_existent, controlador_missatge_benvinguda, controlador_directrius_nou_diccionari, controlador_canvis_guardats_correctament
-
-
+from src.controlador.controlador import *
 
 PATH = "BBDD"
 

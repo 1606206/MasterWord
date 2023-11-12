@@ -1,6 +1,4 @@
-import sys
-sys.path.insert(2,'src/controlador')
-from classLetter import *
+from src.controlador.classLetter import *
 
 #------------------------TDD-----------------------#
 def test_selectColors():

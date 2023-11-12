@@ -1,9 +1,5 @@
-import sys
-sys.path.insert(1,'src/controlador')
-
-from classGame import Game
-from classPlayer import Player
-from classWord import Word
+from src.controlador.classGame import Game
+from src.controlador.classPlayer import Player
 
 #------------------------TEST CAIXA NEGRA-----------------------#
 

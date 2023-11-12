@@ -1,8 +1,5 @@
-import sys
 import pytest
-sys.path.insert(1,'src/controlador')
-
-from classWord import Word
+from src.controlador.classWord import Word
 
 #------------------------TDD-----------------------------------#
 def test_checkLong():
