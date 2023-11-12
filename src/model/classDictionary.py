@@ -1,8 +1,7 @@
 import pandas as pd
 import random as rd
-import sys
-sys.path.insert(2,'src/model')
-from model import *
+from model.model import *
+from model.classDictionary import *
 
 PATH = "BBDD"
 

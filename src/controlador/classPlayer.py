@@ -1,6 +1,5 @@
-import sys
-sys.path.insert(2,'src/model')
-from model import *
+from model.model import *
+from model.classDictionary import *
 
 ## clase Jugador
 class Player: 

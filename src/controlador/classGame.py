@@ -1,13 +1,8 @@
-import sys
-sys.path.insert(2,'src/model')
-sys.path.insert(1,'src/controlador')
-sys.path.insert(3,'src/vista')
-from vista import *
-from model import *
+from vista.vista import *
+from model.model import *
 from classWord import *
 from classPlayer import Player
-from classDictionary import Dictionary
-from classLetter import Letter
+from model.classDictionary import *
 from myIntroduirParaula import *
 from classLetter import *
 import os

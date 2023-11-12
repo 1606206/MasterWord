@@ -1,17 +1,31 @@
 import sys
-sys.path.insert(1,'src\model')
-from model import *
-sys.path.insert(3,'src\\vista')
-from vista import *
+sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord\\src') 
+## cambiadlo para ejecutarlo en vuestro ordenador
+
+from model import model
+from model.classDictionary import *
+from vista.vista import *
 from tkinter import *
 from classGame import *
 from classPlayer import *
 from classLetter import *
 from classWord import *
 from myIntroduirParaula import *
-from PIL import ImageTk, Image
+
 
 ROUNDS = 5
+
+def controlador_nom_usuari_ja_existent():
+    nom_usuari_ja_existent()
+
+def controlador_missatge_benvinguda(username):
+    missatge_benvinguda(username)
+
+def controlador_directrius_nou_diccionari():
+    directrius_nou_diccionari()
+
+def controlador_canvis_guardats_correctament():
+    canvis_guardats_correctament()
 
 
 if __name__ == "__main__":

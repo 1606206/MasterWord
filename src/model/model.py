@@ -3,9 +3,8 @@ import numpy as np
 import math
 import pandas as pd
 import random as rd
-import sys
-sys.path.insert(3,'src\\vista')
-from vista import *
+from controlador import controlador_nom_usuari_ja_existent, controlador_missatge_benvinguda, controlador_directrius_nou_diccionari, controlador_canvis_guardats_correctament
+
 
 
 PATH = "BBDD"
@@ -36,20 +35,20 @@ def check_user(username, option):  ####revisar función pq no devuelve el nombre
 
     if username in userList:
         if option == '1': #s'ha triat lopcio de crear nou usuari
-            username = nom_usuari_ja_existent()
+            username = controlador_nom_usuari_ja_existent()
             check_user(username, option)
         ja_existeix = True
         return ja_existeix  # si ja existeix el nom d'usuari
     else:
         if option == '2':
-            username = nom_usuari_ja_existent()
+            username = controlador_nom_usuari_ja_existent()
             check_user(username, option)
         else:
             # Si el usuario no existe, añadirlo a la base de datos
             new_row = {'USERNAMES': username, 'POINTS': 0}
             df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
             df.to_csv(PATH + '\\user_names.csv', index=False)
-            missatge_benvinguda(username)
+            controlador_missatge_benvinguda(username)
 
         ja_existeix = False
         return ja_existeix 
@@ -57,14 +56,14 @@ def check_user(username, option):  ####revisar función pq no devuelve el nombre
 
 # guardar els diccionaris dels usuaris
 def saveUserDict(username):
-    wordsList = directrius_nou_diccionari()
+    wordsList = controlador_directrius_nou_diccionari()
     words = wordsList.split()
     with open('BBDD\\user_dict\\dict_'+ username + '.csv', 'w') as saveFile:
     # Escribir las palabras en el archivo, uniendo la lista con espacios
         saveFile.write('Palabras\n')
         saveFile.write('\n'.join(words))
 
-    canvis_guardats_correctament()
+    controlador_canvis_guardats_correctament()
 
 # guardar els punts del usuari
 def save_user_points(username, points):
@@ -86,4 +85,4 @@ def save_user_points(username, points):
     df.to_csv(PATH + '\\user_names.csv', index=False)
 
     print('entro a read user, el usuario es:', username, 'puntos', new_points, 'ranking', ranquing)
-    canvis_guardats_correctament()
+    controlador_canvis_guardats_correctament()

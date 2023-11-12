@@ -1,3 +1,0 @@
-&
-C:/Users/seren/anaconda3/python.exe
-c:/Users/seren/Desktop/MasterWord/src/vista/vista.py

@@ -1,6 +1,4 @@
-import sys
-sys.path.insert(1,'src\\vista')
-from vista import *
+from vista.vista import introduir_paraula
 
 def my_introduir_paraula():
     introduir_paraula()

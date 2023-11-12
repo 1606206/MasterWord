@@ -1,8 +1,5 @@
-import sys
-sys.path.insert(2, 'src\controlador')  # Evita la importación circular
-from controlador import *  # No se recomienda importar todo, mejor importa solo lo necesario
-sys.path.insert(2, 'src\model')
-from model import *
+from controlador import *
+from vista import *
 import os
 
 WORD_LENGHT = 3
