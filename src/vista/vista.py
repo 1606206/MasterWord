@@ -1,8 +1,7 @@
-from src.controlador import *
+from src.controlador.controlador import *
 from rich.console import Console
 from rich.theme import Theme
-from controlador import *
-from vista import *
+from src.controlador.controlador import *
 import os
 
 WORD_LENGHT = 3
@@ -95,8 +94,6 @@ def directrius_nou_diccionari():
     print("Introdueix les noves paraules del diccionari separades per espais")
     wordsList = input()
     return wordsList
-
-
 
 def mostrar_paraula(historial):
     clear()

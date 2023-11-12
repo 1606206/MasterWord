@@ -5,17 +5,10 @@ from src.controlador.classPlayer import Player
 from src.model.classDictionary import *
 from src.controlador.myIntroduirParaula import *
 from src.controlador.classLetter import *
-import os
+
 
 def introduir_paraula(): ###cambiar
     return input('Quina paraula creus que es?  \n')
-
-
-
-        
-    
-
-
 
 class Game:
     def __init__(self, uniquePlayer=0, maxRounds=0, anonymous=0, default_dict=0, player=Player()):
@@ -29,7 +22,7 @@ class Game:
 
     # Getter para el atributo 'uniquePlayer'
     def get_uniquePlayer(self):
-        return self._uniquePlayer
+        return self.uniquePlayer
 
     # Setter para el atributo 'uniquePlayer'
     def set_uniquePlayer(self, uniquePlayer):

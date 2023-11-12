@@ -1,6 +1,6 @@
 import sys
-#sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord')
-sys.path.append('C:\\Users\\guill\\Desktop\\Universidad\\2023-2024\\Primer Semestre\\TQS\\Practicas\\MasterWord\\src') 
+sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord')
+#sys.path.append('C:\\Users\\guill\\Desktop\\Universidad\\2023-2024\\Primer Semestre\\TQS\\Practicas\\MasterWord\\src') 
 ## cambiadlo para ejecutarlo en vuestro ordenador
 
 from src.model.model import *
@@ -11,7 +11,6 @@ from src.controlador.classGame import *
 from src.controlador.classPlayer import *
 from src.controlador.classLetter import *
 from src.controlador.classWord import *
-from src.controlador.myIntroduirParaula import *
 
 
 ROUNDS = 5
@@ -23,7 +22,7 @@ def controlador_missatge_benvinguda(username):
     missatge_benvinguda(username)
 
 def controlador_directrius_nou_diccionari():
-    directrius_nou_diccionari()
+    return directrius_nou_diccionari()
 
 def controlador_canvis_guardats_correctament():
     canvis_guardats_correctament()
