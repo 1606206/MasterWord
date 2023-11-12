@@ -10,18 +10,7 @@ import os
 def introduir_paraula(): ###cambiar
     return input('Quina paraula creus que es?  \n')
 
-from rich.console import Console
-from rich.theme import Theme
-def mostrar_paraula(historial):
-    clear = lambda: os.system('cls')
-    clear()
-    custom_theme= Theme({"acierto": "green", "fallo": "bold red", "mal_posicionada": "yellow"})
-    console = Console(theme=custom_theme)
-    for lista in historial:
-        print("/////////////////////////////////////////////////////////////////", end=" ")
-        for letra in lista:
-            console.print(letra.letter, style=letra.color,end =" ")
-        print("/////////////////////////////////////////////////////////////////", end="\n")
+
 
         
     

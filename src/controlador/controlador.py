@@ -1,5 +1,6 @@
 import sys
-sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord\\src') 
+#sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord\\src')
+sys.path.append('C:\\Users\\guill\\Desktop\\Universidad\\2023-2024\\Primer Semestre\\TQS\\Practicas\\MasterWord\\src') 
 ## cambiadlo para ejecutarlo en vuestro ordenador
 
 from model import model
