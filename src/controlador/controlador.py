@@ -11,6 +11,7 @@ from src.controlador.classGame import *
 from src.controlador.classPlayer import *
 from src.controlador.classLetter import *
 from src.controlador.classWord import *
+import os
 
 
 ROUNDS = 5

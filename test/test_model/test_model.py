@@ -1,7 +1,33 @@
 from src.model.model import *
 # UNIT TESTING
 
+#------------------------TDD-----------------------#
+def test_read_user():
+    points, ranquing = read_user('serena', 1)
+    assert points == 10
+    assert ranquing == 1
+    with pytest.raises(ValueError) as e:
+        points, ranquing = read_user('noexisteix', 1)
+    assert "L'usuari no s'ha trobat a la llista." in str(e.value)
 
+    with pytest.raises(ValueError) as e:
+        points, ranquing = read_user("", 1)
+    assert "El nom no pot estar buit." in str(e.value)
+
+'''
+
+def test_saveUserDict(): #nomes es comprova que no estigui buit, hi ha una altra funcio on es comprova que ja existeixi
+    guardat = 0
+    guardat = saveUserDict("serena")
+    assert guardat == 1
+
+    with pytest.raises(ValueError) as e:
+        guardat = saveUserDict("")
+    assert "El nom no pot estar buit." in str(e.value)
+
+## tambe sha dafegir a aquest test que el diccionari no estigui buit al guardar
+
+''' #peta nse pq 
 
 
 #------------------------TEST CAIXA NEGRA-----------------------#

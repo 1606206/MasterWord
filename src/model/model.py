@@ -2,27 +2,39 @@ import pytest #https://docs.pytest.org/en/7.1.x/getting-started.html
 import numpy as np 
 import pandas as pd
 from src.controlador.controlador import *
+from src.vista.vista import *
 
 PATH = "BBDD"
 
 
 #||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||
 
+def read_user(username, test=0): 
+    if not username:
+        raise ValueError("El nom no pot estar buit.")
 
-def read_user(username): # DUDAAAA: modelo o clase player????
-    df = pd.read_csv(PATH + '\\user_names.csv')
+    points = 0
+    ranquing = 0
+
+    if test:
+        df = pd.read_csv('test_BBDD\\test_user_names.csv')
+    else:
+        df = pd.read_csv(PATH + '\\user_names.csv')
+    
     userList = df['USERNAMES'].tolist()
     pointsList = df['POINTS'].tolist()
-    index = userList.index(username) # index del username
-    print(pointsList)
-    points = pointsList[index] # puntos del username
-    print(points)
-    pointsList.sort(reverse=True) # ordenamos la clasificacion
-    print(pointsList)
-    ranquing = pointsList.index(points)+1 #cogemos el indice de los puntos para saber el ranking
-
-    print('entro a read user, el usuario es:', username, 'puntos', points, 'ranking', ranquing)
+    
+    try:
+        index = userList.index(username) # index del username
+        points = pointsList[index] # puntos del username
+        pointsList.sort(reverse=True) # ordenamos la clasificación
+        ranquing = pointsList.index(points) + 1 # cogemos el índice de los puntos para saber el ranking
+        print('entro a read user, el usuario es:', username, 'puntos', points, 'ranking', ranquing)
+    except ValueError:
+        raise ValueError("L'usuari no s'ha trobat a la llista.")
+    
     return points, ranquing
+
 
 #comprovar si l'usuari existeix a la BBDD
 def check_user(username, option):  ####revisar función pq no devuelve el nombre que toca 
@@ -52,6 +64,10 @@ def check_user(username, option):  ####revisar función pq no devuelve el nombre
 
 # guardar els diccionaris dels usuaris
 def saveUserDict(username):
+    guardat = 0
+    if not username:
+        raise ValueError("El nom no pot estar buit.")
+    
     wordsList = controlador_directrius_nou_diccionari()
     words = wordsList.split()
     with open('BBDD\\user_dict\\dict_'+ username + '.csv', 'w') as saveFile:
@@ -59,7 +75,9 @@ def saveUserDict(username):
         saveFile.write('Palabras\n')
         saveFile.write('\n'.join(words))
 
+    guardat = 1
     controlador_canvis_guardats_correctament()
+    return guardat
 
 # guardar els punts del usuari
 def save_user_points(username, points):
