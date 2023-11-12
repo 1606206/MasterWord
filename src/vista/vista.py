@@ -1,4 +1,8 @@
 from src.controlador import *
+from rich.console import Console
+from rich.theme import Theme
+from controlador import *
+from vista import *
 import os
 
 WORD_LENGHT = 3
@@ -93,3 +97,13 @@ def directrius_nou_diccionari():
     return wordsList
 
 
+
+def mostrar_paraula(historial):
+    clear()
+    custom_theme= Theme({"acierto": "green", "fallo": "bold red", "mal_posicionada": "yellow"})
+    console = Console(theme=custom_theme)
+    for lista in historial:
+        print("/////////////////////////////////////////////////////////////////", end=" ")
+        for letra in lista:
+            console.print(letra.letter, style=letra.color,end =" ")
+        print("/////////////////////////////////////////////////////////////////", end="\n")
