@@ -109,7 +109,7 @@ if __name__ == "__main__":
         if (win == True):
             mostrar_guanyar(win)
             if (partida.get_anonymous() == 0):
-                points = partida.calculate_user_points(numRound)
+                points = partida.calculate_user_points(numRound, partida.word_to_guess.n_letters)
                 save_user_points(player.name, points)
         else:
             mostrar_guanyar(win)

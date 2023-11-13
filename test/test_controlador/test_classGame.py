@@ -1,6 +1,19 @@
 from src.controlador.classGame import Game
 from src.controlador.classPlayer import Player
 
+#-----------------------TDD------------------------------#
+def test_calculate_user_points():
+    max_rounds = 10
+    game = Game(0,max_rounds,0,0,Player())
+    result = game.calculate_user_points(0, 5) #s'encerta a la primera
+    assert result == 51
+    result = game.calculate_user_points(1, 5) #s'encerta a la segona
+    assert result == 46
+    result = game.calculate_user_points(3, 5) # proba random
+    assert result == 36
+    result = game.calculate_user_points(10, 5) #s'encerta a a ultima
+    assert result == 1
+
 #------------------------TEST CAIXA NEGRA-----------------------#
 
 def test_init_1():
@@ -25,43 +38,36 @@ def test_anonymous_game_win():
 def test_user_game():
     pass
 '''
+### hay que arreglar estos tests
+def test_calculate_user_points_1(numRound = 5, word_let=5): #que sumi els punts que toquin perquè l'ha encertat 
+    max_rounds = 10
+    game = Game(0,max_rounds,0,0,Player())
+    result = game.calculate_user_points(numRound, word_let)
+    assert result == (max_rounds*word_let)-(numRound*word_let)+1
 
-def test_calculate_user_points_1(numRound = 4): #que sumi els punts que toquin perquè l'ha encertat 
-    rounds = 10
-    game = Game(0,rounds,0,0,Player())
-    result = game.calculate_user_points(numRound)
-    assert result == 7
+def test_calculate_user_points_2(numRound = 12, word_let=5): #que no sumi punts perquè no l'ha encertat
+    max_rounds = 10
+    game = Game(0,max_rounds,0,0,Player())
 
-def test_calculate_user_points_2(numRound = 12): #que no sumi punts perquè no l'ha encertat
-    rounds = 10
-    game = Game(0,rounds,0,0,Player())
+    result = game.calculate_user_points(numRound, word_let)
+    assert result == (max_rounds*word_let)-(numRound*word_let)+1
 
-    result = game.calculate_user_points(numRound)
-    assert result == 0
-
-def test_calculate_user_points_1(numRound = 5): #que sumi 1 punt perque l'ha encertat a la ultima ronda
+def test_calculate_user_points_3(numRound = 5, word_let=5): #que sumi 1 punt perque l'ha encertat a la ultima ronda
     max_rounds = numRound
     game = Game(0,max_rounds,0,0,Player())
-    result = game.calculate_user_points(numRound)
+    result = game.calculate_user_points(numRound, word_let)
     assert result == 1
 
-def test_calculate_user_points_2(numRound = 5): #que sumi 0 punts perque no l'ha encertat
-    max_rounds = numRound+1
-    game = Game(0,max_rounds,0,0,Player())
-    result = game.calculate_user_points(numRound)
-    assert result == 0
-
-def test_calculate_user_points_2(numRound = 0): #que sumi tants punts com max_rounds+1 hi hagi perque l'ha encertat a la primera
+def test_calculate_user_points_4(numRound = 1, word_let=5): #que sumi tants punts com max_rounds+1 hi hagi perque l'ha encertat a la primera
     max_rounds = 5
     game = Game(0,max_rounds,0,0,Player())
-    result = game.calculate_user_points(numRound)
-    assert result == max_rounds+1
+    result = game.calculate_user_points(numRound, word_let)
+    assert result == (max_rounds*word_let)-(numRound*word_let)+1
 
 
 ## cal mock objecttt per la funcio dabaix
 #def test_inicialitzar_partida(opcio, WORD_LENGHT):
     #pass 
-
 
 
 

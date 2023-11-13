@@ -122,7 +122,13 @@ class Game:
             print('\n')
         return win, numRound
     
-    def calculate_user_points(self, numRound):
-        return max((self.maxRounds-numRound) + 1, 0)
+    def calculate_user_points(self, numRound, word_let): # li pasem el numero de rondes y el numero de lletres de la paraula
+        points = self.maxRounds*word_let #puntuació màxima si s'ha endivinat a la primera ronda
+        print(points)
+        for i in range(numRound): #si ha passat x rondes se li restarà numRound*n_letters de la paraula
+            for i in range(word_let): 
+                points = points-1
+        print(points)
+        return points+1
 
     
