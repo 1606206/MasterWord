@@ -72,6 +72,9 @@ def introduir_nom_usuari():
 def introduir_paraula():
     return input('Quina paraula creus que es?')
 
+def introduir_paraula_testing(paraula):
+    return paraula
+
 def opcio_no_valida():
     print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
 
