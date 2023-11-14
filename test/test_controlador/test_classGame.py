@@ -11,7 +11,7 @@ def test_calculate_user_points():
     assert result == 46
     result = game.calculate_user_points(3, 5) # proba random
     assert result == 36
-    result = game.calculate_user_points(10, 5) #s'encerta a a ultima
+    result = game.calculate_user_points(max_rounds, 5) #s'encerta a a ultima
     assert result == 1
 
 #------------------------TEST CAIXA NEGRA-----------------------#

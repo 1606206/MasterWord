@@ -1,7 +1,10 @@
 import sys
-#sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord')
-sys.path.append('C:\\Users\\javie\\Desktop\\UAB\\Informatica\\Cuarto\\Test i Qualitat del Software\\MasterWord')
-#sys.path.append('C:\\Users\\guill\\Desktop\\Universidad\\2023-2024\\Primer Semestre\\TQS\\Practicas\\MasterWord\\src') 
+
+sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord')
+#sys.path.append('C:\\Users\\guill\\Desktop\\Universidad\\2023-2024\\Primer Semestre\\TQS\\Practicas\\MasterWord') #path guille casa
+#sys.path.append('C:\\Users\\guill\\Desktop\\UAB\\4o\\Primer Semestre\\TQS\\Practicas\\MasterWord') #path guille portatil
+#sys.path.append('C:\\Users\\javie\\Desktop\\UAB\\Informatica\\Cuarto\\Test i Qualitat del Software\\MasterWord')
+
 ## cambiadlo para ejecutarlo en vuestro ordenador
 
 from src.model.model import *
