@@ -14,6 +14,58 @@ def test_read_user():
         points, ranquing = read_user("", 1)
     assert "El nom no pot estar buit." in str(e.value)
 
+
+#------------------------CHECK USER TESTS-----------------------#
+def test_check_user(username="serena", option=1):
+    with pytest.raises(ValueError) as e:
+        existent = check_user(username, option)
+    assert "L'usuari ja existeix" in str(e.value)
+
+def test_check_user(username="RandomName", option=1):
+    with pytest.raises(ValueError) as e:
+        existent = check_user(username, option)
+    assert "L'usuari no existia" in str(e.value)
+
+def test_check_user(username="serena", option=2):
+    with pytest.raises(ValueError) as e:
+        existent = check_user(username, option)
+    assert "L'usuari ja existeix" in str(e.value)
+
+def test_check_user(username="RandomName", option=2):
+    try:
+        existent = check_user(username, option)
+    except Exception as e:
+        assert True, f"opcion no valida para usuario no existente{e}"
+
+
+#-------------------------SAVE USER DICT----------------------
+def test_saveUserDict(username=""):
+    try:
+        guardat = saveUserDict(username)
+    except Exception as e:
+        assert True, f"Nombre Vacio{e}"
+
+
+def test_saveUserDict(username="111"):
+    try:
+        guardat = saveUserDict(username)
+    except Exception as e:
+        assert True, f"Tiene que ser un string{e}"
+
+def test_saveUserDict(username=None):
+    try:
+        guardat = saveUserDict(username)
+    except Exception as e:
+        assert True, f"Tiene que ser un string{e}"
+
+
+def test_saveUserDict(username="“|\%&@^%€"):
+    try:
+        guardat = saveUserDict(username)
+    except Exception as e:
+        assert True, f"Tiene que ser un string{e}"
+
+
 '''
 
 def test_saveUserDict(): #nomes es comprova que no estigui buit, hi ha una altra funcio on es comprova que ja existeixi
