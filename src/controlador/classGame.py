@@ -67,34 +67,6 @@ class Game:
 
         print('word_to_guess', self.word_to_guess.splitWord)
     
-    def anonymous_game(self):
-        numRound = 0
-        win = False
-        historial = []
-
-        print("la paraula te", self.word_to_guess.n_letters, "lletres")
-
-        while numRound < 10 and win == False:
-            userInput = introduir_paraula() #my_introduir_paraula()
-            userWord = Word(userInput)
-            long = self.word_to_guess.checkLong(userWord)
-
-            while long == False:
-                userInput = introduir_paraula() #my_introduir_paraula()
-                userWord = Word(userInput)
-                long = self.word_to_guess.checkLong(userWord)
-                print("palabra introducida por el usuario", userWord.palabra)
-
-            win, result = self.word_to_guess.checkWord(userWord)  
-            selectColors(userWord.splitWord, result) #para seleccionar el color de cada letra de la palabra introducida por el usuario
-            historial.append(userWord.splitWord) #metemos en el historial de palabras la palabra 
-            mostrar_paraula(historial) #muestra la palabra introducida por el usuario
-
-            print('\n')
-            numRound += 1  
-
-        return win
-    
     def user_game(self):
         numRound = 0
         win = False
@@ -129,6 +101,13 @@ class Game:
             for i in range(word_let): 
                 points = points-1
         print(points)
+        return points+1
+    
+    def calculate_anonymous_points(self, numRound, word_let):
+        points = self.maxRounds
+        for i in range(numRound):
+            points = points-1
+
         return points+1
 
     
