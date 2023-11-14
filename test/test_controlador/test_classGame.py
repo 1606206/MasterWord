@@ -1,5 +1,6 @@
 from src.controlador.classGame import Game
 from src.controlador.classPlayer import Player
+from test.test_vista.mock_input import MockInput
 
 #-----------------------TDD------------------------------#
 def test_calculate_user_points():
@@ -65,9 +66,12 @@ def test_calculate_user_points_4(numRound = 1, word_let=5): #que sumi tants punt
     assert result == (max_rounds*word_let)-(numRound*word_let)+1
 
 
-## cal mock objecttt per la funcio dabaix
-#def test_inicialitzar_partida(opcio, WORD_LENGHT):
-    #pass 
+def test_user_game_1():
+    game = Game(uniquePlayer=1, maxRounds=5, anonymous=1, default_dict=0, player=Player())
+    game.word_to_guess = Word("PALABRA")
+    llista_paraules = ["hola", "adios", "PALABRA"]
+    mock_input = MockInput(llista_paraules)
+    
 
 
 

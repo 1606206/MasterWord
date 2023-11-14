@@ -5,7 +5,7 @@ from src.controlador.classPlayer import Player
 from src.model.classDictionary import *
 from src.controlador.myIntroduirParaula import *
 from src.controlador.classLetter import *
-
+from test.test_vista.mock_input import MockInput
 
 def introduir_paraula(): ###cambiar
     return input('Quina paraula creus que es?  \n')
@@ -67,7 +67,7 @@ class Game:
 
         print('word_to_guess', self.word_to_guess.splitWord)
     
-    def user_game(self):
+    def user_game(self, testing=False, mock_input=None):
         numRound = 0
         win = False
         historial = []
@@ -75,13 +75,18 @@ class Game:
         print("la paraula te", self.word_to_guess.n_letters, "lletres")
 
         while numRound < 10 and win == False: 
-
-            userInput = introduir_paraula() #my_introduir_paraula()
+            if not testing:
+                userInput = introduir_paraula_testing(paraula)
+            else:
+                userInput = mock_input.get_word()
             userWord = Word(userInput)
             long = self.word_to_guess.checkLong(userWord)
-
             while long == False:
-                userInput = introduir_paraula() #my_introduir_paraula()
+                if not testing:
+                    userInput = introduir_paraula_testing(paraula)
+                else:
+                    userInput = mock_input.get_word()
+                    
                 userWord = Word(userInput)
                 long = self.word_to_guess.checkLong(userWord)
                 print("palabra introducida por el usuario", userWord.palabra)
