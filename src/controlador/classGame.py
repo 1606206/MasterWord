@@ -5,7 +5,7 @@ from src.controlador.classPlayer import Player
 from src.model.classDictionary import *
 from src.controlador.myIntroduirParaula import *
 from src.controlador.classLetter import *
-from test.test_vista.mock_input import MockInput
+#from test.test_vista.mock_input import MockInput
 
 def introduir_paraula(): ###cambiar
     return input('Quina paraula creus que es?  \n')

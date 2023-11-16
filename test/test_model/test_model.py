@@ -52,6 +52,7 @@ def test_saveUserDict(username="111"):
     except Exception as e:
         assert True, f"Tiene que ser un string{e}"
 
+'''
 def test_saveUserDict(username=None):
     try:
         guardat = saveUserDict(username)
@@ -66,7 +67,7 @@ def test_saveUserDict(username="“|\%&@^%€"):
         assert True, f"Tiene que ser un string{e}"
 
 
-'''
+
 
 def test_saveUserDict(): #nomes es comprova que no estigui buit, hi ha una altra funcio on es comprova que ja existeixi
     guardat = 0

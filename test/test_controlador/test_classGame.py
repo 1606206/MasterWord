@@ -1,6 +1,7 @@
 from src.controlador.classGame import Game
 from src.controlador.classPlayer import Player
 from test.test_vista.mock_input import MockInput
+from src.controlador.classWord import Word
 
 #-----------------------TDD------------------------------#
 def test_calculate_user_points():
