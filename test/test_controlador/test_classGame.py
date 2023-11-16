@@ -16,8 +16,6 @@ def test_calculate_user_points():
     result = game.calculate_user_points(max_rounds, 5) #s'encerta a a ultima
     assert result == 1
 
-#------------------------TEST CAIXA NEGRA-----------------------#
-
 def test_init_1():
     game = Game()
     assert len(game.plays) == 0
@@ -30,16 +28,18 @@ def test_init_2():
     assert game.uniquePlayer == 1
     assert game.maxRounds == 10
 
-'''
-def test_anonymous_game_win():
-    game = Game()
-    game.word_to_guess = Word("HOLA")  # Asegúrate de establecer la palabra correcta para que gane la partida
-    win = game.anonymous_game()
-    assert win 
 
-def test_user_game():
-    pass
-'''
+# LOOP TESTING
+def test_calculate_anonymous_points():
+    max_rounds = 10
+    game = Game(0, max_rounds, 0, 0, Player())
+    assert game.calculate_anonymous_points(0) == 11     # Evitar el loop
+    assert game.calculate_anonymous_points(1) == 10     # Una passada pel loop
+    assert game.calculate_anonymous_points(2) == 9      # Dues passades pel loop
+    assert game.calculate_anonymous_points(5) == 6      # m passades pel loop m<n
+    assert game.calculate_anonymous_points(9) == 2      # (n-1) passades
+    assert game.calculate_anonymous_points(10) == 1     # n passades
+
 ### hay que arreglar estos tests
 def test_calculate_user_points_1(numRound = 5, word_let=5): #que sumi els punts que toquin perquè l'ha encertat 
     max_rounds = 10
