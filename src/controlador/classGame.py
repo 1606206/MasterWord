@@ -55,7 +55,7 @@ class Game:
     def inicialitzar_partida(self, opcio, WORD_LENGHT):
         if self.uniquePlayer == 1:
             if self.default_dictionary == 1:
-                dictionary = Dictionary(0, opcio, "\dictionary_" + str(WORD_LENGHT) + ".csv")
+                dictionary = Dictionary(0, opcio, "/dictionary_" + str(WORD_LENGHT) + ".csv")
                 self.word_to_guess = Word(dictionary.randomChoice())
             else: #comprovar que existeixii el diccionari abans
                 dictionary = Dictionary(0, 0, "\\user_dict\\dict_" + self.player.name + ".csv")
@@ -74,7 +74,7 @@ class Game:
 
         print("la paraula te", self.word_to_guess.n_letters, "lletres")
 
-        while numRound < 10 and win == False: 
+        while numRound < self.maxRounds and win == False: 
             if not testing:
                 userInput = introduir_paraula_testing(paraula)
             else:
