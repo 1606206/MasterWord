@@ -29,7 +29,7 @@ def read_user(username, test=0):
         points = pointsList[index] # puntos del username
         pointsList.sort(reverse=True) # ordenamos la clasificación
         ranquing = pointsList.index(points) + 1 # cogemos el índice de los puntos para saber el ranking
-        print('entro a read user, el usuario es:', username, 'puntos', points, 'ranking', ranquing)
+
     except ValueError:
         raise ValueError("L'usuari no s'ha trobat a la llista.")
     
@@ -94,6 +94,4 @@ def save_user_points(username, points):
     #actualitzar la base de dades
     df['POINTS'] = pointsList
     df.to_csv(PATH + '\\user_names.csv', index=False)
-
-    print('entro a read user, el usuario es:', username, 'puntos', new_points, 'ranking', ranquing)
     controlador_canvis_guardats_correctament()

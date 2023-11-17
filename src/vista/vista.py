@@ -16,7 +16,6 @@ def mostrar_menu_usuari():
     print("3. Sortir")
 
 def mostrar_menu_principal():
-    clear()
     print("1. Crea el teu propi diccionari")
     print("2. Jugar")
     print("3. Veure la meva puntuació i rànquing")
@@ -67,6 +66,7 @@ def sortir_joc():
     print("Sortint del joc...")
 
 def introduir_nom_usuari():
+    clear()
     return input('Introdueix el teu nom de usuari: ')
 
 def introduir_paraula():
@@ -85,7 +85,7 @@ def nom_usuari_ja_existent():
     return input("Aquest nom d'usuari ja existeix. Introdueix un altre nom de usuari: ")
 
 def missatge_benvinguda(username):
-    print("Bienvenido a WordleApp:", username)
+    print("Benvingut a WordleApp:", username, "\n")
 
 def canvis_guardats_correctament():
     print("Els canvis s'han guardat correctament.")
