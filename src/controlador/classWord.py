@@ -1,6 +1,7 @@
 import copy
 
 class Word:
+    """Clase para guardar palabras y compararlas"""
     def __init__(self, palabra: str):
         if not isinstance(palabra, str):
             raise TypeError("Has d'introduir un string.")
@@ -35,7 +36,7 @@ class Word:
 
     # comprovar si la paraula intrduida coincideix amb la que s'ha d'encertar
     def checkWord(self, userWord) -> (bool, str):
-        """Comprueba si la palabra introducida es igual 
+        """Comprueba si la palabra introducida es igual.
 
         Args:
             Word (userWord): palabra a comparar

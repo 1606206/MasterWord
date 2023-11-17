@@ -1,11 +1,10 @@
 import sys
 
-#sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord')
-#sys.path.append('C:\\Users\\guill\\Desktop\\Universidad\\2023-2024\\Primer Semestre\\TQS\\Practicas\\MasterWord') #path guille casa
-sys.path.append('C:\\Users\\guill\\Desktop\\UAB\\4o\\Primer Semestre\\TQS\\Practicas\\MasterWord') #path guille portatil
-#sys.path.append('C:\\Users\\javie\\Desktop\\UAB\\Informatica\\Cuarto\\Test i Qualitat del Software\\MasterWord')
-
-## cambiadlo para ejecutarlo en vuestro ordenador
+## Paths de ejecucion para los distintos ordenadores
+#sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord') # Serena portátil
+#sys.path.append('C:\\Users\\guill\\Desktop\\Universidad\\2023-2024\\Primer Semestre\\TQS\\Practicas\\MasterWord') # Guille casa
+sys.path.append('C:\\Users\\guill\\Desktop\\UAB\\4o\\Primer Semestre\\TQS\\Practicas\\MasterWord') # Guille portátil
+#sys.path.append('C:\\Users\\javie\\Desktop\\UAB\\Informatica\\Cuarto\\Test i Qualitat del Software\\MasterWord') # Javi portátil
 
 from src.model.model import *
 from src.model.classDictionary import *
@@ -34,7 +33,8 @@ def controlador_canvis_guardats_correctament():
 
 
 if __name__ == "__main__":
-    clear = lambda: os.system('cls')  #para limpiar la vista    
+    # Limpiar el terminal
+    clear = lambda: os.system('cls')   
     while True:
         opcio = 0
         mostrar_menu_usuari() #nom/anonim

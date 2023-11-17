@@ -8,6 +8,7 @@ from test.test_vista.mock_input import MockInput
 
 
 class Game:
+    """Clase que guarda los datos de la partida y la lógica de esta."""
     def __init__(self, uniquePlayer=0, maxRounds=0, anonymous=0, default_dict=0, player=Player()):
         self.plays = []  # array de arrays
         self.uniquePlayer = uniquePlayer  # bool, true si hay solo 1 jugador
@@ -17,32 +18,32 @@ class Game:
         self.word_to_guess = Word("undefined")
         self.player = player
 
-    # Getter para el atributo 'uniquePlayer'
     def get_uniquePlayer(self):
+        """ Getter para el atributo uniquePlayer"""
         return self.uniquePlayer
 
-    # Setter para el atributo 'uniquePlayer'
     def set_uniquePlayer(self, uniquePlayer):
+        """Setter para el atributo uniquePlayer"""
         self.uniquePlayer = uniquePlayer
 
-    # Getter para el atributo 'maxRounds'
     def get_maxRounds(self):
+        """Getter para el atributo maxRounds"""
         return self.maxRounds
 
-    # Setter para el atributo 'maxRounds'
     def set_maxRounds(self, maxRounds):
+        """Setter para el atributo maxRounds"""
         self.maxRounds = maxRounds
 
-    # Getter para el atributo 'anonymous'
     def get_anonymous(self):
+        """Getter para el atributo anonymous"""
         return self.anonymous
 
-    # Setter para el atributo 'anonymous'
     def set_anonymous(self, anonymous):
+        """Setter para el atributo anonymous"""
         self.anonymous = anonymous
     
-    # Getter para el atributo 'default_dictionary'
     def get_default_dictionary(self):
+        """Getter para el atributo default_dictionary"""
         return self.default_dictionary
 
     # Setter para el atributo 'default_dictionary'
