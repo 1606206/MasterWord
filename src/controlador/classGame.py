@@ -80,7 +80,7 @@ class Game:
 
         while numRound < self.maxRounds and win == False: 
             if not testing:
-                userInput = introduir_paraula_testing(paraula)
+                userInput = introduir_paraula()
             else:
                 userInput = mock_input.get_word()
             userWord = Word(userInput)
