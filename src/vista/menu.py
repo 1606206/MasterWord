@@ -35,7 +35,7 @@ if __name__ == "__main__":
             opcio = introduir_opcions_menus()
             username = introduir_nom_usuari()
             # Comprobar si existe el usuario o crearlo
-            check_user(username, opcio)
+            username = check_user(username, opcio)
             # Recuperar los datos del jugador
             points, ranking = read_user(username)
             player = Player(username, points, ranking)

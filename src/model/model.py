@@ -36,31 +36,28 @@ def read_user(username, test=0):
     return points, ranquing
 
 
-#comprovar si l'usuari existeix a la BBDD
-def check_user(username, option):  ####revisar función pq no devuelve el nombre que toca 
-    df = pd.read_csv(PATH + '\\user_names.csv')
-    userList = df['USERNAMES'].tolist()
+#comprovar si l'usuari existeix a la BBDDimport pandas as pd
+def check_user(username, option):
+    ja_existeix = True
+    while ja_existeix==True:
+        df = pd.read_csv(PATH + '\\user_names.csv')
+        userList = df['USERNAMES'].tolist()
 
-    if username in userList:
-        if option == '1': #s'ha triat lopcio de crear nou usuari
-            username = controlador_nom_usuari_ja_existent()
-            check_user(username, option)
-        ja_existeix = True
-        return ja_existeix  # si ja existeix el nom d'usuari
-    else:
-        if option == '2':
-            username = controlador_nom_usuari_ja_existent()
-            check_user(username, option)
+        if username in userList:
+            if option == '1':
+                username = controlador_nom_usuari_ja_existent()
+            if option == '2': # vol entrar amb el nom d'usuari
+                controlador_missatge_benvinguda(username)
+                ja_existeix = False
         else:
             # Si el usuario no existe, añadirlo a la base de datos
             new_row = {'USERNAMES': username, 'POINTS': 0}
             df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
             df.to_csv(PATH + '\\user_names.csv', index=False)
             controlador_missatge_benvinguda(username)
+            ja_existeix = False
 
-        ja_existeix = False
-        return ja_existeix 
-
+    return username
 
 # guardar els diccionaris dels usuaris
 def saveUserDict(username):
