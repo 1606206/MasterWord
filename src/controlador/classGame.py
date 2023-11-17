@@ -4,7 +4,7 @@ from src.controlador.classWord import *
 from src.controlador.classPlayer import Player
 from src.model.classDictionary import *
 from src.controlador.classLetter import *
-from test.test_vista.mock_input import MockInput
+from src.vista.mock_input import MockInput
 
 
 class Game:
@@ -46,11 +46,17 @@ class Game:
         """Getter para el atributo default_dictionary"""
         return self.default_dictionary
 
-    # Setter para el atributo 'default_dictionary'
     def set_default_dictionary(self, default_dictionary):
+        """Setter para el atributo default_dictionary"""
         self.default_dictionary = default_dictionary
 
     def inicialitzar_partida(self, opcio, WORD_LENGHT):
+        """_summary_
+
+        Args:
+            opcio (int): _description_
+            WORD_LENGHT (_type_): _description_
+        """        
         if self.uniquePlayer == 1:
             if self.default_dictionary == 1:
                 dictionary = Dictionary(0, opcio, "/dictionary_" + str(WORD_LENGHT) + ".csv")

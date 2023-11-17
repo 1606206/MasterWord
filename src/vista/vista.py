@@ -20,7 +20,7 @@ def mostrar_menu_principal():
     print("1. Crea el teu propi diccionari")
     print("2. Jugar")
     print("3. Veure la meva puntuació i rànquing")
-    print("3. Sortir")
+    print("4. Sortir")
 
 def mostrar_menu_partida():
     clear()
