@@ -6,20 +6,15 @@ from src.vista.vista import *
 
 PATH = "BBDD"
 
-
 #||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||
 
-def read_user(username, test=0): 
+def read_user(username, points,PATH="BBDD",BBDD_NAME="user_names.csv"): 
     if not username:
         raise ValueError("El nom no pot estar buit.")
-
-    points = 0
     ranquing = 0
 
-    if test:
-        df = pd.read_csv('test_BBDD\\test_user_names.csv')
-    else:
-        df = pd.read_csv(PATH + '\\user_names.csv')
+    df = pd.read_csv(PATH + '\\' + BBDD_NAME)
+
     
     userList = df['USERNAMES'].tolist()
     pointsList = df['POINTS'].tolist()
@@ -29,7 +24,6 @@ def read_user(username, test=0):
         points = pointsList[index] # puntos del username
         pointsList.sort(reverse=True) # ordenamos la clasificación
         ranquing = pointsList.index(points) + 1 # cogemos el índice de los puntos para saber el ranking
-
     except ValueError:
         raise ValueError("L'usuari no s'ha trobat a la llista.")
     
@@ -37,10 +31,10 @@ def read_user(username, test=0):
 
 
 #comprovar si l'usuari existeix a la BBDDimport pandas as pd
-def check_user(username, option):
+def check_user(username, option,PATH="BBDD",BBDD_NAME="user_names.csv"):
     ja_existeix = True
     while ja_existeix==True:
-        df = pd.read_csv(PATH + '\\user_names.csv')
+        df = pd.read_csv(PATH + '\\' + BBDD_NAME)
         userList = df['USERNAMES'].tolist()
 
         if username in userList:
@@ -53,21 +47,21 @@ def check_user(username, option):
             # Si el usuario no existe, añadirlo a la base de datos
             new_row = {'USERNAMES': username, 'POINTS': 0}
             df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
-            df.to_csv(PATH + '\\user_names.csv', index=False)
+            df.to_csv(PATH + '\\' + BBDD_NAME, index=False)
             controlador_missatge_benvinguda(username)
             ja_existeix = False
 
     return username
 
 # guardar els diccionaris dels usuaris
-def saveUserDict(username):
+def saveUserDict(username,PATH="BBDD",FOLDER_DICT="user_dict"):
     guardat = 0
     if not username:
         raise ValueError("El nom no pot estar buit.")
     
     wordsList = controlador_directrius_nou_diccionari()
     words = wordsList.split()
-    with open('BBDD\\user_dict\\dict_'+ username + '.csv', 'w') as saveFile:
+    with open(PATH +'\\'+ FOLDER_DICT+'\\dict_'+ username + '.csv', 'w') as saveFile:
     # Escribir las palabras en el archivo, uniendo la lista con espacios
         saveFile.write('Palabras\n')
         saveFile.write('\n'.join(words))
@@ -77,10 +71,11 @@ def saveUserDict(username):
     return guardat
 
 # guardar els punts del usuari
-def save_user_points(username, points):
+def save_user_points(username, points,PATH="BBDD",BBDD_NAME="user_names.csv"):
     print("sumant ", points, 'punts a lusuari ', username)
 
-    df = pd.read_csv(PATH + '\\user_names.csv')
+    df = pd.read_csv(PATH + '\\' + BBDD_NAME)
+
     userList = df['USERNAMES'].tolist()
     pointsList = df['POINTS'].tolist()
     index = userList.index(username) # index del username
@@ -93,5 +88,7 @@ def save_user_points(username, points):
 
     #actualitzar la base de dades
     df['POINTS'] = pointsList
-    df.to_csv(PATH + '\\user_names.csv', index=False)
+
+    df.to_csv(PATH + '\\' + BBDD_NAME, index=False)
+    
     controlador_canvis_guardats_correctament()

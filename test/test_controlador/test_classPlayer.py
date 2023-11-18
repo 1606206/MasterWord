@@ -57,6 +57,18 @@ def test_validInputs_8():
         player = Player(ranking=-1)
     assert "El ranking no pot ser negatiu." in str(e.value)
 
+def test_get_points():
+    player = Player(name="serena", points=50, ranking=2)
+    assert player.get_points() == 50
+
+def test_get_ranking():
+    player = Player(name="serena", points=50, ranking=2)
+    assert player.get_ranking() == 2
+
+def test_get_name():
+    player = Player(name="serena", points=50, ranking=2)
+    assert player.get_name() == "serena"
+
 #------------------------TEST CAIXA NEGRA-----------------------#
 
 ##------------------Particions equivalents---------------------##
