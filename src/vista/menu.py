@@ -46,7 +46,7 @@ if __name__ == "__main__":
             # (4) Salir
             opcio = introduir_opcions_menus()
             if opcio == '1':  # Crear diccionario
-                saveUserDict(username)
+                crear_diccionari(username)
                 sortir_joc()
                 break
             elif opcio=='2':  # Jugar

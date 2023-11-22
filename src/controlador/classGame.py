@@ -63,13 +63,16 @@ class Game:
                 self.word_to_guess = Word(dictionary.randomChoice())
             else: #comprovar que existeixii el diccionari abans
                 dictionary = Dictionary(0, 0, "\\user_dict\\dict_" + self.player.name + ".csv")
+                if (dictionary.wordList == []):
+                    saveUserDict(self.player.name)
+                    dictionary = Dictionary(0, 0, "\\user_dict\\dict_" + self.player.name + ".csv")
                 self.word_to_guess = Word(dictionary.randomChoice()) 
 
         else: 
-            print("introdueix la paraula que s'ha d'endevinar")
+            torn_jugador_1()
             self.word_to_guess = Word(input().upper())
 
-        print('word_to_guess', self.word_to_guess.splitWord)
+        #print('word_to_guess', self.word_to_guess.splitWord)
     
     def user_game(self, testing=False, mock_input=None):
         numRound = 0

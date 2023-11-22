@@ -7,6 +7,9 @@ ROUNDS = 5
 clear = lambda: os.system('cls')
 
 
+def torn_jugador_1():
+    print("Jugador 1, introdueix la paraula que ha d'endevinar el Jugador 2!")
+    
 def mostrar_menu_usuari():
     clear()
     print("1. Entra amb el nom (podràs accedir al teu diccionari i el teu rànquing)")

@@ -13,9 +13,13 @@ class Dictionary:
         self.wordList = self.readBBDD(secPath) if secPath else []
     
     #lee la lista
-    def readBBDD(self,secondary_path):
-        df = pd.read_csv(PATH + secondary_path)
-        return df['Palabras'].tolist()
+    def readBBDD(self, secondary_path):
+        try:
+            df = pd.read_csv(PATH + secondary_path)
+            return df['Palabras'].tolist()
+        except FileNotFoundError: #si el diccionari no s'ha creat encara
+            print("Abans de jugar amb el teu diccionari has de crear un.")
+            return []  
 
     #Lee el fichero csv y lo convierte a una lista
     def randomChoice(self):

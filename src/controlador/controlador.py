@@ -8,6 +8,9 @@ from src.controlador.classWord import *
 from src.model.model import *
 ROUNDS = 5
 
+def crear_diccionari(username):
+    saveUserDict(username)
+
 def executar_joc(partida):
     win, numRound = partida.user_game()
     return win, numRound
