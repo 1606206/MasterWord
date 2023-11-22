@@ -1,6 +1,7 @@
 import pytest #https://docs.pytest.org/en/7.1.x/getting-started.html
 import numpy as np 
 import pandas as pd
+import tempfile
 from src.controlador.controlador import *
 from src.vista.vista import *
 
@@ -39,11 +40,9 @@ def check_user(username, option,PATH="BBDD",BBDD_NAME="user_names.csv",test = 0)
 
         if username in userList:
             if option == '1':
-                if test == 0:#sino peta
-                    username = controlador_nom_usuari_ja_existent()
+                username = controlador_nom_usuari_ja_existent()
             if option == '2': # vol entrar amb el nom d'usuari
-                if test == 0: #sino peta
-                    controlador_missatge_benvinguda(username)
+                controlador_missatge_benvinguda(username)
                 ja_existeix = False
         else:
             # Si el usuario no existe, añadirlo a la base de datos
@@ -61,8 +60,10 @@ def saveUserDict(username,PATH="BBDD",FOLDER_DICT="user_dict",test=0):
     guardat = 0
     if not username:
         raise ValueError("El nom no pot estar buit.")
-    
-    wordsList = controlador_directrius_nou_diccionari()
+    if test == 0:
+        wordsList = controlador_directrius_nou_diccionari()
+    else:
+        wordsList = "prueba1 prueba2 prueba3 prueba4"
     words = wordsList.split()
     with open(PATH +'\\'+ FOLDER_DICT+'\\dict_'+ username + '.csv', 'w') as saveFile:
     # Escribir las palabras en el archivo, uniendo la lista con espacios
@@ -70,7 +71,7 @@ def saveUserDict(username,PATH="BBDD",FOLDER_DICT="user_dict",test=0):
         saveFile.write('\n'.join(words))
 
     guardat = 1
-    if test == 0:
+    if test == 0: # si quito esto mejoro el coverage, pero lo dejo de momento, aumenta un 2%
         controlador_canvis_guardats_correctament()
     return guardat
 
