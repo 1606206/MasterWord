@@ -1,7 +1,6 @@
 import pytest #https://docs.pytest.org/en/7.1.x/getting-started.html
 import numpy as np 
 import pandas as pd
-import tempfile
 from src.controlador.controlador import *
 from src.vista.vista import *
 
@@ -9,7 +8,7 @@ PATH = "BBDD"
 
 #||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||
 
-def read_user(username, points,PATH="BBDD",BBDD_NAME="user_names.csv"): 
+def read_user(username,points = 0,PATH="BBDD",BBDD_NAME="user_names.csv"): 
     if not username:
         raise ValueError("El nom no pot estar buit.")
     ranquing = 0
@@ -76,7 +75,7 @@ def saveUserDict(username,PATH="BBDD",FOLDER_DICT="user_dict",test=0):
     return guardat
 
 # guardar els punts del usuari
-def save_user_points(username, points,PATH="BBDD",BBDD_NAME="user_names.csv", test=0):
+def save_user_points(username, points, PATH="BBDD", BBDD_NAME="user_names.csv", test=0):
     print("sumant ", points, 'punts al usuari ', username)
 
     df = pd.read_csv(PATH + '\\' + BBDD_NAME)

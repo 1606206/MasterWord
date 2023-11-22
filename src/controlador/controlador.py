@@ -28,7 +28,9 @@ def resultat_no_anonymous(partida, win:bool, numRound:int, player:Player):
     mostrar_guanyar(win)
     if (win == True):
         points = partida.calculate_user_points(numRound, partida.word_to_guess.n_letters)
-        save_user_points(player.name, points)
+        bd_name = '\\user_dict\\dict_'+ player.name + '.csv'
+        save_user_points(player.name, points, PATH, bd_name, 0)
+
        
 
 def resultat_anonymous(partida, win:bool, numRound:int):

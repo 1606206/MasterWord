@@ -1,8 +1,8 @@
 import sys
 
 ## Paths de ejecucion para los distintos ordenadores
-#sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord') # Serena portátil
-sys.path.append('C:\\Users\\guill\\Desktop\\Universidad\\2023-2024\\Primer Semestre\\TQS\\Practicas\\MasterWord') # Guille casa
+sys.path.append('C:\\Users\\seren\\Desktop\\MasterWord') # Serena portátil
+#sys.path.append('C:\\Users\\guill\\Desktop\\Universidad\\2023-2024\\Primer Semestre\\TQS\\Practicas\\MasterWord') # Guille casa
 #sys.path.append('C:\\Users\\guill\\Desktop\\UAB\\4o\\Primer Semestre\\TQS\\Practicas\\MasterWord') # Guille portátil
 #sys.path.append('C:\\Users\\javie\\Desktop\\UAB\\Informatica\\Cuarto\\Test i Qualitat del Software\\MasterWord') # Javi portátil
 
