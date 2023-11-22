@@ -107,13 +107,13 @@ if __name__ == "__main__":
             opcio_no_valida()
             break
         
-        print('llego aqui')
         win, numRound = executar_joc(partida)
         mostrar_guanyar(win)
-        if (partida.get_anonymous() == 0):
-            resultat_no_anonymous(partida, win, numRound, player)
-        else:
-            resultat_anonymous(partida, win, numRound)
+        if win:
+            if (partida.get_anonymous() == 0):
+                resultat_no_anonymous(partida, numRound, player)
+            else:
+                resultat_anonymous(partida, numRound)
 
         tancar = continuar_o_tancarjoc()
 

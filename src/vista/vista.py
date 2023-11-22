@@ -1,7 +1,5 @@
-from src.controlador.controlador import *
 from rich.console import Console
 from rich.theme import Theme
-from src.controlador.controlador import *
 import os
 
 WORD_LENGHT = 3

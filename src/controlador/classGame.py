@@ -87,7 +87,7 @@ class Game:
             long = self.word_to_guess.checkLong(userWord)
             while long == False:
                 if not testing:
-                    userInput = introduir_paraula_testing(paraula)
+                    userInput = introduir_paraula()
                 else:
                     userInput = mock_input.get_word()
                     
@@ -96,7 +96,7 @@ class Game:
                 print("palabra introducida por el usuario", userWord.palabra)
             
             numRound += 1 
-            win, result = self.word_to_guess.checkWord(userWord)   #cambiada la llamada a la funcion en la clase!! 
+            win, result = self.word_to_guess.checkWord(userWord)  
             selectColors(userWord.splitWord, result)
             historial.append(userWord.splitWord) #metemos en el historial de palabras la palabra 
             mostrar_paraula(historial) #muestra la palabra introducida por el usuario

@@ -1,8 +1,7 @@
 import pytest #https://docs.pytest.org/en/7.1.x/getting-started.html
 import numpy as np 
 import pandas as pd
-from src.controlador.controlador import *
-from src.vista.vista import *
+from src.controlador.fun_model_vista import *
 
 PATH = "BBDD"
 
@@ -88,8 +87,7 @@ def save_user_points(username, points, PATH="BBDD", BBDD_NAME="user_names.csv", 
     pointsList[index] = new_points
     pointsList.sort(reverse=True) # ordenamos la clasificacion
     print(pointsList)
-    ranquing = pointsList.index(new_points)+1 #cogemos el indice de los puntos para saber el ranking
-
+    
     #actualitzar la base de dades
     df['POINTS'] = pointsList
 
