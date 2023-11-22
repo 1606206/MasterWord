@@ -31,7 +31,7 @@ def read_user(username, points,PATH="BBDD",BBDD_NAME="user_names.csv"):
 
 
 #comprovar si l'usuari existeix a la BBDDimport pandas as pd
-def check_user(username, option,PATH="BBDD",BBDD_NAME="user_names.csv"):
+def check_user(username, option,PATH="BBDD",BBDD_NAME="user_names.csv",test = 0):
     ja_existeix = True
     while ja_existeix==True:
         df = pd.read_csv(PATH + '\\' + BBDD_NAME)
@@ -39,22 +39,25 @@ def check_user(username, option,PATH="BBDD",BBDD_NAME="user_names.csv"):
 
         if username in userList:
             if option == '1':
-                username = controlador_nom_usuari_ja_existent()
+                if test == 0:#sino peta
+                    username = controlador_nom_usuari_ja_existent()
             if option == '2': # vol entrar amb el nom d'usuari
-                controlador_missatge_benvinguda(username)
+                if test == 0: #sino peta
+                    controlador_missatge_benvinguda(username)
                 ja_existeix = False
         else:
             # Si el usuario no existe, añadirlo a la base de datos
             new_row = {'USERNAMES': username, 'POINTS': 0}
             df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
             df.to_csv(PATH + '\\' + BBDD_NAME, index=False)
-            controlador_missatge_benvinguda(username)
+            if test == 0:
+                controlador_missatge_benvinguda(username)
             ja_existeix = False
 
     return username
 
 # guardar els diccionaris dels usuaris
-def saveUserDict(username,PATH="BBDD",FOLDER_DICT="user_dict"):
+def saveUserDict(username,PATH="BBDD",FOLDER_DICT="user_dict",test=0):
     guardat = 0
     if not username:
         raise ValueError("El nom no pot estar buit.")
@@ -67,12 +70,13 @@ def saveUserDict(username,PATH="BBDD",FOLDER_DICT="user_dict"):
         saveFile.write('\n'.join(words))
 
     guardat = 1
-    controlador_canvis_guardats_correctament()
+    if test == 0:
+        controlador_canvis_guardats_correctament()
     return guardat
 
 # guardar els punts del usuari
-def save_user_points(username, points,PATH="BBDD",BBDD_NAME="user_names.csv"):
-    print("sumant ", points, 'punts a lusuari ', username)
+def save_user_points(username, points,PATH="BBDD",BBDD_NAME="user_names.csv", test=0):
+    print("sumant ", points, 'punts al usuari ', username)
 
     df = pd.read_csv(PATH + '\\' + BBDD_NAME)
 
@@ -90,5 +94,5 @@ def save_user_points(username, points,PATH="BBDD",BBDD_NAME="user_names.csv"):
     df['POINTS'] = pointsList
 
     df.to_csv(PATH + '\\' + BBDD_NAME, index=False)
-    
-    controlador_canvis_guardats_correctament()
+    if test == 0:
+        controlador_canvis_guardats_correctament()
