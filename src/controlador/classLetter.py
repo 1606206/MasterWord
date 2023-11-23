@@ -1,23 +1,15 @@
 class Letter:
-    """Clase para representar las letras de una palabra y
-    sus estados asociados a la visualización."""
+    #Clase para representar las letras de una palabra y sus estados asociados a la visualización.
     def __init__(self, letter, color):
-        self.color = color
-        self.letter = letter
+        self.color = color #aqui guardamos el color de cada letra
+        self.letter = letter #aqui guardamos cada lera para poder asociarle un color
     
 
-def selectColors(word: list, wordStatus: list):
-    """Transforma la lista de caracteres word en una lista de Letters
-    con sus correspondientes colores asociados a la lista wordStatus.
-
-    Args:
-        word (list): lista de letras
-        wordStatus (list): lista de estados
-    """    
-    for i, status in enumerate(wordStatus):
-        if (status == "*"):
+def selectColors(word: list, wordStatus: list): 
+    for i, status in enumerate(wordStatus): #bucle para asociar cada letra de la palabra a un color
+        if (status == "*"): #si la letra existe pero está mal posicionada
             word[i] = Letter(word[i],"mal_posicionada")
-        elif (status == "-"):
+        elif (status == "-"):  #si la letra no existe 
             word[i] = Letter(word[i],"fallo")
-        else:
+        else:  #si la letra existe y está correctamente posicionada
             word[i] = Letter(word[i],"acierto")

@@ -18,97 +18,98 @@ class Game:
         self.player = player
 
     def get_uniquePlayer(self):
-        """ Getter para el atributo uniquePlayer"""
+        #Getter para el atributo uniquePlayer
         return self.uniquePlayer
 
     def set_uniquePlayer(self, uniquePlayer):
-        """Setter para el atributo uniquePlayer"""
+        #Setter para el atributo uniquePlayer
         self.uniquePlayer = uniquePlayer
 
     def get_maxRounds(self):
-        """Getter para el atributo maxRounds"""
+        #Getter para el atributo maxRounds
         return self.maxRounds
 
     def set_maxRounds(self, maxRounds):
-        """Setter para el atributo maxRounds"""
+        #Setter para el atributo maxRounds
         self.maxRounds = maxRounds
 
     def get_anonymous(self):
-        """Getter para el atributo anonymous"""
+        #Getter para el atributo anonymous
         return self.anonymous
 
     def set_anonymous(self, anonymous):
-        """Setter para el atributo anonymous"""
+        #Setter para el atributo anonymous
         self.anonymous = anonymous
     
     def get_default_dictionary(self):
-        """Getter para el atributo default_dictionary"""
+        #Getter para el atributo default_dictionary
         return self.default_dictionary
 
     def set_default_dictionary(self, default_dictionary):
-        """Setter para el atributo default_dictionary"""
+        #Setter para el atributo default_dictionary
         self.default_dictionary = default_dictionary
 
-    def inicialitzar_partida(self, opcio, WORD_LENGHT):
-        """_summary_
-
-        Args:
-            opcio (int): _description_
-            WORD_LENGHT (_type_): _description_
-        """        
-        if self.uniquePlayer == 1:
-            if self.default_dictionary == 1:
-                dictionary = Dictionary(0, opcio, "/dictionary_" + str(WORD_LENGHT) + ".csv")
-                self.word_to_guess = Word(dictionary.randomChoice())
-            else: #comprovar que existeixii el diccionari abans
-                dictionary = Dictionary(0, 0, "\\user_dict\\dict_" + self.player.name + ".csv")
-                if (dictionary.wordList == []):
-                    saveUserDict(self.player.name)
-                    dictionary = Dictionary(0, 0, "\\user_dict\\dict_" + self.player.name + ".csv")
-                self.word_to_guess = Word(dictionary.randomChoice()) 
+    def inicialitzar_partida(self, opcio, WORD_LENGHT):  #Funcion que sirve para inicializar la partida, siempre empezaremos por el jugador 1
+        if self.uniquePlayer == 1: #si solo hay 1 jugador
+            if self.default_dictionary == 1: #si quiere jugar con un ficcionario default
+                dictionary = Dictionary(0, opcio, "/dictionary_" + str(WORD_LENGHT) + ".csv") #aqui usamos uno de los 5 posibles diccionarios default, de la longitud escogida por el usuario
+                self.word_to_guess = Word(dictionary.randomChoice()) #escogemos una palabra aleatoria del diccionario escogido
+            else: 
+                dictionary = Dictionary(0, 0, "\\user_dict\\dict_" + self.player.name + ".csv") #en caso de que quiera usar su propio diccionario y que existe previamente
+                if (dictionary.wordList == []): #si está vacio le pediremos que lo rellene
+                    saveUserDict(self.player.name) #guardamos en el diccionario las palabras del usuario en cuestión
+                    dictionary = Dictionary(0, 0, "\\user_dict\\dict_" + self.player.name + ".csv") # guardamos el diccionario en una variable
+                self.word_to_guess = Word(dictionary.randomChoice()) #escogemos una palabra aleatoria
 
         else: 
-            torn_jugador_1()
-            self.word_to_guess = Word(input().upper())
+            torn_jugador_1() # llamamos a torn_jugador para que el jugador uno sepa que es su turno
+            self.word_to_guess = Word(input().upper()) #convertimos la palabra a adivinar a mayusculas
 
         #print('word_to_guess', self.word_to_guess.splitWord)
     
     def user_game(self):
-        numRound = 0
-        win = False
-        historial = []
-        print("La paraula té ", self.word_to_guess.n_letters, " lletres")
-        while numRound < self.maxRounds and win == False: 
-            userInput = introduir_paraula()
-            userWord = Word(userInput)
-            long = self.word_to_guess.checkLong(userWord)
-            while long == False:
-                userInput = introduir_paraula()
-                userWord = Word(userInput)
-                long = self.word_to_guess.checkLong(userWord)
-                print("Paraula introduida per l'usuari: ", userWord.palabra)
+        numRound = 0  # Número de rondas jugadas
+        win = False  # Variable que indica si el usuario ha ganado o no
+        historial = []  # Lista para almacenar el historial de palabras introducidas por el usuario
+        print("La paraula té ", self.word_to_guess.n_letters, " lletres")  # Imprime la longitud de la palabra a adivinar
+        
+        while numRound < self.maxRounds and win == False:  # Bucle principal: mientras no se alcance el número máximo de rondas y el usuario no haya ganado
+            userInput = introduir_paraula()  # Obtiene la palabra introducida por el usuario
+            userWord = Word(userInput)  # Crea un objeto Word con la palabra del usuario
+            long = self.word_to_guess.checkLong(userWord)  # Verifica si la longitud de la palabra es correcta
             
-            numRound += 1 
-            win, result = self.word_to_guess.checkWord(userWord)  
-            selectColors(userWord.splitWord, result)
-            historial.append(userWord.splitWord) #metemos en el historial de palabras la palabra 
-            mostrar_paraula(historial) #muestra la palabra introducida por el usuario
-            print('\n')
-        return win, numRound
+            while long == False:  # Bucle interno: mientras la longitud de la palabra no sea correcta
+                userInput = introduir_paraula()  # Vuelve a solicitar al usuario que introduzca una palabra
+                userWord = Word(userInput)  # Crea un nuevo objeto Word con la palabra actualizada
+                long = self.word_to_guess.checkLong(userWord)  # Verifica nuevamente la longitud
+                
+                print("Paraula introduida per l'usuari: ", userWord.palabra)  # Imprime la palabra introducida por el usuario
+                
+            numRound += 1  # Incrementa el número de rondas jugadas
+            win, result = self.word_to_guess.checkWord(userWord)  # Verifica si la palabra del usuario es correcta
+            selectColors(userWord.splitWord, result)  # Selecciona y muestra colores según la validez de las letras en la palabra
+            historial.append(userWord.splitWord)  # Agrega la palabra al historial de palabras introducidas por el usuario
+            mostrar_paraula(historial)  # Muestra el historial de palabras introducidas por el usuario
+            print('\n')  # Imprime una línea en blanco
+            
+        return win, numRound  # Devuelve si el usuario ganó y el número total de rondas jugadas
+
     
-    def calculate_user_points(self, numRound, word_let): # li pasem el numero de rondes y el numero de lletres de la paraula
-        points = self.maxRounds * word_let #puntuació màxima si s'ha endivinat a la primera ronda
-        print(points)
-        for i in range(numRound): #si ha passat x rondes se li restarà numRound*n_letters de la paraula
-            for i in range(word_let): 
+    def calculate_user_points(self, numRound, word_let):  # Calcula la puntuación del usuario en base al número de rondas y letras en la palabra
+        points = self.maxRounds * word_let  # Puntuación máxima si se adivina la palabra en la primera ronda
+        print(points)  # Imprime la puntuación inicial
+        for i in range(numRound):  # Bucle que reduce la puntuación por cada ronda jugada
+            for i in range(word_let):  # Por cada letra en la palabra, se resta 1 punto adicional
                 points = points - 1
-        print(points)
-        return points + 1
-    
-    def calculate_anonymous_points(self, numRound):
-        points = self.maxRounds
-        for i in range(numRound):
+        print(points)  # Imprime la puntuación final después de las reducciones
+        return points + 1  # Devuelve la puntuación final aumentada en 1 (evita valores negativos)
+
+    def calculate_anonymous_points(self, numRound):  # Calcula la puntuación anónima en base al número de rondas
+        points = self.maxRounds  # Puntuación máxima al inicio
+        for i in range(numRound):  # Bucle que reduce la puntuación por cada ronda jugada
             points = points - 1
-        return points + 1
+        
+        return points + 1  # Devuelve la puntuación final aumentada en 1 (evita valores negativos)
+
 
     
