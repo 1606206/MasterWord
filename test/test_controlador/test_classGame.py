@@ -3,18 +3,6 @@ from src.controlador.classPlayer import Player
 from src.vista.mock_input import MockInput
 from src.controlador.classWord import Word
 
-#-----------------------TDD------------------------------#
-def test_calculate_user_points():
-    max_rounds = 10
-    game = Game(0,max_rounds,0,0,Player())
-    result = game.calculate_user_points(0, 5) #s'encerta a la primera
-    assert result == 51
-    result = game.calculate_user_points(1, 5) #s'encerta a la segona
-    assert result == 46
-    result = game.calculate_user_points(3, 5) # proba random
-    assert result == 36
-    result = game.calculate_user_points(max_rounds, 5) #s'encerta a a ultima
-    assert result == 1
 
 def test_init_1():
     game = Game()
@@ -40,31 +28,23 @@ def test_calculate_anonymous_points():
     assert game.calculate_anonymous_points(9) == 2      # (n-1) passades
     assert game.calculate_anonymous_points(10) == 1     # n passades
 
-### hay que arreglar estos tests
-def test_calculate_user_points_1(numRound = 5, word_let=5): #que sumi els punts que toquin perquè l'ha encertat 
+def test_calculate_user_points():
     max_rounds = 10
-    game = Game(0,max_rounds,0,0,Player())
-    result = game.calculate_user_points(numRound, word_let)
-    assert result == (max_rounds*word_let)-(numRound*word_let)+1
-
-def test_calculate_user_points_2(numRound = 12, word_let=5): #que no sumi punts perquè no l'ha encertat
-    max_rounds = 10
-    game = Game(0,max_rounds,0,0,Player())
-
-    result = game.calculate_user_points(numRound, word_let)
-    assert result == (max_rounds*word_let)-(numRound*word_let)+1
-
-def test_calculate_user_points_3(numRound = 5, word_let=5): #que sumi 1 punt perque l'ha encertat a la ultima ronda
-    max_rounds = numRound
-    game = Game(0,max_rounds,0,0,Player())
-    result = game.calculate_user_points(numRound, word_let)
-    assert result == 1
-
-def test_calculate_user_points_4(numRound = 1, word_let=5): #que sumi tants punts com max_rounds+1 hi hagi perque l'ha encertat a la primera
-    max_rounds = 5
-    game = Game(0,max_rounds,0,0,Player())
-    result = game.calculate_user_points(numRound, word_let)
-    assert result == (max_rounds*word_let)-(numRound*word_let)+1
+    game = Game(0, max_rounds, 0, 0, Player())
+    # Fixem bucle exterior al valor mínim no nul (num_Round, word_lenght)
+    assert game.calculate_user_points(1, 0) == 1        # Evitar el loop
+    assert game.calculate_user_points(1, 1) == 10       # Una passada pel loop
+    assert game.calculate_user_points(1, 2) == 19       # Dues passades pel loop
+    assert game.calculate_user_points(1, 5) == 46       # m passades pel loop m<n
+    assert game.calculate_user_points(1, 9) == 82       # (n-1) passades
+    assert game.calculate_user_points(1, 10) == 91      # n passades
+    # Fixem bucle interior a un valor habitual
+    assert game.calculate_user_points(0, 5) == 51       # Evitar el loop
+    assert game.calculate_user_points(1, 5) == 46       # Una passada pel loop
+    assert game.calculate_user_points(2, 5) == 41       # Dues passades pel loop
+    assert game.calculate_user_points(5, 5) == 26       # m passades pel loop m<n
+    assert game.calculate_user_points(9, 5) == 6        # (n-1) passades
+    assert game.calculate_user_points(10, 5) == 1       # n passades
 
 def test_user_game_unique_player_1():  # Guanyar a la primera
     game = Game(uniquePlayer=1, maxRounds=5, anonymous=1, default_dict=0, player=Player())

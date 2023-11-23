@@ -119,7 +119,6 @@ class Game:
         points = self.maxRounds
         for i in range(numRound):
             points = points - 1
-
         return points + 1
 
     
