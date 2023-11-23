@@ -4,7 +4,6 @@ from src.controlador.classWord import *
 from src.controlador.classPlayer import Player
 from src.model.classDictionary import *
 from src.controlador.classLetter import *
-from src.vista.mock_input import MockInput
 
 
 class Game:
@@ -74,29 +73,20 @@ class Game:
 
         #print('word_to_guess', self.word_to_guess.splitWord)
     
-    def user_game(self, testing=False, mock_input=None):
+    def user_game(self):
         numRound = 0
         win = False
         historial = []
-
-        print("la paraula te", self.word_to_guess.n_letters, "lletres")
-
+        print("La paraula té ", self.word_to_guess.n_letters, " lletres")
         while numRound < self.maxRounds and win == False: 
-            if not testing:
-                userInput = introduir_paraula()
-            else:
-                userInput = mock_input.get_word()
+            userInput = introduir_paraula()
             userWord = Word(userInput)
             long = self.word_to_guess.checkLong(userWord)
             while long == False:
-                if not testing:
-                    userInput = introduir_paraula()
-                else:
-                    userInput = mock_input.get_word()
-                    
+                userInput = introduir_paraula()
                 userWord = Word(userInput)
                 long = self.word_to_guess.checkLong(userWord)
-                print("palabra introducida por el usuario", userWord.palabra)
+                print("Paraula introduida per l'usuari: ", userWord.palabra)
             
             numRound += 1 
             win, result = self.word_to_guess.checkWord(userWord)  
