@@ -12,7 +12,7 @@ FUNCIONES_POR_TESTEAR_PARA_STATEMENT_COVERAGE = "ESTOY UTILIZANDO UNA BASE DE DA
 
 #FUNCIONA
 def test_read_user():
-    points, ranquing = read_user('serena', 1,TEST_PATH,TEST_BBDD_NAME)
+    points, ranquing = read_user('serena', 1000,TEST_PATH,TEST_BBDD_NAME)
     assert points == 1000
     assert ranquing == 1
     with pytest.raises(ValueError) as e:
@@ -60,3 +60,7 @@ def test_saveUserDict():
 
     # Verificar que el archivo fue creado
     assert os.path.isfile(os.path.join(TEST_PATH,"test_user_dict", 'dict_'+ username + '.csv'))
+    
+    username_empty=""
+    with pytest.raises(ValueError, match="El nom no pot estar buit."):
+        saveUserDict(username_empty, TEST_PATH, "test_user_dict", 1)

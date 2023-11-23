@@ -47,8 +47,7 @@ def check_user(username, option,PATH="BBDD",BBDD_NAME="user_names.csv",test = 0)
             new_row = {'USERNAMES': username, 'POINTS': 0}
             df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
             df.to_csv(PATH + '\\' + BBDD_NAME, index=False)
-            if test == 0:
-                controlador_missatge_benvinguda(username)
+            controlador_missatge_benvinguda(username)
             ja_existeix = False
 
     return username
@@ -69,8 +68,8 @@ def saveUserDict(username,PATH="BBDD",FOLDER_DICT="user_dict",test=0):
         saveFile.write('\n'.join(words))
 
     guardat = 1
-    if test == 0: # si quito esto mejoro el coverage, pero lo dejo de momento, aumenta un 2%
-        controlador_canvis_guardats_correctament()
+
+    controlador_canvis_guardats_correctament()
     return guardat
 
 # guardar els punts del usuari
@@ -92,5 +91,5 @@ def save_user_points(username, points, PATH="BBDD", BBDD_NAME="user_names.csv", 
     df['POINTS'] = pointsList
 
     df.to_csv(PATH + '\\' + BBDD_NAME, index=False)
-    if test == 0:
-        controlador_canvis_guardats_correctament()
+
+    controlador_canvis_guardats_correctament()
