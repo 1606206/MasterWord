@@ -58,7 +58,7 @@ def test_user_game_unique_player_1(mocker):  # No guanyar
     win, numRound = game.user_game()
     assert win == False
     assert numRound == 5
-    
+
 def test_user_game_unique_player_2(mocker):  # Guanyar en la ronda 1
     game = Game(uniquePlayer=1, maxRounds=5, anonymous=1, default_dict=0, player=Player())
     game.word_to_guess = Word("TQS")
@@ -67,7 +67,7 @@ def test_user_game_unique_player_2(mocker):  # Guanyar en la ronda 1
     win, numRound = game.user_game()
     assert win == True
     assert numRound == 1
-    
+
 def test_user_game_unique_player_3(mocker):  # Guanyar en la ronda 2
     game = Game(uniquePlayer=1, maxRounds=5, anonymous=1, default_dict=0, player=Player())
     game.word_to_guess = Word("TQS")
@@ -77,7 +77,7 @@ def test_user_game_unique_player_3(mocker):  # Guanyar en la ronda 2
     win, numRound = game.user_game()
     assert win == True
     assert numRound == 2
-    
+
 def test_user_game_unique_player_4(mocker):  # Guanyar en la ronda m < n
     game = Game(uniquePlayer=1, maxRounds=5, anonymous=1, default_dict=0, player=Player())
     game.word_to_guess = Word("TQS")
@@ -100,8 +100,7 @@ def test_user_game_unique_player_5(mocker):  # Guanyar en la ronda n-1
     win, numRound = game.user_game()
     assert win == True
     assert numRound == 4
-    
-    
+
 def test_user_game_unique_player_6(mocker):  # Guanyar a la ultima
     game = Game(uniquePlayer=1, maxRounds=3, anonymous=1, default_dict=0, player=Player())
     game.word_to_guess = Word("TQS")
