@@ -50,7 +50,8 @@ def menu_tornar_jugar():
     print("2. Sortir")
 
 def menu_usuari():
-    clear()
+    #clear()
+    print('\n')
     print("1. Crear un nou usuari")
     print("2. Entrar amb el meu usuari")
 
@@ -60,6 +61,9 @@ def mostrar_puntuacio(player):
     print("Punts: ", player.points)
     print("Rànquing: ", player.ranking)
 
+def mostrar_punts(points):
+    print('Has aconseguit ', points, ' punts!')
+
 def introduir_opcions_menus():
     return input("Introdueix el número corresponent per a seleccionar una opció: ")
 
@@ -67,11 +71,12 @@ def sortir_joc():
     print("Sortint del joc...")
 
 def introduir_nom_usuari():
-    clear()
+    #clear()
+
     return input('Introdueix el teu nom de usuari: ')
 
 def introduir_paraula():
-    return input('Quina paraula creus que es?')
+    return input('Quina paraula creus que es? \n')
 
 def opcio_no_valida():
     print("Opció no vàlida. Si us plau, selecciona una opció vàlida.")
@@ -86,6 +91,7 @@ def nom_usuari_ja_existent():
     return input("Aquest nom d'usuari ja existeix. Introdueix un altre nom de usuari: ")
 
 def missatge_benvinguda(username):
+    print('\n')
     print("Benvingut a WordleApp:", username, "\n")
 
 def canvis_guardats_correctament():

@@ -18,9 +18,11 @@ def executar_joc(partida):
 def resultat_no_anonymous(partida:Game, numRound:int, player:Player):
     points = partida.calculate_user_points(numRound, partida.word_to_guess.n_letters)
     save_user_points(player.name, points)  # Guarda los puntos del jugador.
+    mostrar_punts(points)
 
 def resultat_anonymous(partida, numRound:int):
     points = partida.calculate_anonymous_points(numRound)  # Calcula puntos anónimos.
+    mostrar_punts(points)
 
 def continuar_o_tancarjoc():
     resposta = input("Introdueix 'C' per continuar o qualsevol altre tecla per sortir del joc: ")
