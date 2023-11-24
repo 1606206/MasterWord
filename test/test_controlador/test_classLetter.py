@@ -1,14 +1,19 @@
 from src.controlador.classLetter import *
 
 #------------------------TDD-----------------------#
+# SELECCIONAR COLORES
 def test_selectColors():
+    # Configuración inicial
     wordList = ["H", "O", "L", "A"]
     wordStatus = ["+", "*", "-", "*"]
+    # Llamada a la función
     selectColors(wordList, wordStatus)
-    assert wordList[0].letter =="H" and wordList[0].color == "acierto"
-    assert wordList[1].letter =="O" and wordList[1].color == "mal_posicionada"
-    assert wordList[2].letter =="L" and wordList[2].color == "fallo"
-    assert wordList[3].letter =="A" and wordList[3].color == "mal_posicionada"
+    # Verificaciones
+    assert wordList[0].letter == "H" and wordList[0].color == "acierto"
+    assert wordList[1].letter == "O" and wordList[1].color == "mal_posicionada"
+    assert wordList[2].letter == "L" and wordList[2].color == "fallo"
+    assert wordList[3].letter == "A" and wordList[3].color == "mal_posicionada"
+
 
 
 ##------------------Loop testing---------------------## REVISARRRR
