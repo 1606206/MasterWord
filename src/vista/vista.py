@@ -6,7 +6,7 @@ WORD_LENGHT = 3
 ROUNDS = 5
 clear = lambda: os.system('cls')
 
-
+#Funciones para mostar mensajes por pantalla
 def torn_jugador_1():
     print("Jugador 1, introdueix la paraula que ha d'endevinar el Jugador 2!")
     

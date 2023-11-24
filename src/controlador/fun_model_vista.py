@@ -1,5 +1,6 @@
 from src.vista.vista import *
 
+#Funciones para usar en el modelo
 def controlador_nom_usuari_ja_existent():
     return nom_usuari_ja_existent()
 
