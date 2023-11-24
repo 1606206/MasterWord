@@ -39,7 +39,6 @@ class Word:
         else:
             return True
 
-    # comprovar si la paraula intrduida coincideix amb la que s'ha d'encertar
     def checkWord(self, userWord) -> (bool, str):
         """Comprueba si la palabra introducida es igual.
 
