@@ -27,7 +27,7 @@ def resultat_anonymous(partida, numRound:int):
 def continuar_o_tancarjoc():
     resposta = input("Introdueix 'C' per continuar o qualsevol altre tecla per sortir del joc: ")
     # Devuelve True si el usuario introduce 'C', indicando que el juego debe continuar; de lo contrario, devuelve False.
-    return resposta.upper() != 'C'
+    return resposta.upper() == 'C'
 
         
 

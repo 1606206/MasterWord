@@ -111,5 +111,15 @@ class Game:
         
         return points + 1  # Devuelve la puntuación final aumentada en 1 (evita valores negativos)
 
-
+    def pairwise_testing(self): #Función para hacer pruebas sobre el pairwise testing
+        if self.uniquePlayer and self.anonymous:
+            return "S'ha escollit jugar de forma anònima i en solitari."
+        elif self.uniquePlayer and not(self.anonymous):
+            if self.player == "Pol":
+                return "¡Jugues sol Pol!"
+            else:
+                return "¡Jugues sola Cristina!"
+        else:
+            return "La partida multijugador és anònima."
+        
     

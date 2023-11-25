@@ -168,4 +168,21 @@ def test_user_game_unique_player_7(mocker):
     assert win == True
     assert numRound == 1
 
+# TEST PAIRWISE TESTING
+def test_pairwise_testing(): #Función para hacer pruebas sobre el pairwise testing
+    partida= Game(uniquePlayer=0, anonymous=0, player=Player("Pol"))
+    resultat = partida.pairwise_testing()
+    assert resultat == "La partida multijugador és anònima."
+
+    partida= Game(uniquePlayer=0,anonymous=1, player=Player("Cristina"))
+    resultat = partida.pairwise_testing()
+    assert resultat == "La partida multijugador és anònima."
+
+    partida= Game(uniquePlayer=1,anonymous=0, player=Player("Cristina"))
+    resultat = partida.pairwise_testing()
+    assert resultat == "¡Jugues sola Cristina!"
+
+    partida= Game(uniquePlayer=1, anonymous=1, player=Player("Pol"))
+    resultat = partida.pairwise_testing()
+    assert resultat == "S'ha escollit jugar de forma anònima i en solitari."
 

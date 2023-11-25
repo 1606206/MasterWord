@@ -1,16 +1,14 @@
 from src.controlador.controlador import *
+from pytest_mock import mocker
 
 
-#------------------------TEST CAIXA NEGRA-----------------------#
+def test_continuar_o_tancarjoc(mocker):
 
-##------------------Particions equivalents---------------------##
+    mocker.patch("builtins.input", return_value='C')
+    respuesta = continuar_o_tancarjoc()
+    assert respuesta == True
 
-##------------------Valors límit i frontera--------------------##
-
-#------------------------TEST CAIXA BLANCA-----------------------#
-
-##--------------------Statement Coverage-----------------------##
-##---------------------Decision Coverage-----------------------##
-##-----------------------Path Coverage-------------------------##
-##-------------------Loop Testing Simple-----------------------##
-##--------------------Loop Testing Aniuat----------------------##
+    mocker.patch("builtins.input", return_value='X')
+    respuesta = continuar_o_tancarjoc()
+    assert respuesta == False
+    
