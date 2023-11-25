@@ -87,8 +87,8 @@ class Game:
                 
             numRound += 1  # Incrementa el número de rondas jugadas
             win, result = self.word_to_guess.checkWord(userWord)  # Verifica si la palabra del usuario es correcta
-            selectColors(userWord.splitWord, result)  # Selecciona y muestra colores según la validez de las letras en la palabra
-            historial.append(userWord.splitWord)  # Agrega la palabra al historial de palabras introducidas por el usuario
+            color_word = selectColors(userWord.splitWord, result)  # Selecciona y muestra colores según la validez de las letras en la palabra
+            historial.append(color_word)  # Agrega la palabra al historial de palabras introducidas por el usuario
             mostrar_paraula(historial)  # Muestra el historial de palabras introducidas por el usuario
             print('\n')  # Imprime una línea en blanco
             

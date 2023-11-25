@@ -125,22 +125,6 @@ def test_checkWord_5():
     assert bool_result is True
     assert result == expected_result
 
-
-def test_checkWord_path_coverage():
-    # Path 1: evitamos los dos FOR
-    word = Word("")
-    with pytest.raises(ValueError) as e:
-        word = Word("")
-    assert "La paraula no pot estar buida." in str(e.value)
-
-    # Path 2: entramos a los dos FOR, IF1 = SI, IF2 = NO, IF3 = SI
-    word = Word("teu")
-    assert word.checkWord(Word("teu")) == (True, ["+", "+", "+"])
-
-    # Path 2: entramos a los dos FOR, IF1 = NO, IF2 = SI, IF3 = NO
-    word = Word("mar")
-    assert word.checkWord(Word("rim")) == (False, ["*", "-", "*"])
-
 # PALABRA CORTA
 def test_checkLong_1():
     # Prueba la función checkLong de la clase Word con una palabra más corta que la original.

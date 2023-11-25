@@ -1,3 +1,5 @@
+import copy
+
 class Letter:
     #Clase para representar las letras de una palabra y sus estados asociados a la visualización.
     def __init__(self, letter, color):
@@ -6,10 +8,14 @@ class Letter:
     
 
 def selectColors(word: list, wordStatus: list): 
+    word_colors = copy.copy(word)
+
     for i, status in enumerate(wordStatus): #bucle para asociar cada letra de la palabra a un color
         if (status == "*"): #si la letra existe pero está mal posicionada
-            word[i] = Letter(word[i],"mal_posicionada")
+            word_colors[i] = Letter(word_colors[i],"mal_posicionada")
         elif (status == "-"):  #si la letra no existe 
-            word[i] = Letter(word[i],"fallo")
+            word_colors[i] = Letter(word_colors[i],"fallo")
         else:  #si la letra existe y está correctamente posicionada
-            word[i] = Letter(word[i],"acierto")
+            word_colors[i] = Letter(word_colors[i],"acierto")
+
+    return word_colors

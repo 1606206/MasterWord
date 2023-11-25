@@ -7,12 +7,12 @@ def test_selectColors():
     wordList = ["H", "O", "L", "A"]
     wordStatus = ["+", "*", "-", "*"]
     # Llamada a la función
-    selectColors(wordList, wordStatus)
+    color_word = selectColors(wordList, wordStatus)
     # Verificaciones
-    assert wordList[0].letter == "H" and wordList[0].color == "acierto"
-    assert wordList[1].letter == "O" and wordList[1].color == "mal_posicionada"
-    assert wordList[2].letter == "L" and wordList[2].color == "fallo"
-    assert wordList[3].letter == "A" and wordList[3].color == "mal_posicionada"
+    assert color_word[0].letter == "H" and color_word[0].color == "acierto"
+    assert color_word[1].letter == "O" and color_word[1].color == "mal_posicionada"
+    assert color_word[2].letter == "L" and color_word[2].color == "fallo"
+    assert color_word[3].letter == "A" and color_word[3].color == "mal_posicionada"
 
 
 
@@ -26,7 +26,6 @@ def test_selectColors_2(wordList = ['A', 'B', 'C'], wordStatus = ['-']): #  1 pa
     selectColors(wordList, wordStatus)
     assert wordList[0].color == "fallo"
     assert all(letter.color is None for letter in wordList[1:])
-
 
 def test_selectColors_3(wordList = ['A', 'B', 'C'], wordStatus = ['+', '-']): # 2 pasades
     selectColors(wordList, wordStatus)

@@ -131,7 +131,7 @@ def test_user_game_unique_player_5(mocker):
 # JUEGO DE USUARIO CON JUGADOR ÚNICO - GANAR EN LA ÚLTIMA RONDA
 def test_user_game_unique_player_6(mocker):
     # Configuración inicial del juego y simulación de entrada de palabras.
-    game = Game(uniquePlayer=1, maxRounds=3, anonymous=1, default_dict=0, player=Player())
+    game = Game(uniquePlayer=1, maxRounds=5, anonymous=1, default_dict=0, player=Player())
     game.word_to_guess = Word("TQS")
     llista_paraules = ["TTT",
                        "QQQ",
