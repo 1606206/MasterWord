@@ -8,14 +8,14 @@ class Letter:
     
 
 def selectColors(word: list, wordStatus: list): 
-    word_colors = copy.copy(word)
+    word_colors = copy.copy(wordStatus)
 
     for i, status in enumerate(wordStatus): #bucle para asociar cada letra de la palabra a un color
         if (status == "*"): #si la letra existe pero está mal posicionada
-            word_colors[i] = Letter(word_colors[i],"mal_posicionada")
+            word_colors[i] = Letter(word[i],"mal_posicionada")
         elif (status == "-"):  #si la letra no existe 
-            word_colors[i] = Letter(word_colors[i],"fallo")
+            word_colors[i] = Letter(word[i],"fallo")
         else:  #si la letra existe y está correctamente posicionada
-            word_colors[i] = Letter(word_colors[i],"acierto")
+            word_colors[i] = Letter(word[i],"acierto")
 
     return word_colors

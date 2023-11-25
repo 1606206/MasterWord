@@ -15,6 +15,53 @@ def test_selectColors():
     assert color_word[3].letter == "A" and color_word[3].color == "mal_posicionada"
 
 
+def test_path_coverage():
+    #PATH 1: no se entra al for
+    wordList = []
+    wordStatus = []
+    color_word = selectColors(wordList, wordStatus)
+    assert color_word == [] 
+
+    #PATH 2: todas las letras existentes pero mal colocadas
+    wordList = ["H", "O", "L", "A"]
+    wordStatus = ["*", "*", "*", "*"]
+    color_word = selectColors(wordList, wordStatus)
+    # Verificaciones
+    assert color_word[0].letter == "H" and color_word[0].color == "mal_posicionada"
+    assert color_word[1].letter == "O" and color_word[1].color == "mal_posicionada"
+    assert color_word[2].letter == "L" and color_word[2].color == "mal_posicionada"
+    assert color_word[3].letter == "A" and color_word[3].color == "mal_posicionada"
+
+    #PATH 3: todas las letras errónias
+    wordList = ["H", "O", "L", "A"]
+    wordStatus = ["-", "-", "-", "-"]
+    color_word = selectColors(wordList, wordStatus)
+    # Verificaciones
+    assert color_word[0].letter == "H" and color_word[0].color == "fallo"
+    assert color_word[1].letter == "O" and color_word[1].color == "fallo"
+    assert color_word[2].letter == "L" and color_word[2].color == "fallo"
+    assert color_word[3].letter == "A" and color_word[3].color == "fallo"
+
+    #PATH 4: todas las letras bien colocadas
+    wordList = ["H", "O", "L", "A"]
+    wordStatus = ["+", "+", "+", "+"]
+    color_word = selectColors(wordList, wordStatus)
+    # Verificaciones
+    assert color_word[0].letter == "H" and color_word[0].color == "acierto"
+    assert color_word[1].letter == "O" and color_word[1].color == "acierto"
+    assert color_word[2].letter == "L" and color_word[2].color == "acierto"
+    assert color_word[3].letter == "A" and color_word[3].color == "acierto"
+
+    #PATH único: todas los caminos ejecutados
+    wordList = ["T", "E", "U"]
+    wordStatus = ["*", "-", "+"]
+    color_word = selectColors(wordList, wordStatus)
+    # Verificaciones
+    assert color_word[0].letter == "T" and color_word[0].color == "mal_posicionada"
+    assert color_word[1].letter == "E" and color_word[1].color == "fallo"
+    assert color_word[2].letter == "U" and color_word[2].color == "acierto"
+
+
 
 ##------------------Loop testing---------------------## REVISARRRR
 '''
