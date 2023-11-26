@@ -1,6 +1,7 @@
 from src.controlador.classGame import Game
 from src.controlador.classPlayer import Player
 from src.controlador.classWord import Word
+from src.model.classDictionary import Dictionary
 from pytest_mock import mocker
 
 
@@ -21,8 +22,6 @@ def test_init_2():
     assert len(game.plays) == 0
     assert game.uniquePlayer == 1
     assert game.maxRounds == 10
-
-
 
 # LOOP TESTING
 def test_calculate_anonymous_points():
@@ -186,3 +185,73 @@ def test_pairwise_testing(): #Función para hacer pruebas sobre el pairwise test
     resultat = partida.pairwise_testing()
     assert resultat == "S'ha escollit jugar de forma anònima i en solitari."
 
+
+# FUNCIONES AUXILIARES PARA LOS MOCKS
+def mocking_random_choice():
+    return "random"
+
+def mocking_readBBDD(secPath):
+    return []
+
+# uniquePlayer a 1, default_dictionary a 0
+def test_inicialitzar_partida_1(mocker):
+    mocker.patch("src.model.classDictionary.Dictionary.readBBDD", side_effect=mocking_readBBDD)
+    mocker.patch("src.model.classDictionary.Dictionary.randomChoice", side_effect=mocking_random_choice)
+    mocker.patch("builtins.input", side_effect="random")
+    
+    opcio = 0
+    word_length = 5
+    game = Game(uniquePlayer=1, maxRounds=5, anonymous=1, default_dict=0, player=Player())
+    game.inicialitzar_partida(opcio, word_length)
+    game.word_to_guess == Word("random")
+
+# uniquePlayer a 1, default_dictionary a 1
+def test_inicialitzar_partida_2(mocker):
+    mocker.patch("src.model.classDictionary.Dictionary.readBBDD", side_effect=mocking_readBBDD)
+    mocker.patch("src.model.classDictionary.Dictionary.randomChoice", side_effect=mocking_random_choice)
+    mocker.patch("builtins.input", side_effect="random")
+
+    opcio = 0
+    word_length = 5
+    game = Game(uniquePlayer=1, maxRounds=5, anonymous=1, default_dict=1, player=Player())
+    game.inicialitzar_partida(opcio, word_length)
+    game.word_to_guess == Word("random")
+
+# uniquePlayer a 0, default_dictionary a 1
+def test_inicialitzar_partida_3(mocker):
+    mocker.patch("src.model.classDictionary.Dictionary.readBBDD", side_effect=mocking_readBBDD)
+    mocker.patch("src.model.classDictionary.Dictionary.randomChoice", side_effect=mocking_random_choice)
+    mocker.patch("builtins.input", side_effect="random")
+
+    opcio = 0
+    word_length = 5
+    game = Game(uniquePlayer=0, maxRounds=5, anonymous=1, default_dict=1, player=Player())
+    game.inicialitzar_partida(opcio, word_length)
+    game.word_to_guess == Word("random")
+
+def test_getters_and_setters():
+    game = Game()
+    # Comprobar valores por defecto
+    assert game.get_uniquePlayer() == 0
+    assert game.get_maxRounds() == 0
+    assert game.get_anonymous() == 0
+    assert game.get_default_dictionary() == 0
+    
+    # Comprovar los getters y los setters
+    game.set_uniquePlayer(1)
+    assert game.uniquePlayer == 1
+    assert game.get_uniquePlayer() == 1
+
+    game.set_maxRounds(5)
+    assert game.maxRounds == 5
+    assert game.get_maxRounds() == 5
+    
+    game.set_anonymous(1)
+    assert game.anonymous == 1
+    assert game.get_anonymous() == 1
+    
+    dictionary = Dictionary()
+    game.set_default_dictionary(dictionary)
+    assert game.default_dictionary == dictionary
+    assert game.get_default_dictionary() == dictionary
+    
