@@ -1,7 +1,10 @@
 from src.model.model import *
 from src.vista.vista import *
+from unittest.mock import patch
 import pandas as pd
 import os
+import shutil
+import tempfile
 
 # UNIT TESTING
 TEST_PATH = 'test_BBDD'
@@ -43,7 +46,12 @@ def test_save_user_points():
 
 
 #------------------------------------TEST CHECK USER-----------------------------------------------
+
+
 def test_check_user():
+    #guardamos el df que no queremos que se modifique 
+    df_original = pd.read_csv(TEST_PATH + '\\' + TEST_BBDD_NAME, sep=',')
+
     # Nuevo nombre de usuario para la prueba.
     new_username = 'añadirPrueba'
     # Opciones posibles: ['1', '2']
@@ -57,7 +65,35 @@ def test_check_user():
     df_result = df_result[df_result['USERNAMES'] != new_username]
     df_result.to_csv(TEST_PATH + '\\' + TEST_BBDD_NAME, index=False)
 
+    #prueba para usuario que no existe con opcion 1 y opcion 2
+    missing_username = 'no_existo_bb'
+    with patch("pandas.read_csv") as mock_read_csv:
+        # Configura el comportamiento del objeto simulado para que el usuario no exista inicialmente
+        mock_read_csv.return_value = pd.DataFrame({'USERNAMES': []})
+        # Llama a la función check_user con un nuevo usuario que no existe y opción 1.
+        try:
+            result_missing_user_option_1 = check_user(missing_username, opciones[0], TEST_PATH, TEST_BBDD_NAME, 1)
+            # Si no hay excepciones, la función se ejecutó con éxito.
+            # Verifica que el resultado de la función sea el mismo que el nombre de usuario proporcionado
+            assert result_missing_user_option_1 == missing_username, f"El resultado no coincide con el nombre de usuario proporcionado: {result_missing_user_option_1}"
+        except Exception as e:
+            pytest.fail(f"Error inesperado: {e}")
 
+    # Prueba para usuario que no existe con opción 2
+    with patch("pandas.read_csv") as mock_read_csv:
+        # Configura el comportamiento del objeto simulado para que el usuario exista después de la opción 1
+        mock_read_csv.side_effect = [pd.DataFrame({'USERNAMES': [missing_username]}), pd.DataFrame({'USERNAMES': [missing_username]})]
+        # Llama a la función check_user con el mismo usuario y opción 2.
+        try:
+            result_missing_user_option_2 = check_user(missing_username, opciones[1], TEST_PATH, TEST_BBDD_NAME, 1)
+            # Si no hay excepciones, la función se ejecutó con éxito.
+            # Verifica que el resultado de la función sea el mismo que el nombre de usuario proporcionado
+            assert result_missing_user_option_2 == missing_username, f"El resultado no coincide con el nombre de usuario proporcionado: {result_missing_user_option_2}"
+
+        except Exception as e:
+            pytest.fail(f"Error inesperado: {e}")
+
+    df_original.to_csv(TEST_PATH + '\\' + TEST_BBDD_NAME, index=False, sep=',')
 
 #-------------------------------- TEST SAVE USER DICT---------------------------------------
 def test_saveUserDict():
