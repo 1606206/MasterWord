@@ -1,7 +1,6 @@
 import pytest
 from src.controlador.classWord import Word
 
-#------------------------TDD-----------------------------------#
 def test_checkLong():
     # Prueba la función checkLong de la clase Word.
     # Palabra original: "paraula"
@@ -25,8 +24,6 @@ def test_checkWord():
     assert word.checkWord(Word("aluarap")) == (False, ["*", "*", "*", "+", "*", "*", "*"])
     # Algunas letras correctas en posiciones correctas y en posiciones incorrectas.
     assert word.checkWord(Word("peruele")) == (False, ["+", "-", "+", "*", "-", "+", "-"])
-
-# ------------------------TEST CAIXA NEGRA-----------------------#
 
 # PALABRA CON NÚMEROS
 def test_validInput_1():
@@ -151,8 +148,3 @@ def test_checkLong_3():
     # Se espera que la palabra sea considerada correcta ya que tiene la misma longitud que la original.
     result = correct_word.checkLong(user_word)
     assert result is True
-
-
-
-
-
