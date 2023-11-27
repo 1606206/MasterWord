@@ -1,5 +1,6 @@
 import pytest
 from src.controlador.classWord import Word
+from src.controlador.classLetter import selectColors
 
 def test_checkLong():
     # Prueba la función checkLong de la clase Word.
