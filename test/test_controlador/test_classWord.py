@@ -71,6 +71,46 @@ def test_validInput_6():
         word = Word(999)
     assert "Has d'introduir un string." in str(e.value)
 
+# PALABRA EXTREMADAMENTE LARGA
+def test_validInput_7():
+    # Se espera que se genere un MemoryError.
+    max_length_string = 10000000000000000 # 10^16
+    with pytest.raises(MemoryError) as e:
+        word = Word("a" * max_length_string)
+
+# PALABRA DEMASIADO LARGA
+def test_validInput_8():
+    # Se espera que se genere un MemoryError.
+    max_length_string = 10000000000 # 10^10
+    with pytest.raises(MemoryError) as e:
+        word = Word("a" * max_length_string)
+
+# PALABRA MUY LARGA PERO NO DEMASIADO
+def test_validInput_9():
+    # Prueba exitosa de creación de la palabra.
+    max_length_string = 1000000000 # 10^9
+    try:
+        word = Word("a" * max_length_string)
+    except Exception as e:
+        assert False, f"Word ha lanzado la excepción {e}"
+
+# PALABRA MUY CORTA PERO NO VACÍA
+def test_validInput_10():
+    # Prueba exitosa de creación de la palabra.
+    max_length_string = 1 # 10^0
+    try:
+        word = Word("a" * max_length_string)
+    except Exception as e:
+        assert False, f"Word ha lanzado la excepción {e}"
+
+# PALABRA CON CARÁCTERES UNICODE
+def test_validInput_11():
+    # Prueba exitosa de creación de la palabra.
+    try:
+        word = Word("áéíóú")
+    except Exception as e:
+        assert False, f"Word ha lanzado la excepción {e}"
+
 
 # PALABRA DESORDENADA
 def test_checkWord_1():
