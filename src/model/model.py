@@ -41,10 +41,10 @@ def check_user(username, option, PATH="BBDD", BBDD_NAME="user_names.csv", test=0
 
         if username in userList and option == '1': # Quiere entrar con el nombre de usuario nuevo.
                 username = controlador_nom_usuari_ja_existent()
-        elif username in userList and option == '2':  # Quiere entrar con el nombre de usuario existente.
+        if username in userList and option == '2':  # Quiere entrar con el nombre de usuario existente.
                 controlador_missatge_benvinguda(username)
                 ja_existeix = False
-        else:
+        if username not in userList:
             # Si el usuario no existe, agregarlo a la base de datos.
             new_row = {'USERNAMES': username, 'POINTS': 0}
             df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)

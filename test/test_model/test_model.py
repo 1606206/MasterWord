@@ -90,6 +90,25 @@ def test_check_user():
 
     df_original.to_csv(TEST_PATH + '\\' + TEST_BBDD_NAME, index=False, sep=',')
 
+#DECISION COVERAGE FUNCIÓN CHECKUSER
+def test_check_user_decision_coverage_1(self, mock_input, mock_controlador_nom_usuari_ja_existent):
+
+    mock_input.patch("builtins.input", side_effect=["existing_username", "1"]) 
+    mock_input.patch("controlador.controlador_nom_usuari_ja_existent")
+
+    result = check_user("existing_username", "1")
+    mock_controlador_nom_usuari_ja_existent ###hay un input aqui
+    self.assertEqual(result, "mocked_username")
+
+def test_check_user_decision_coverage_2(self, mock_input, mock_controlador_missatge_benvinguda):
+    mock_input.patch("builtins.input", side_effect=["existing_username", "2"])
+    mock_input.patch("tu_modulo.controlador_missatge_benvinguda")
+
+    result = check_user("existing_username", "2")
+    mock_controlador_missatge_benvinguda ###esto es solo un print
+    self.assertEqual(result, "existing_username")
+
+
 #TEST SAVE USER DICT
 def test_saveUserDict():
     # Nombre de usuario para la prueba.
