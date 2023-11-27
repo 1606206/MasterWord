@@ -61,6 +61,15 @@ def test_path_coverage():
     assert color_word[1].letter == "E" and color_word[1].color == "fallo"
     assert color_word[2].letter == "U" and color_word[2].color == "acierto"
 
+def test_condition_coverage():
+    #Comprobar que si los tres condicionales se ponen a True i a False, el programa responde bien.
+    wordList = ["P", "A", "L"]
+    wordStatus = ["*", "-", "+"]
+    color_word = selectColors(wordList, wordStatus)
+    # Verificaciones
+    assert color_word[0].letter == "P" and color_word[0].color == "mal_posicionada"
+    assert color_word[1].letter == "A" and color_word[1].color == "fallo"
+    assert color_word[2].letter == "L" and color_word[2].color == "acierto"
 
 
 ##------------------Loop testing---------------------## REVISARRRR

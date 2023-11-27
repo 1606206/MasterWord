@@ -122,21 +122,22 @@ def test_checkWord_5():
     assert bool_result is True
     assert result == expected_result
 
-# PALABRA CORTA
-def test_checkLong_1():
-    # Prueba la función checkLong de la clase Word con una palabra más corta que la original.
-    correct_word = Word("PALABRA")
-    user_word = Word("PALA")
-    # Se espera que la palabra sea considerada incorrecta ya que es más corta que la original.
-    result = correct_word.checkLong(user_word)
-    assert result is False
 
 # PALABRA LARGA
-def test_checkLong_2():
+def test_checkLong_1():
     # Prueba la función checkLong de la clase Word con una palabra más larga que la original.
     correct_word = Word("PALABRA")
     user_word = Word("PALABRABRA")
     # Se espera que la palabra sea considerada incorrecta ya que es más larga que la original.
+    result = correct_word.checkLong(user_word)
+    assert result is False
+
+# PALABRA CORTA
+def test_checkLong_2():
+    # Prueba la función checkLong de la clase Word con una palabra más corta que la original.
+    correct_word = Word("PALABRA")
+    user_word = Word("PALA")
+    # Se espera que la palabra sea considerada incorrecta ya que es más corta que la original.
     result = correct_word.checkLong(user_word)
     assert result is False
 

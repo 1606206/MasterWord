@@ -13,9 +13,9 @@ def selectColors(word: list, wordStatus: list):
     for i, status in enumerate(wordStatus): #bucle para asociar cada letra de la palabra a un color
         if (status == "*"): #si la letra existe pero está mal posicionada
             word_colors[i] = Letter(word[i],"mal_posicionada")
-        elif (status == "-"):  #si la letra no existe 
+        if (status == "-"):  #si la letra no existe 
             word_colors[i] = Letter(word[i],"fallo")
-        else:  #si la letra existe y está correctamente posicionada
+        if (status == "+"):  #si la letra existe y está correctamente posicionada
             word_colors[i] = Letter(word[i],"acierto")
 
     return word_colors

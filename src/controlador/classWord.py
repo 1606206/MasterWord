@@ -33,10 +33,10 @@ class Word:
         if self.n_letters < userWord.n_letters:
             print("La palabra es demasiado larga")
             return False
-        elif self.n_letters > userWord.n_letters:
+        if self.n_letters > userWord.n_letters:
             print("La palabra es demasiado corta")
             return False
-        else:
+        if self.n_letters == userWord.n_letters:
             return True
 
     def checkWord(self, userWord) -> (bool, str):
