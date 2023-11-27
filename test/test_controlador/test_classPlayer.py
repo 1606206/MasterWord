@@ -67,7 +67,6 @@ def test_validInputs_8():
         player = Player(ranking=-1)
     assert "El ranking no pot ser negatiu." in str(e.value)
 
-
 # OBTENER PUNTOS
 def test_get_points():
     # Prueba la función get_points de la clase Player.
@@ -89,10 +88,32 @@ def test_get_name():
     # Se espera que la función devuelva el nombre del jugador.
     assert player.get_name() == "serena"
 
+# SETTEAR PUNTOS CON UN NÚMERO NO INT
+def test_set_points_nointeger():
+    # Prueba la función set_points de la clase Player.
+    player = Player(name="serena", points=50, ranking=2)
+    # Se espera que la función devuelva un TypeError.
+    with pytest.raises(TypeError, match="La puntuació només pot ser un enter."):
+        player.set_points("no_entero")
 
-#------------------------TEST CAIXA NEGRA-----------------------#
+# SETTEAR PUNTOS CON UN NÚMERO NEGATIVO
+def test_set_points_negint():
+    # Prueba la función set_points de la clase Player.
+    player = Player(name="serena", points=50, ranking=2)
+    # Se espera que la función devuelva un ValueError.
+    with pytest.raises(ValueError, match="La puntuació no pot ser negativa."):
+        player.set_points(-5)
 
-##------------------Particions equivalents---------------------##
+# SETTEAR PUNTOS CON UN INTEGER POSITIVO
+def test_set_points_posint():
+    # Prueba la función set_points de la clase Player.
+    player = Player(name="serena", points=50, ranking=2)
+    # Se espera que la función assigne correctamente la puntuación.
+    player.set_points(10)
+    assert player.points == 10
 
-##------------------Valors límit i frontera--------------------##
+    
+
+
+
 

@@ -92,7 +92,7 @@ def nom_usuari_ja_existent():
 
 def missatge_benvinguda(username):
     print('\n')
-    print("Benvingut a WordleApp:", username, "\n")
+    print("Benvingut a MasterWord:", username, "\n")
 
 def canvis_guardats_correctament():
     print("Els canvis s'han guardat correctament.")

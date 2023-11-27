@@ -10,7 +10,7 @@ import tempfile
 TEST_PATH = 'test_BBDD'
 TEST_BBDD_NAME = "test_user_names.csv"
 
-#------------------------TEST READ USER-----------------------#
+#TEST READ USER
 def test_read_user():
     # Prueba la función read_user con casos específicos.
     # Caso de usuario existente ('serena') con puntos conocidos (1000).
@@ -30,7 +30,7 @@ def test_read_user():
         points, ranquing = read_user("", 1, TEST_PATH, TEST_BBDD_NAME)
     assert "El nom no pot estar buit." in str(e.value)
 
-#--------------------------------TEST SAVE USER POINTS---------------------------------------
+#TEST SAVE USER POINTS
 def test_save_user_points():
     # Lee los puntos anteriores del usuario 'almendruco'.
     df_result_anterior = pd.read_csv(TEST_PATH + '\\test_user_names.csv')
@@ -42,12 +42,7 @@ def test_save_user_points():
     # Verifica que los puntos se han actualizado correctamente.
     assert df_result.loc[df_result['USERNAMES'] == 'almendruco', 'POINTS'].values[0] == (punts_anteriors + 1), "Falló la actualización de puntos"
 
-
-
-
-#------------------------------------TEST CHECK USER-----------------------------------------------
-
-
+#TEST CHECK USER
 def test_check_user():
     #guardamos el df que no queremos que se modifique 
     df_original = pd.read_csv(TEST_PATH + '\\' + TEST_BBDD_NAME, sep=',')
@@ -95,7 +90,7 @@ def test_check_user():
 
     df_original.to_csv(TEST_PATH + '\\' + TEST_BBDD_NAME, index=False, sep=',')
 
-#-------------------------------- TEST SAVE USER DICT---------------------------------------
+#TEST SAVE USER DICT
 def test_saveUserDict():
     # Nombre de usuario para la prueba.
     username = "test1"

@@ -23,7 +23,7 @@ def test_init_2():
     assert game.uniquePlayer == 1
     assert game.maxRounds == 10
 
-# LOOP TESTING
+# LOOP TESTING SIMPLE
 def test_calculate_anonymous_points():
     max_rounds = 10
     game = Game(0, max_rounds, 0, 0, Player())
@@ -34,6 +34,7 @@ def test_calculate_anonymous_points():
     assert game.calculate_anonymous_points(9) == 2      # (n-1) passades
     assert game.calculate_anonymous_points(10) == 1     # n passades
 
+# LOOP TESTING ANIUAT
 def test_calculate_user_points():
     max_rounds = 10
     game = Game(0, max_rounds, 0, 0, Player())
