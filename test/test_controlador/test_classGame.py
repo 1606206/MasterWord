@@ -256,3 +256,15 @@ def test_getters_and_setters():
     assert game.default_dictionary == dictionary
     assert game.get_default_dictionary() == dictionary
     
+# TESTS VALORS LIMIT I FRONTERA calculate_anonymous_points
+def test_calculate_anonymous_points_limits_frontera():
+    max_rounds = 10
+    game = Game(0, max_rounds, 0, 0, Player())
+    # El joc dura entre 1 i 10 rondes (valors frontera)
+    # Probarem els límits pels dos costats
+    assert game.calculate_anonymous_points(0) == 11     # Límit de l'esquerra de la frontera 1
+    assert game.calculate_anonymous_points(1) == 10     # Frontera 1
+    assert game.calculate_anonymous_points(2) == 9      # Límit de la dreta de la frontera 1
+    assert game.calculate_anonymous_points(9) == 2      # Límit de l'esquerra de la frontera 10
+    assert game.calculate_anonymous_points(10) == 1     # Frontera 10
+    assert game.calculate_anonymous_points(11) == 0     # Límit de la dreta de la frontera 10
