@@ -91,6 +91,7 @@ def nom_usuari_ja_existent():
     return input("Aquest nom d'usuari ja existeix. Introdueix un altre nom de usuari: ")
 
 def missatge_benvinguda(username):
+    clear()
     print('\n')
     print("Benvingut a MasterWord:", username, "\n")
 
