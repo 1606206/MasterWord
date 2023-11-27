@@ -15,7 +15,7 @@ def test_selectColors():
     assert color_word[3].letter == "A" and color_word[3].color == "mal_posicionada"
 
 
-def test_path_coverage():
+def test_LETTER_path_coverage():
     #PATH 1: no se entra al for
     wordList = []
     wordStatus = []

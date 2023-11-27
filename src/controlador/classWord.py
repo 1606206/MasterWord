@@ -1,22 +1,23 @@
 import copy
 
 class Word:
-    """Clase para guardar palabras y compararlas"""
+    """Clase para guardar palabras y posteriormente, compararlas"""
     def __init__(self, palabra: str):
         # Constructor de la clase Word, que representa una palabra.
         # Verifica que la entrada sea una cadena
         if not isinstance(palabra, str):
             raise TypeError("Has d'introduir un string.")
         # Verifica que la cadena no esté vacía
-        if len(palabra) <= 0:
+        elif len(palabra) <= 0:
             raise ValueError("La paraula no pot estar buida.")
         # Verifica que la cadena solo contenga letras
-        if not palabra.isalpha():
+        elif not palabra.isalpha():
             raise ValueError("La paraula només pot contenir lletres.")
-        # Inicializa los atributos de la palabra
-        self.palabra = str(palabra.upper())  # Convierte la palabra a mayúsculas
-        self.n_letters = len(self.palabra)  # Obtiene la longitud de la palabra
-        self.splitWord = list(self.palabra)  # Divide la palabra en una lista de letras
+        else:
+            # Inicializa los atributos de la palabra
+            self.palabra = str(palabra.upper())  # Convierte la palabra a mayúsculas
+            self.n_letters = len(self.palabra)  # Obtiene la longitud de la palabra
+            self.splitWord = list(self.palabra)  # Divide la palabra en una lista de letras
 
 
     def checkLong(self, userWord) -> bool:

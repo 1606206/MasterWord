@@ -25,48 +25,51 @@ def test_checkWord():
     # Algunas letras correctas en posiciones correctas y en posiciones incorrectas.
     assert word.checkWord(Word("peruele")) == (False, ["+", "-", "+", "*", "-", "+", "-"])
 
-# PALABRA CON NÚMEROS
+# PATH COVERAGE 
+# PALABRA CON NÚMEROS (Path 1)
 def test_validInput_1():
     # Se espera que se genere un ValueError con el mensaje indicando que la palabra solo puede contener letras.
     with pytest.raises(ValueError) as e:
         word = Word("hola1234")
     assert "La paraula només pot contenir lletres." in str(e.value)
-    
-# PALABRA CON ESPACIOS
-def test_validInput_2():
-    # Se espera que se genere un ValueError con el mensaje indicando que la palabra solo puede contener letras.
-    with pytest.raises(ValueError) as e:
-        word = Word("H O L A")
-    assert "La paraula només pot contenir lletres." in str(e.value)
 
-# PALABRA CON CARACTERES ESPECIALES
-def test_validInput_3():
-    # Se espera que se genere un ValueError con el mensaje indicando que la palabra solo puede contener letras.
-    with pytest.raises(ValueError) as e:
-        word = Word("SERENA+-*/")
-    assert "La paraula només pot contenir lletres." in str(e.value)
-    
-# PALABRA VACÍA
-def test_validInput_4():
+# PALABRA VACÍA (Path 2)
+def test_validInput_2():
     # Se espera que se genere un ValueError con el mensaje indicando que la palabra no puede estar vacía.
     with pytest.raises(ValueError) as e:
         word = Word("")
     assert "La paraula no pot estar buida." in str(e.value)
 
-# PALABRA QUE NO ES STRING
-def test_validInput_5():
-    # Se espera que se genere un TypeError con el mensaje indicando que se debe introducir un string.
-    with pytest.raises(TypeError) as e:
-        word = Word(999)
-    assert "Has d'introduir un string." in str(e.value)
+# PALABRA CON CARACTERES ESPECIALES (Path 3)
+def test_validInput_3():
+    # Se espera que se genere un ValueError con el mensaje indicando que la palabra solo puede contener letras.
+    with pytest.raises(ValueError) as e:
+        word = Word("SERENA+-*/")
+    assert "La paraula només pot contenir lletres." in str(e.value)
 
-# PALABRA VÁLIDA
-def test_validInput_6():
+# PALABRA VÁLIDA (Path 4)
+def test_validInput_4():
     # Prueba exitosa de creación de la palabra.
     try:
         word = Word("palabra")
     except Exception as e:
         assert False, f"Word ha lanzado la excepción {e}"
+
+# OTRAS PRUEBAS DE INPUTS 
+# PALABRA CON ESPACIOS 
+def test_validInput_5(): 
+    # Se espera que se genere un ValueError con el mensaje indicando que la palabra solo puede contener letras.
+    with pytest.raises(ValueError) as e:
+        word = Word("H O L A")
+    assert "La paraula només pot contenir lletres." in str(e.value)
+
+# PALABRA QUE NO ES STRING
+def test_validInput_6():
+    # Se espera que se genere un TypeError con el mensaje indicando que se debe introducir un string.
+    with pytest.raises(TypeError) as e:
+        word = Word(999)
+    assert "Has d'introduir un string." in str(e.value)
+
 
 # PALABRA DESORDENADA
 def test_checkWord_1():
@@ -149,3 +152,50 @@ def test_checkLong_3():
     # Se espera que la palabra sea considerada correcta ya que tiene la misma longitud que la original.
     result = correct_word.checkLong(user_word)
     assert result is True
+
+#PATH COVERAGE
+def test_WORD_path_coverage():
+    #PATH 1: no se entra al for
+    wordList = []
+    wordStatus = []
+    color_word = selectColors(wordList, wordStatus)
+    assert color_word == [] 
+
+    #PATH 2: todas las letras existentes pero mal colocadas
+    wordList = ["H", "O", "L", "A"]
+    wordStatus = ["*", "*", "*", "*"]
+    color_word = selectColors(wordList, wordStatus)
+    # Verificaciones
+    assert color_word[0].letter == "H" and color_word[0].color == "mal_posicionada"
+    assert color_word[1].letter == "O" and color_word[1].color == "mal_posicionada"
+    assert color_word[2].letter == "L" and color_word[2].color == "mal_posicionada"
+    assert color_word[3].letter == "A" and color_word[3].color == "mal_posicionada"
+
+    #PATH 3: todas las letras errónias
+    wordList = ["H", "O", "L", "A"]
+    wordStatus = ["-", "-", "-", "-"]
+    color_word = selectColors(wordList, wordStatus)
+    # Verificaciones
+    assert color_word[0].letter == "H" and color_word[0].color == "fallo"
+    assert color_word[1].letter == "O" and color_word[1].color == "fallo"
+    assert color_word[2].letter == "L" and color_word[2].color == "fallo"
+    assert color_word[3].letter == "A" and color_word[3].color == "fallo"
+
+    #PATH 4: todas las letras bien colocadas
+    wordList = ["H", "O", "L", "A"]
+    wordStatus = ["+", "+", "+", "+"]
+    color_word = selectColors(wordList, wordStatus)
+    # Verificaciones
+    assert color_word[0].letter == "H" and color_word[0].color == "acierto"
+    assert color_word[1].letter == "O" and color_word[1].color == "acierto"
+    assert color_word[2].letter == "L" and color_word[2].color == "acierto"
+    assert color_word[3].letter == "A" and color_word[3].color == "acierto"
+
+    #PATH único: todas los caminos ejecutados
+    wordList = ["T", "E", "U"]
+    wordStatus = ["*", "-", "+"]
+    color_word = selectColors(wordList, wordStatus)
+    # Verificaciones
+    assert color_word[0].letter == "T" and color_word[0].color == "mal_posicionada"
+    assert color_word[1].letter == "E" and color_word[1].color == "fallo"
+    assert color_word[2].letter == "U" and color_word[2].color == "acierto"
