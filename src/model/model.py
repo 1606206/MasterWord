@@ -5,7 +5,7 @@ from src.controlador.fun_model_vista import *
 
 PATH = "BBDD"
 
-#||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||
+#||FUNCIONES BASICAS RELACIONADAS CON LA BASE DE DATOS||*
 
 def read_user(username, points=0, PATH="BBDD", BBDD_NAME="user_names.csv"): 
     # Lee la información del usuario desde el archivo CSV.
