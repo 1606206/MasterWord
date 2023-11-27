@@ -58,58 +58,9 @@ def test_check_user():
     # Elimina el usuario de la base de datos para dejarla en su estado original.
     df_result = df_result[df_result['USERNAMES'] != new_username]
     df_result.to_csv(TEST_PATH + '\\' + TEST_BBDD_NAME, index=False)
-
-    #prueba para usuario que no existe con opcion 1 y opcion 2
-    '''
-    missing_username = 'no_existo_bb'
-    with patch("pandas.read_csv") as mock_read_csv:
-        # Configura el comportamiento del objeto simulado para que el usuario no exista inicialmente
-        mock_read_csv.return_value = pd.DataFrame({'USERNAMES': []})
-        # Llama a la función check_user con un nuevo usuario que no existe y opción 1.
-        try:
-            result_missing_user_option_1 = check_user(missing_username, opciones[0], TEST_PATH, TEST_BBDD_NAME, 1)
-            # Si no hay excepciones, la función se ejecutó con éxito.
-            # Verifica que el resultado de la función sea el mismo que el nombre de usuario proporcionado
-            assert result_missing_user_option_1 == missing_username, f"El resultado no coincide con el nombre de usuario proporcionado: {result_missing_user_option_1}"
-        except Exception as e:
-            pytest.fail(f"Error inesperado: {e}")
-
-    # Prueba para usuario que no existe con opción 2
-    with patch("pandas.read_csv") as mock_read_csv:
-        # Configura el comportamiento del objeto simulado para que el usuario exista después de la opción 1
-        mock_read_csv.side_effect = [pd.DataFrame({'USERNAMES': [missing_username]}), pd.DataFrame({'USERNAMES': [missing_username]})]
-        # Llama a la función check_user con el mismo usuario y opción 2.
-        try:
-            result_missing_user_option_2 = check_user(missing_username, opciones[1], TEST_PATH, TEST_BBDD_NAME, 1)
-            # Si no hay excepciones, la función se ejecutó con éxito.
-            # Verifica que el resultado de la función sea el mismo que el nombre de usuario proporcionado
-            assert result_missing_user_option_2 == missing_username, f"El resultado no coincide con el nombre de usuario proporcionado: {result_missing_user_option_2}"
-
-        except Exception as e:
-            pytest.fail(f"Error inesperado: {e}")
-
-    '''
     df_original.to_csv(TEST_PATH + '\\' + TEST_BBDD_NAME, index=False, sep=',')
 
 #DECISION COVERAGE FUNCIÓN CHECKUSER
-'''
-def test_check_user_decision_coverage_1(self, mock_input, mock_controlador_nom_usuari_ja_existent):
-
-    mock_input.patch("builtins.input", side_effect=["existing_username", "1"]) 
-    mock_input.patch("controlador.controlador_nom_usuari_ja_existent")
-
-    result = check_user("existing_username", "1")
-    mock_controlador_nom_usuari_ja_existent ###hay un input aqui
-    self.assertEqual(result, "mocked_username")
-
-def test_check_user_decision_coverage_2(self, mock_input, mock_controlador_missatge_benvinguda):
-    mock_input.patch("builtins.input", side_effect=["existing_username", "2"])
-    mock_input.patch("tu_modulo.controlador_missatge_benvinguda")
-
-    result = check_user("existing_username", "2")
-    mock_controlador_missatge_benvinguda ###esto es solo un print
-    self.assertEqual(result, "existing_username")
-'''
 def test_check_user_decision_coverage_1():
     # Cargar el DataFrame original desde el archivo CSV
     df_original = pd.read_csv('BBDD' + '\\' + 'user_names.csv', sep=',')
